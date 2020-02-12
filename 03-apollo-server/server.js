@@ -1,11 +1,5 @@
-const express = require("express");
-const { ApolloServer, gql } = require("apollo-server-express");
-
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
+const { ApolloServer } = require("apollo-server");
+const typeDefs = require("./schema");
 
 const resolvers = {
   Query: {
@@ -14,10 +8,6 @@ const resolvers = {
 };
 
 const server = new ApolloServer({ typeDefs, resolvers });
-
-const app = express();
-server.applyMiddleware({ app });
-
-app.listen({ port: 4000 }, () =>
-  console.log("Now browse to http://localhost:4000" + server.graphqlPath)
-);
+server.listen().then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
+});
