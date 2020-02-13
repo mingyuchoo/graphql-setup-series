@@ -1,5 +1,5 @@
 {
-  "name": "03-apollo-server",
+  "name": "04-graphql-yoga",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,8 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^2.10.0",
-    "graphql": "^14.6.0"
+    "graphql-yoga": "^1.18.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
