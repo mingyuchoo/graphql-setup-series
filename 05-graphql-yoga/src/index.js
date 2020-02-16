@@ -1,4 +1,4 @@
-const { GraphQLServer } = require("graphql-yoga");
+import { GraphQLServer } from "graphql-yoga";
 
 let links = [
   {
@@ -31,4 +31,5 @@ const server = new GraphQLServer({
   typeDefs: "./src/schema.graphql",
   resolvers
 });
-server.start(() => console.log(`Server is running on http://localhost:4000`));
+
+server.start(() => console.log(`🚀 Server ready at http://localhost:4000`));

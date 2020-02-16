@@ -1,16 +1,16 @@
-var express = require("express");
-var graphqlHTTP = require("express-graphql");
-var { buildSchema } = require("graphql");
+import express from "express";
+import graphqlHTTP from "express-graphql";
+import { buildSchema } from "graphql";
 
-var schema = buildSchema(`
+const schema = buildSchema(`
   type Query {
     hello: String
   }
 `);
 
-var root = { hello: () => "Hello world!" };
+const root = { hello: () => "Hello world!" };
 
-var app = express();
+const app = express();
 app.use(
   "/graphql",
   graphqlHTTP({
