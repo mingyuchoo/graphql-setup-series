@@ -1,6 +1,6 @@
-const { find, filter } = require("lodash");
+import { find, filter } from "lodash";
 
-const books = require("../data/books");
+import books from "./models";
 
 const resolvers = {
   Query: {
@@ -10,4 +10,4 @@ const resolvers = {
   }
 };
 
-module.exports = resolvers;
+export default resolvers;
