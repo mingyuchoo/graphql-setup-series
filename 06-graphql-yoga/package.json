@@ -1,5 +1,5 @@
 {
-  "name": "04-apollo-server-express",
+  "name": "06-graphql-yoga",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,12 +14,9 @@
     "@babel/core": "^7.8.4",
     "@babel/node": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
-    "apollo-server": "^2.10.1",
-    "apollo-server-express": "^2.10.1",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "graphql": "^14.6.0",
-    "nodemon": "^2.0.2",
-    "uuid": "^3.4.0"
+    "graphql-yoga": "^1.18.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }

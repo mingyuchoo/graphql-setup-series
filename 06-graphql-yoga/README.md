@@ -1,4 +1,4 @@
-# 04-graphql-yoga
+# 06-graphql-yoga
 
 ## Reference
 

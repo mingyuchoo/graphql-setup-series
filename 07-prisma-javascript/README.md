@@ -1,4 +1,4 @@
-# 05-prisma-javascript
+# 07-prisma-javascript
 
 ## Reference
 
