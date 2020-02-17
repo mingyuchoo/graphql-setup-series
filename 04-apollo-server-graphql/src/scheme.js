@@ -17,6 +17,7 @@ const typeDefs = gql`
   }
 
   type Query {
+    allUsers: [User!]!
     user(id: Int!): User
     allRecipes: [Recipe!]!
     recipe(id: Int!): Recipe

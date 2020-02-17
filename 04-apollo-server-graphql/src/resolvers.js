@@ -1,19 +1,22 @@
-import bcyrpt from "bcryptjs";
+import bcrypt from "bcryptjs";
 
 const resolvers = {
   Query: {
-    async user(root, { id }, { models }) {
-      return models.User.findById(id);
+    async user(parent, { id }, { models }) {
+      return models.User.findByPk(id);
     },
-    async allRecipes(root, args, { models }) {
+    async allUsers(parent, args, { models }) {
+      return models.User.findAll();
+    },
+    async allRecipes(parent, args, { models }) {
       return models.Recipe.findAll();
     },
-    async recipe(root, { id }, { models }) {
-      return models.Recipe.findById(id);
+    async recipe(parent, { id }, { models }) {
+      return models.Recipe.findByPk(id);
     }
   },
   Mutation: {
-    async createUser(root, { name, email, password }, { models }) {
+    async createUser(parent, { name, email, password }, { models }) {
       return models.User.create({
         name,
         email,
@@ -21,7 +24,7 @@ const resolvers = {
       });
     },
     async createRecipe(
-      root,
+      parent,
       { userId, title, ingredients, direction },
       { models }
     ) {

@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "migrate": "sequelize db:migrate",
+    "seq:init": "sequelize init",
+    "seq:db:migrate": "sequelize db:migrate",
+    "seq:db:migrate:undo": "sequelize db:migrate:undo",
+    "seq:db:seed:all": "sequelize db:seed:all",
+    "seq:db:seed:undo": "sequelize db:seed:undo",
+    "seq:db:seed:undo:all": "sequelize db:seed:undo:all",
     "dev": "nodemon --exec babel-node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,6 +28,7 @@
     "sqlite3": "^4.1.1"
   },
   "devDependencies": {
+    "babel-register": "^6.26.0",
     "nodemon": "^2.0.2"
   }
 }
