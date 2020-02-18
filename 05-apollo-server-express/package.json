@@ -4,6 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "seq:init": "sequelize init",
+    "seq:db:migrate": "sequelize db:migrate",
+    "seq:db:migrate:undo": "sequelize db:migrate:undo",
+    "seq:db:seed:all": "sequelize db:seed:all",
+    "seq:db:seed:undo": "sequelize db:seed:undo",
+    "seq:db:seed:undo:all": "sequelize db:seed:undo:all",
     "dev": "nodemon --exec babel-node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,9 +23,12 @@
     "apollo-server": "^2.10.1",
     "apollo-server-express": "^2.10.1",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "graphql": "^14.6.0",
     "nodemon": "^2.0.2",
+    "pg": "^7.18.1",
+    "sequelize": "^5.21.4",
     "uuid": "^3.4.0"
   }
 }
