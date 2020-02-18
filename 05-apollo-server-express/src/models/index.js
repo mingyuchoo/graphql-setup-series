@@ -1,11 +1,15 @@
 import Sequelize from "sequelize";
 
-const sequelize = new Sequelize(
-  "postgres://postgres:postgres@localhost/postgres",
-  {
-    dialect: "postgres"
+const sequelize = new Sequelize({
+  database: process.env.DATABASE || "postgres",
+  port: process.env.PORT || 5432,
+  username: process.env.USERNAME || "postgres",
+  password: process.env.PASSWORD || "postgres",
+  dialect: process.env.DIALECT || "postgres",
+  dialectOptions: {
+    connectTimeout: process.env.CONNECT_TIMEOUT || 1000
   }
-);
+});
 
 const models = {
   User: sequelize.import("./user"),
