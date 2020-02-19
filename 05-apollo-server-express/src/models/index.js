@@ -1,5 +1,8 @@
 import Sequelize from "sequelize";
 
+import dotenv from "dotenv";
+dotenv.config();
+
 const sequelize = new Sequelize({
   database: process.env.DATABASE || "postgres",
   port: process.env.PORT || 5432,

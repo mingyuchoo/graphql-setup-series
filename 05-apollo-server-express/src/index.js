@@ -1,18 +1,46 @@
 import cors from "cors";
 import express from "express";
-import { ApolloServer } from "apollo-server-express";
+import jwt from "jsonwebtoken";
+import { ApolloServer, AuthenticationError } from "apollo-server-express";
 
 import schema from "./schema";
 import resolvers from "./resolvers";
 import models, { sequelize } from "./models";
 
+import dotenv from "dotenv";
+dotenv.config();
+
+const getMe = async req => {
+  const token = req.headers["x-token"];
+  if (token) {
+    try {
+      return await jwt.verify(token, process.env.SECRET);
+    } catch (error) {
+      throw new AuthenticationError("Your session expired. Sign in again.");
+    }
+  }
+};
 const server = new ApolloServer({
   typeDefs: schema,
   resolvers,
-  context: async () => ({
-    models,
-    me: models.User.findByLogin("rwieruch")
-  })
+  formatError: error => {
+    const message = error.message
+      .replace("SequelizeValidationError: ", "")
+      .replace("Validation error: ", "");
+    return {
+      ...error,
+      message
+    };
+  },
+  context: async ({ req }) => {
+    const me = await getMe(req);
+
+    return {
+      models,
+      me: models.User.findByLogin("rwieruch"),
+      secret: process.env.SECRET
+    };
+  }
 });
 
 const app = express();
@@ -24,6 +52,9 @@ const createUsersWithMessages = async () => {
   await models.User.create(
     {
       username: "rwieruch",
+      email: "helllo@robin.com",
+      password: "rwieruch",
+      role: "ADMIN",
       messages: [
         {
           text: "Published the Road to learn React"
@@ -37,6 +68,8 @@ const createUsersWithMessages = async () => {
   await models.User.create(
     {
       username: "ddavids",
+      email: "hello@david.com",
+      password: "ddavids",
       messages: [
         {
           text: "Happy to release ..."
