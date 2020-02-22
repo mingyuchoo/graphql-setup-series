@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const sequelize = new Sequelize({
-  database: process.env.DATABASE || "postgres",
+  database: process.env.TEST_DATABASE || process.env.DATABASE || "postgres",
   port: process.env.PORT || 5432,
   username: process.env.USERNAME || "postgres",
   password: process.env.PASSWORD || "postgres",

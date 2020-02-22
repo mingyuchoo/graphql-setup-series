@@ -1,11 +1,15 @@
+import http from "http";
 import cors from "cors";
-import express from "express";
 import jwt from "jsonwebtoken";
+import express from "express";
 import { ApolloServer, AuthenticationError } from "apollo-server-express";
 
 import schema from "./schema";
 import resolvers from "./resolvers";
 import models, { sequelize } from "./models";
+
+import DataLoader from "dataloader";
+import loaders from "./loaders";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -20,6 +24,20 @@ const getMe = async req => {
     }
   }
 };
+
+// const batchUsers = async (keys, models) => {
+//   const usres = await models.User.findAll({
+//     where: {
+//       id: {
+//         $in: keys
+//       }
+//     }
+//   });
+//   return keys.map(key => usres.find(user => user.id === key));
+// };
+//
+// const userLoader = new DataLoader(keys => batchUsers(keys, models));
+
 const server = new ApolloServer({
   typeDefs: schema,
   resolvers,
@@ -32,33 +50,48 @@ const server = new ApolloServer({
       message
     };
   },
-  context: async ({ req }) => {
-    const me = await getMe(req);
+  context: async ({ req, connection }) => {
+    if (connection) {
+      return {
+        models,
+        loaders: {
+          user: new DataLoader(keys => loaders.user.batchUsers(keys, models))
+        }
+      };
+    }
+    if (req) {
+      const me = await getMe(req);
 
-    return {
-      models,
-      me: models.User.findByLogin("rwieruch"),
-      secret: process.env.SECRET
-    };
+      return {
+        models,
+        me,
+        secret: process.env.SECRET,
+        loaders: {
+          user: new DataLoader(keys => loaders.user.batchUsers(keys, models))
+        }
+      };
+    }
   }
 });
 
 const app = express();
 app.use(cors());
-server.applyMiddleware({ app });
+server.applyMiddleware({ app, path: "/graphql" });
 
-const eraseDatabaseOnSync = true;
-const createUsersWithMessages = async (date) => {
+const httpServer = http.createServer(app);
+server.installSubscriptionHandlers(httpServer);
+
+const createUsersWithMessages = async date => {
   await models.User.create(
     {
       username: "rwieruch",
-      email: "helllo@robin.com",
+      email: "hello@robin.com",
       password: "rwieruch",
       role: "ADMIN",
       messages: [
         {
           text: "Published the Road to learn React",
-          createdAt: date.setSeconds(date.getSeconds() + 1),
+          createdAt: date.setSeconds(date.getSeconds() + 1)
         }
       ]
     },
@@ -74,11 +107,11 @@ const createUsersWithMessages = async (date) => {
       messages: [
         {
           text: "Happy to release ...",
-          createdAt: date.setSeconds(date.getSeconds() + 1),
+          createdAt: date.setSeconds(date.getSeconds() + 1)
         },
         {
           text: "Published a complete ...",
-          createdAt: date.setSeconds(date.getSeconds() + 1),
+          createdAt: date.setSeconds(date.getSeconds() + 1)
         }
       ]
     },
@@ -88,12 +121,15 @@ const createUsersWithMessages = async (date) => {
   );
 };
 
-sequelize.sync({ force: eraseDatabaseOnSync }).then(async () => {
-  if (eraseDatabaseOnSync) {
+const eraseDatabaseOnSync = true;
+const isTest = !!process.env.TEST_DATABASE;
+
+sequelize.sync({ force: isTest }).then(async () => {
+  if (isTest) {
     createUsersWithMessages(new Date());
   }
 
-  app.listen({ port: 4000 }, () =>
+  httpServer.listen({ port: 4000 }, () =>
     console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
   );
 });
