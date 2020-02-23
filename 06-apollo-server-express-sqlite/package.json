@@ -11,8 +11,10 @@
     "seq:db:seed:undo": "sequelize db:seed:undo",
     "seq:db:seed:undo:all": "sequelize db:seed:undo:all",
     "lint": "eslint --config .eslintrc.yml --fix 'src/**/*.js'",
-    "start": "babel-node src/index.js",
-    "dev": "nodemon --exec babel-node src/index.js",
+    "start": "npm run start:development",
+    "start:development": "NODE_ENV=development nodemon --exec babel-node src/index.js",
+    "start:test": "NODE_ENV=test babel-node src/index.js",
+    "start:production": "NODE_ENV=production babel-node src/index.js",
     "test": "mocha --require @babel/register 'src/**/*.spec.js'"
   },
   "keywords": [],

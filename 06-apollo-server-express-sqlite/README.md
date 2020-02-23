@@ -1,1 +1,1 @@
-# 06 Apollo Server Express with SQLite3
+# 06 Apollo Server Express with SQLite

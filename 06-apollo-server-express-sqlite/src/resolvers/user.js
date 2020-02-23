@@ -7,13 +7,4 @@ export default {
       return await models.User.findByPk(id);
     },
   },
-  User: {
-    friends: async (user, args, { models }) => {
-      return await models.User.findAll({
-        where: {
-          id: user.id,
-        },
-      });
-    },
-  },
 };
