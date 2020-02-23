@@ -2,6 +2,18 @@ import models from "../models";
 
 export const createUsers = async () => {
   await models.User.create({
+    username: "user1",
+    name: "박근혜",
+    email: "user1@myemail.com",
+    password: "mypassword1"
+  });
+  await models.User.create({
+    username: "user2",
+    name: "최순실",
+    email: "user2@myemail.com",
+    password: "mypassword1"
+  });
+  await models.User.create({
     username: "user3",
     name: "한건우",
     email: "user3@myemail.com",
