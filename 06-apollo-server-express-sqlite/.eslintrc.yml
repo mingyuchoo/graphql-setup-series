@@ -1,6 +1,5 @@
 ---
 env:
-  browser: true
   es6: true
   node: true
 extends:
@@ -11,5 +10,5 @@ plugins:
 rules:
   prettier/prettier: error
 parserOptions:
-  ecmaVersion: 6
   sourceType: module
+  ecmaVersion: 8

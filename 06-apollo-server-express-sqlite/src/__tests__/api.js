@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 
-const API_URI = "http://localhost:4000/graphql";
+const API_URI = 'http://localhost:4000/graphql';
 
 export const user = async variables =>
   axios.post(API_URI, {
@@ -13,7 +13,7 @@ export const user = async variables =>
       }
     }
     `,
-    variables
+    variables,
   });
 
 export const users = async variables =>
@@ -27,5 +27,5 @@ export const users = async variables =>
       }
     }
     `,
-    variables
+    variables,
   });

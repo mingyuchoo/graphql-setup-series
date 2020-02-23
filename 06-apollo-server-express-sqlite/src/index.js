@@ -1,12 +1,12 @@
-import cors from "cors";
-import express from "express";
-import { ApolloServer } from "apollo-server-express";
+import cors from 'cors';
+import express from 'express';
+import { ApolloServer } from 'apollo-server-express';
 
-import models, { sequelize } from "./models";
-import schema from "./schema";
-import resolvers from "./resolvers";
+import models, { sequelize } from './models';
+import schema from './schema';
+import resolvers from './resolvers';
 
-import { createUsers } from "./seeders/initial";
+import { createUsers } from './seeders/initial';
 
 const app = express();
 app.use(cors());
@@ -15,11 +15,11 @@ const server = new ApolloServer({
   typeDefs: schema,
   resolvers,
   context: {
-    models
-  }
+    models,
+  },
 });
 
-server.applyMiddleware({ app, path: "/graphql" });
+server.applyMiddleware({ app, path: '/graphql' });
 
 const eraseDatabaseOnSync = true;
 sequelize.sync({ force: eraseDatabaseOnSync }).then(async () => {
@@ -29,7 +29,7 @@ sequelize.sync({ force: eraseDatabaseOnSync }).then(async () => {
 
   app.listen({ port: 4000 }, () => {
     console.log(
-      `🚀 Server ready at http://localhost:4000${server.graphqlPath}`
+      `🚀 Server ready at http://localhost:4000${server.graphqlPath}`,
     );
   });
 });
