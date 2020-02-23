@@ -10,9 +10,10 @@
     "seq:db:seed:all": "sequelize db:seed:all",
     "seq:db:seed:undo": "sequelize db:seed:undo",
     "seq:db:seed:undo:all": "sequelize db:seed:undo:all",
-    "start": "babel-node index.js",
-    "dev": "nodemon --exec babel-node index.js",
-    "test": "mocha --require @babel/register '__tests__/**/*.spec.js'"
+    "lint": "eslint --config .eslintrc.yml --fix 'src/**/*.js'",
+    "start": "babel-node src/index.js",
+    "dev": "nodemon --exec babel-node src/index.js",
+    "test": "mocha --require @babel/register 'src/**/*.spec.js'"
   },
   "keywords": [],
   "author": "",
@@ -27,7 +28,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "graphql": "^14.6.0",
-    "sequelize": "^5.21.4",
+    "sequelize": "^5.21.5",
     "sequelize-cli": "^5.5.1",
     "sqlite3": "^4.1.1"
   },
@@ -35,7 +36,11 @@
     "@babel/register": "^7.8.3",
     "axios": "^0.19.2",
     "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "mocha": "^7.0.1",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1"
   }
 }
