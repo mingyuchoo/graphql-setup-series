@@ -1,4 +1,4 @@
-# 04 Apollo Server GraphQL
+# 04 Apollo Server GraphQL SQLite
 
 ## References
 

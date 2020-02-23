@@ -1,4 +1,4 @@
-# 05 Apollo server Express Example
+# 05 Apollo server Express PostgreSQL
 
 ## References
 
