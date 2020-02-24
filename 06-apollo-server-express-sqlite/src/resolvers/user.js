@@ -31,4 +31,13 @@ export default {
       });
     },
   },
+  User: {
+    articles: async (user, args, { models }) => {
+      return await models.Article.findAll({
+        where: {
+          UserId: user.id,
+        },
+      });
+    },
+  },
 };

@@ -17,5 +17,6 @@ export default gql`
     email: String!
     password: String!
     role: String
+    articles: [Article!]!
   }
 `;
