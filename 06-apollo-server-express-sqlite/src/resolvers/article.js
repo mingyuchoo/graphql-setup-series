@@ -31,8 +31,8 @@ export default {
     },
   },
   Article: {
-    user: async (article, args, { models }) => {
-      return await models.User.findByPk(article.UserId);
+    author: async (article, args, { models }) => {
+      return await models.Author.findByPk(article.AuthorId);
     },
   },
 };

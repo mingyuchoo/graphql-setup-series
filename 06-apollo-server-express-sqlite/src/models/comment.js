@@ -1,16 +1,13 @@
-const article = (sequelize, DataTypes) => {
-  const Article = sequelize.define(
-    'Article',
+const comment = (sequelize, DataTypes) => {
+  const Comment = sequelize.define(
+    'Comment',
     {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      title: {
-        type: DataTypes.STRING,
-      },
-      content: {
+      comment: {
         type: DataTypes.TEXT,
       },
     },
@@ -19,19 +16,19 @@ const article = (sequelize, DataTypes) => {
       timestamps: false,
     },
   );
-  Article.associate = models => {
-    Article.belongsTo(models.Author, {
+  Comment.associate = models => {
+    Comment.belongsTo(models.Author, {
       foreignKey: 'authorId',
       as: 'author',
       onDelete: 'CASCADE',
     });
-    Article.hasMany(models.Comment, {
+    Comment.belongsTo(models.Article, {
       foreignKey: 'articleId',
-      as: 'comments',
+      as: 'article',
       onDelete: 'CASCADE',
     });
   };
-  return Article;
+  return Comment;
 };
 
-export default article;
+export default comment;

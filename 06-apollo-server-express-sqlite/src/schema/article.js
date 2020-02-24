@@ -14,6 +14,6 @@ export default gql`
     id: ID!
     title: String!
     content: String!
-    user: User!
+    author: Author!
   }
 `;

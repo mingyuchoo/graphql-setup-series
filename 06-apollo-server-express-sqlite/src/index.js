@@ -6,7 +6,7 @@ import models, { sequelize } from './models';
 import schema from './schema';
 import resolvers from './resolvers';
 
-import { createUsers } from './seeders/initial';
+import { createAuthors } from './seeders/initial';
 
 const app = express();
 app.use(cors());
@@ -24,7 +24,7 @@ server.applyMiddleware({ app, path: '/graphql' });
 const eraseDatabaseOnSync = true;
 sequelize.sync({ force: eraseDatabaseOnSync }).then(async () => {
   if (eraseDatabaseOnSync) {
-    createUsers();
+    createAuthors();
   }
 
   app.listen({ port: 4000 }, () => {

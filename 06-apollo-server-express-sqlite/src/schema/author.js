@@ -2,15 +2,15 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
   extend type Query {
-    users: [User!]!
-    user(id: ID!): User
+    authors: [Author!]!
+    author(id: ID!): Author
   }
   extend type Mutation {
-    createUser(username: String!, email: String!, password: String!): User!
-    updateUser(id: ID!, name: String!, role: String!): User!
-    deleteUser(id: ID!): Boolean!
+    createAuthor(username: String!, email: String!, password: String!): Author!
+    updateAuthor(id: ID!, name: String!, role: String!): Author!
+    deleteAuthor(id: ID!): Boolean!
   }
-  type User {
+  type Author {
     id: ID!
     username: String!
     name: String!

@@ -1,3 +1,5 @@
-import userResolvers from './user';
+import author from './author';
+import article from './article';
+import comment from './comment';
 
-export default [userResolvers];
+export default [author, article, comment];
