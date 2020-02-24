@@ -1,14 +1,32 @@
 {
   "development": {
     "dialect": "sqlite",
-    "storage": "./data/development.sqlite"
+    "storage": "./data/development.sqlite",
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    }
   },
   "test": {
     "dialect": "sqlite",
-    "storage": "./data/test.sqlite"
+    "storage": "./data/test.sqlite",
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    }
   },
   "production": {
     "dialect": "sqlite",
-    "storage": "./data/production.sqlite"
+    "storage": "./data/production.sqlite",
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    }
   }
 }

@@ -14,4 +14,4 @@ const linkSchema = gql`
   }
 `;
 
-export default [linkSchema, userSchema];
+export default [userSchema, linkSchema];

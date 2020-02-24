@@ -5,24 +5,13 @@ const user = (sequelize, DataTypes) => {
       username: {
         type: DataTypes.STRING,
         unique: true,
-        allowNull: false,
-        validate: {
-          notEmpty: true,
-        },
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          notEmpty: true,
-        },
       },
       email: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          notEmpty: true,
-        },
+        unique: true,
       },
       password: {
         type: DataTypes.STRING,
@@ -33,7 +22,10 @@ const user = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
       },
     },
-    {},
+    {
+      // options
+      timestamps: true,
+    },
   );
   User.associate = models => {
     //
