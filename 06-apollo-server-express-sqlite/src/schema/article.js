@@ -15,5 +15,6 @@ export default gql`
     title: String!
     content: String!
     author: Author!
+    comments: [Comment!]!
   }
 `;

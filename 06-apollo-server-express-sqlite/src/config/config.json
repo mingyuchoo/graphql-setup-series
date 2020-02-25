@@ -12,6 +12,7 @@
   "test": {
     "dialect": "sqlite",
     "storage": "./data/test.sqlite",
+    "logging": false,
     "pool": {
       "max": 5,
       "min": 0,
@@ -22,6 +23,7 @@
   "production": {
     "dialect": "sqlite",
     "storage": "./data/production.sqlite",
+    "logging": false,
     "pool": {
       "max": 5,
       "min": 0,

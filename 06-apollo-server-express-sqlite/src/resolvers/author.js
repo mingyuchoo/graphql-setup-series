@@ -35,7 +35,7 @@ export default {
     articles: async (author, args, { models }) => {
       return await models.Article.findAll({
         where: {
-          AuthorId: author.id,
+          authorId: author.id,
         },
       });
     },

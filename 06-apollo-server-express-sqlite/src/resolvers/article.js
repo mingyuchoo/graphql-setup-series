@@ -34,5 +34,13 @@ export default {
     author: async (article, args, { models }) => {
       return await models.Author.findByPk(article.AuthorId);
     },
+    comments: async (article, args, { models }) => {
+      return await models.Comment.findAll({
+        where: {
+          authorId: article.authorId,
+          articleId: article.id,
+        },
+      });
+    },
   },
 };
