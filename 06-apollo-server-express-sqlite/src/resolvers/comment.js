@@ -11,8 +11,6 @@ export default {
     createComment: async (parent, { comment }, { models }) => {
       return await models.Comment.create({
         comment: comment,
-        authorId: authorId,
-        articleId: articleId,
       });
     },
     updateComment: async (parent, { id, comment }, { models }) => {

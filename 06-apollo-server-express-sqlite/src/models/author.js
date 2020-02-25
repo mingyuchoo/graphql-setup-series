@@ -3,7 +3,7 @@ const author = (sequelize, DataTypes) => {
     'Author',
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
         autoIncrement: true,
       },
