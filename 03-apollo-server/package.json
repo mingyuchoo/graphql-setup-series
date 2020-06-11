@@ -14,8 +14,8 @@
     "@babel/core": "^7.10.2",
     "@babel/node": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
-    "apollo-server": "^2.14.2",
-    "graphql": "^15.0.0",
+    "apollo-server": "^2.14.3",
+    "graphql": "^15.1.0",
     "lodash": "^4.17.15"
   },
   "devDependencies": {
