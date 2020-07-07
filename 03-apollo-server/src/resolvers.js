@@ -1,13 +1,13 @@
-import { find, filter } from "lodash";
+import { find, filter } from 'lodash';
 
-import books from "./models";
+import books from './models';
 
 const resolvers = {
   Query: {
     book: (parent, args, context, info) =>
       filter(books, { author: args.author }),
-    books: () => books
-  }
+    books: () => books,
+  },
 };
 
 export default resolvers;

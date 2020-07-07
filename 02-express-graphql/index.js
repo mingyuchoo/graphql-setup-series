@@ -1,6 +1,6 @@
-import express from "express";
-import graphqlHTTP from "express-graphql";
-import { buildSchema } from "graphql";
+import express from 'express';
+import graphqlHTTP from 'express-graphql';
+import { buildSchema } from 'graphql';
 
 const schema = buildSchema(`
   type Query {
@@ -8,15 +8,15 @@ const schema = buildSchema(`
   }
 `);
 
-const root = { hello: () => "Hello world!" };
+const root = { hello: () => 'Hello world!' };
 
 const app = express();
 app.use(
-  "/graphql",
+  '/graphql',
   graphqlHTTP({
     schema: schema,
     rootValue: root,
-    graphiql: true
+    graphiql: true,
   })
 );
-app.listen(4000, () => console.log("Now browse to localhost:4000/graphql"));
+app.listen(4000, () => console.log('Now browse to localhost:4000/graphql'));
