@@ -10,6 +10,7 @@
     "seq:db:seed:all": "sequelize db:seed:all",
     "seq:db:seed:undo": "sequelize db:seed:undo",
     "seq:db:seed:undo:all": "sequelize db:seed:undo:all",
+    "lint": "eslint --config .eslintrc.yml --fix './src/**/*.{js,jsx}'",
     "dev": "nodemon --exec babel-node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,16 +18,20 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/node": "^7.10.1",
-    "@babel/preset-env": "^7.10.2",
-    "@babel/register": "^7.10.1",
-    "apollo-server": "^2.14.3",
+    "@babel/core": "^7.10.4",
+    "@babel/node": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/register": "^7.10.4",
+    "apollo-server": "^2.15.1",
     "bcryptjs": "^2.4.3",
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "graphql": "^15.1.0",
     "nodemon": "^2.0.4",
-    "sequelize": "^5.21.12",
-    "sequelize-cli": "^5.5.1",
-    "sqlite3": "^4.2.0"
+    "prettier": "^2.0.5",
+    "sequelize": "^6.3.0",
+    "sequelize-cli": "^6.2.0",
+    "sqlite3": "^5.0.0"
   }
 }
