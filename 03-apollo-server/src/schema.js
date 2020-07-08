@@ -1,5 +1,4 @@
 import { gql } from 'apollo-server';
-import { GraphQLDate, GraphQLDateTime, GraphQLTime } from 'graphql-iso-date';
 
 const typeDefs = gql`
   scalar Date
