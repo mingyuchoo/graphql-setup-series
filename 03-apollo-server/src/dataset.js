@@ -1,5 +1,5 @@
 // Some fake data
-const books = [
+export const books = [
   {
     title: "Harry Potter and the Sorcerer's stone",
     author: 'J.K. Rowling',
@@ -9,5 +9,3 @@ const books = [
     author: 'Michael Crichton',
   },
 ];
-
-export default books;
