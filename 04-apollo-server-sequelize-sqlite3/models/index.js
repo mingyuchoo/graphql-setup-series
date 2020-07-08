@@ -1,12 +1,10 @@
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
+import fs from 'fs';
+import path from 'path';
+import Sequelize from 'sequelize';
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
-const db = {};
+const models = {};
 
 let sequelize;
 if (config.use_env_variable) {
@@ -22,25 +20,27 @@ if (config.use_env_variable) {
 
 fs.readdirSync(__dirname)
   .filter((file) => {
+    // index.js 파일 필터링
     return (
       file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
     );
   })
   .forEach((file) => {
+    // index.js를 제외한 파일  가져오기
     const model = require(path.join(__dirname, file))(
       sequelize,
       Sequelize.DataTypes
     );
-    db[model.name] = model;
+    models[model.name] = model;
   });
 
-Object.keys(db).forEach((modelName) => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
+Object.keys(models).forEach((modelName) => {
+  if (models[modelName].associate) {
+    models[modelName].associate(models);
   }
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+models.sequelize = sequelize;
+models.Sequelize = Sequelize;
 
-module.exports = db;
+export default models;
