@@ -18,16 +18,27 @@ const resolvers = {
     // selectAll
     books: () => books,
     // selectOne
-    book: (parent, args, context, info) =>
-      filter(books, { author: args.author }),
+    book: (parent, args, context, info) => {
+      filter(books, { author: args.author });
+    },
+    // say Hi
     sayHi: (parent, args, context, info) => {
       return `Hi, ${args.name}!`;
     },
+    // file uploads
+    uploads: (parent, args, context, info) => {},
   },
 
   Mutation: {
+    // say Hello
     sayHello: (parent, args, context, info) => {
       return `Hello, ${args.name}!`;
+    },
+    // file single uploads
+    singleUpload: (parent, args, context, info) => {
+      return args.file.then((file) => {
+        return file;
+      });
     },
   },
 };
