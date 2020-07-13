@@ -1,0 +1,41 @@
+{
+  "name": "04-apollo-server-graphql-sqlite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "seq:init": "sequelize init",
+    "seq:db:migrate": "sequelize db:migrate",
+    "seq:db:migrate:undo": "sequelize db:migrate:undo",
+    "seq:db:seed:all": "sequelize db:seed:all",
+    "seq:db:seed:undo": "sequelize db:seed:undo",
+    "seq:db:seed:undo:all": "sequelize db:seed:undo:all",
+    "lint": "eslint --config .eslintrc.yml --fix './src/**/*.{js,jsx}'",
+    "dev": "nodemon --exec babel-node src/index.js",
+    "babel": "babel src --out-dir lib",
+    "start": "node lib/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.15.1",
+    "bcryptjs": "^2.4.3",
+    "graphql": "^15.3.0",
+    "sequelize": "^6.3.0",
+    "sqlite3": "^5.0.0",
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/node": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/register": "^7.10.4",
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {}
+}
