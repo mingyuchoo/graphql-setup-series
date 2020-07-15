@@ -1,3 +1,11 @@
+type Movie {
+  id: ID!
+  director: String!
+  movieName: String!
+  yearReleased: Int!
+}
+
 type Query {
   helloWorld: String!
+  movies: [Movie]
 }
