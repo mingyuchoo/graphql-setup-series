@@ -4,15 +4,30 @@ import { Context } from './context';
 
 const resolvers: IResolvers = {
   Query: {
-    helloWorld: (parent: void, args: void, context: void, info: void): string => {
-      return `Hello, Apollo Express for GraphQL`;
+    feed: (parent, args, ctx: Context) => {
+      return ctx.prisma.post.findMany({
+        where: { published: true },
+      });
     },
-    movies: (parent: void, args: any, context: Context, info: void): any => {
-      return context.prisma.movie.findMany();
+  },
+  User: {
+    posts: (parent, args, ctx: Context) => {
+      return ctx.prisma.user
+        .findOne({
+          where: { id: parent.id },
+        })
+        .posts();
     },
-    users: (parent: void, args: any, context: Context, info: void): any => {
-      return context.prisma.user.findMany();
+  },
+  Post: {
+    author: (parent, args, ctx: Context) => {
+      return ctx.prisma.post
+        .findOne({
+          where: { id: parent.id },
+        })
+        .author();
     },
   },
 };
+
 export default resolvers;

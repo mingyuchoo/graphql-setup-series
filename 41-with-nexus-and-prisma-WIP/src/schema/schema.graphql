@@ -1,31 +1,50 @@
-type Movie {
-  id: ID!
-  director: String!
-  movieName: String!
-  yearReleased: Int!
-}
 type User {
-  id:        Int
-  # createdAt: DateTime
-  email:     String
-  name:      String
-  posts:     [Post]
+  email: String!
+  id: ID!
+  name: String
+  posts: [Post!]!
 }
 
 type Post {
-  id: ID!
-  # createdAt: DateTime!
-  title: String!
-  published: Boolean!
   author: User
-  authorId: Int
-
+  content: String
+  id: ID!
+  published: Boolean!
+  title: String!
 }
 
 type Query {
-  helloWorld: String!
-  movies: [Movie]
-  users: [User]
-  post(id: Int): [Post]
+  feed: [Post!]!
+  filterPosts(searchString: String): [Post!]!
+  post(where: PostWhereUniqueInput!): Post
+}
 
+type Mutation {
+  createDraft(authorEmail: String, content: String, title: String!): Post!
+  deleteOnePost(where: PostWhereUniqueInput!): Post
+  publish(id: ID): Post
+  signupUser(data: UserCreateInput!): User!
+}
+
+input PostWhereUniqueInput {
+  id: ID
+}
+
+input UserCreateInput {
+  email: String!
+  id: ID
+  name: String
+  posts: PostCreateManyWithoutPostsInput
+}
+
+input PostCreateManyWithoutPostsInput {
+  connect: [PostWhereUniqueInput!]
+  create: [PostCreateWithoutAuthorInput!]
+}
+
+input PostCreateWithoutAuthorInput {
+  content: String
+  id: ID
+  published: Boolean
+  title: String!
 }
