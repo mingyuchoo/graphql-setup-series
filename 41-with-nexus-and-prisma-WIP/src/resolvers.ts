@@ -8,7 +8,10 @@ const resolvers: IResolvers = {
       return `Hello, Apollo Express for GraphQL`;
     },
     movies: (parent: void, args: any, context: Context, info: void): any => {
-      return context.prisma.movie.findMany({});
+      return context.prisma.movie.findMany();
+    },
+    users: (parent: void, args: any, context: Context, info: void): any => {
+      return context.prisma.user.findMany();
     },
   },
 };

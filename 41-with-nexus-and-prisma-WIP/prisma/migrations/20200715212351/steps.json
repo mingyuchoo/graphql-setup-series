@@ -1,0 +1,23 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "DeleteModel",
+      "model": "Profile"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Category"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "profile"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Post",
+      "field": "categories"
+    }
+  ]
+}

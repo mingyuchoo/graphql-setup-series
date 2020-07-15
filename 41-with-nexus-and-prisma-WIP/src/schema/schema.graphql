@@ -4,8 +4,28 @@ type Movie {
   movieName: String!
   yearReleased: Int!
 }
+type User {
+  id:        Int
+  # createdAt: DateTime
+  email:     String
+  name:      String
+  posts:     [Post]
+}
+
+type Post {
+  id: ID!
+  # createdAt: DateTime!
+  title: String!
+  published: Boolean!
+  author: User
+  authorId: Int
+
+}
 
 type Query {
   helloWorld: String!
   movies: [Movie]
+  users: [User]
+  post(id: Int): [Post]
+
 }

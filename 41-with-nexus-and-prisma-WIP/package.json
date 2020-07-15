@@ -33,6 +33,7 @@
     "apollo-server-express": "^2.15.1",
     "express": "^4.17.1",
     "graphql": "^15.3.0",
+    "graphql-iso-date": "^3.6.1",
     "graphql-tools": "^6.0.13"
   }
 }
