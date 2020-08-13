@@ -14,8 +14,8 @@
   "dependencies": {
     "apollo-server": "^2.16.1",
     "graphql": "^15.3.0",
-    "graphql-tools": "^6.0.15",
-    "lodash": "^4.17.19"
+    "graphql-tools": "^6.0.18",
+    "lodash": "^4.17.20"
   },
   "devDependencies": {
     "eslint": "^7.6.0",

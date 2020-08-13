@@ -12,13 +12,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/core": "^7.11.0",
+    "@babel/core": "^7.11.1",
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.11.0",
     "apollo-server": "^2.16.1",
     "graphql": "^15.3.0",
     "graphql-iso-date": "^3.6.1",
-    "lodash": "^4.17.19"
+    "lodash": "^4.17.20"
   },
   "devDependencies": {
     "eslint": "^7.6.0",
