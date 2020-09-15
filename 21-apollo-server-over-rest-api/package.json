@@ -1,5 +1,5 @@
 {
-  "name": "20-apollo-server-as-es6",
+  "name": "21-apollo-server-over-rest-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,6 +15,7 @@
     "@babel/core": "^7.11.6",
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.11.5",
+    "apollo-datasource-rest": "^0.9.3",
     "apollo-server": "^2.17.0",
     "graphql": "^15.3.0",
     "graphql-iso-date": "^3.6.1",
