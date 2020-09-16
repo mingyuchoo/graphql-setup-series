@@ -1,4 +1,4 @@
-# 40-apollo-server-in-typescript
+# 41-apollo-express-with-prisma-using-sdl
 
 ## Reference
 

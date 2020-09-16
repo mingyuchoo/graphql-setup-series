@@ -1,0 +1,44 @@
+{
+  "name": "41-apollo-express-with-prisma-using-sdl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --config .eslintrc.yml --fix './src/**/*.ts'",
+    "dev": "nodemon 'src/index.ts' --exec 'ts-node' src/index.ts -e ts,graphql",
+    "build": "tsc -p . && cp -r src/schema dist/schema",
+    "start": "npm run build && node 'dist/index.js'",
+    "prisma:introspect": "npx prisma introspect",
+    "prisma:generate": "npx prisma generate",
+    "prisma:migrate:save": "npx prisma migrate save --experimental",
+    "prisma:migrate:up": "npx prisma migrate up --experimental",
+    "prisma:studio": "npx prisma studio --experimental"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@prisma/cli": "2.7.0",
+    "@types/express": "^4.17.8",
+    "@types/graphql": "^14.5.0",
+    "@types/node": "^14.10.2",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "graphql-import-node": "^0.0.4",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.2",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "@prisma/client": "2.7.0",
+    "apollo-server-express": "^2.17.0",
+    "express": "^4.17.1",
+    "graphql": "^15.3.0",
+    "graphql-iso-date": "^3.6.1",
+    "graphql-tools": "^6.2.2"
+  }
+}
