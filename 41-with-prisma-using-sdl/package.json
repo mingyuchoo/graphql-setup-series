@@ -8,9 +8,10 @@
     "dev": "nodemon 'src/index.ts' --exec 'ts-node' src/index.ts -e ts,graphql",
     "build": "tsc -p . && cp -r src/schema dist/schema",
     "start": "npm run build && node 'dist/index.js'",
+    "prisma:introspect": "npx prisma introspect",
     "prisma:generate": "npx prisma generate",
-    "prisma:save": "npx prisma migrate save --experimental",
-    "prisma:up": "npx prisma migrate up --experimental",
+    "prisma:migrate:save": "npx prisma migrate save --experimental",
+    "prisma:migrate:up": "npx prisma migrate up --experimental",
     "prisma:studio": "npx prisma studio --experimental"
   },
   "keywords": [],
