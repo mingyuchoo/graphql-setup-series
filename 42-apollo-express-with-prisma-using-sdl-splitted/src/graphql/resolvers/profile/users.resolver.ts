@@ -1,14 +1,14 @@
 // src/resolverMap.ts
 import { IResolvers } from 'graphql-tools';
-import { Context } from '../context';
+import { Context } from '../../../context';
 
-const posts: IResolvers = {
+const users: IResolvers = {
   Query: {
-    getAllPosts: (parent, args, context: Context) => {
-      return context.prisma.post.findMany({});
+    getAllUsers: (parent, args, context: Context) => {
+      return context.prisma.user.findMany({});
     },
-    getOnePostById: (parent, args, context: Context) => {
-      return context.prisma.post.findOne({
+    getOneUserById: (parent, args, context: Context) => {
+      return context.prisma.user.findOne({
         where: { id: Number(args.id) },
       });
     },
@@ -42,15 +42,15 @@ const posts: IResolvers = {
       });
     },
   },
-  Post: {
-    author: (parent, args, context: Context) => {
-      return context.prisma.post
+  User: {
+    posts: (parent, args, context: Context) => {
+      return context.prisma.user
         .findOne({
           where: { id: Number(parent.id) },
         })
-        .author();
+        .posts();
     },
   },
 };
 
-export default posts;
+export default users;
