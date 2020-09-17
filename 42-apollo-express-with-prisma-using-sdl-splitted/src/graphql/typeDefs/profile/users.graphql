@@ -2,6 +2,8 @@ type User {
   email: String!
   id: ID!
   name: String
+  age: Int
+  postCount: Int!
   posts: [Post!]!
 }
 
@@ -13,5 +15,6 @@ type Query {
 type Mutation {
   createUserByEmail(email: String, name: String): User!
   updateUserById(id: ID, email: String, name: String): User!
+  addOnePostToUserById(id: ID): User!
   deleteUserById(id: ID!): User
 }

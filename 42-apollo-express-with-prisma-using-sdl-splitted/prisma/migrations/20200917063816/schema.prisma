@@ -1,6 +1,6 @@
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -8,12 +8,11 @@ generator client {
 }
 
 model User {
-  email     String  @unique
-  id        Int     @default(autoincrement()) @id
-  name      String?
-  age       Int?
-  postCount Int     @default(0)
-  posts     Post[]
+  email String  @unique
+  id    Int     @default(autoincrement()) @id
+  name  String?
+  age   Int?
+  posts Post[]
 }
 
 model Post {
