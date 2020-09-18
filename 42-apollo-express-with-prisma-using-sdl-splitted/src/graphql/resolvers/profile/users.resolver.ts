@@ -4,26 +4,27 @@ import { Context } from '../../../context';
 
 const users: IResolvers = {
   Query: {
-    getAllUsers: (parent, args, context: Context, info) => {
-      return context.prisma.user.findMany({});
+    getAllUsers: async (parent, args, context: Context, info) => {
+      return await context.prisma.user.findMany({});
     },
-    getOneUserById: (parent, args, context: Context, info) => {
-      return context.prisma.user.findOne({
+    getOneUserById: async (parent, args, context: Context, info) => {
+      return await context.prisma.user.findOne({
         where: { id: Number(args.id) },
       });
+      // return await context.prisma.$queryRaw`SELECT * FROM User WHERE id = ${args.id};`;
     },
   },
   Mutation: {
-    createUserByEmail: (parent, args, context: Context, info) => {
-      return context.prisma.user.create({
+    createUserByEmail: async (parent, args, context: Context, info) => {
+      return await context.prisma.user.create({
         data: {
           email: String(args.email),
           name: String(args.name),
         },
       });
     },
-    updateUserById: (parent, args, context: Context, info) => {
-      return context.prisma.user.update({
+    updateUserById: async (parent, args, context: Context, info) => {
+      return await context.prisma.user.update({
         data: {
           email: String(args.email),
           name: String(args.name),
@@ -31,26 +32,27 @@ const users: IResolvers = {
         where: { id: Number(args.id) },
       });
     },
-    addOnePostToUserById: (parent, args, context: Context, info) => {
-      let thisUser = context.prisma.user.findOne({
-        where: { id: Number(args.id) },
+    addOnePostToUserById: async (parent, args, context: Context, info) => {
+      let user = await context.prisma.user.findOne({
+        where: { id: Number(args.id), email: String(args.email) },
       });
-      return context.prisma.user.update({
+
+      return await context.prisma.user.update({
         data: {
-          postCount: 1,
+          postCount: (user?.postCount || 0) + 1,
         },
-        where: { id: Number(args.id) },
+        where: { id: Number(args.id), email: String(args.email) },
       });
     },
-    deleteUserById: (parent, args, context: Context, info) => {
-      return context.prisma.user.delete({
+    deleteUserById: async (parent, args, context: Context, info) => {
+      return await context.prisma.user.delete({
         where: { id: Number(args.id) },
       });
     },
   },
   User: {
-    posts: (parent, args, context: Context, info) => {
-      return context.prisma.user
+    posts: async (parent, args, context: Context, info) => {
+      return await context.prisma.user
         .findOne({
           where: { id: Number(parent.id) },
         })
