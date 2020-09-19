@@ -21,7 +21,7 @@
     "lodash": "^4.17.20"
   },
   "devDependencies": {
-    "@graphql-tools/mock": "^6.2.2",
+    "@graphql-tools/mock": "^6.2.3",
     "casual-browserify": "^1.5.19-2",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
