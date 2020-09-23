@@ -16,6 +16,7 @@
     "graphql": "^15.3.0"
   },
   "devDependencies": {
+    "apollo": "^2.31.0",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
