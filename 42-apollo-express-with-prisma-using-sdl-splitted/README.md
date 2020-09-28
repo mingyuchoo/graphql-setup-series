@@ -7,15 +7,41 @@
 ## How to Run
 
 1. `npx prisma init`
-2. **`npx prisma generate`**
-3. **`npx prisma migrte save --name '<description>' --experimental`**
-4. **`npx prisma migrate up --experimental`**
-5. `npx prisma studio --experimental`
+2. **`npx prisma migrte save --name '<description>' --experimental`** - generate hhistory
+3. **`npx prisma migrate up --experimental`** - sync with database
+4. `npx prisma studio --experimental` -- run database tool
+5. **`npx prisma generate`** - generate client
 
-## Make prisma/.env file
+## Make prisma/.env file for Sqlite3
 
 ```
 DATABASE_URL="file:./dev.db"
+```
+
+Change schema.prisma to
+
+```
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+...
+```
+
+## Make prisma/.env for for MySQL/MariaDB
+
+```
+DATABASE_URL="mysql://<username>:<mypassword>@localhost:3306/<database>"
+```
+
+Change schema.prisma to
+
+```
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+...
 ```
 
 ## Using GraphQL Codegen for TypeScript

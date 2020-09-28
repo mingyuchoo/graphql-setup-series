@@ -1,8 +1,10 @@
 type User {
-  email: String!
   id: ID!
   name: String
+  email: String!
   age: Int
+  createdAt: DateTime
+  updatedAt: DateTime
   postCount: Int!
   posts: [Post!]!
 }

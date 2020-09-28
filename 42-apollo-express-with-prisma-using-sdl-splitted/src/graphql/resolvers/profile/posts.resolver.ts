@@ -1,6 +1,5 @@
 // src/resolverMap.ts
 import { IResolvers } from 'graphql-tools';
-import { isContext } from 'vm';
 import { Context } from '../../../context';
 
 const posts: IResolvers = {

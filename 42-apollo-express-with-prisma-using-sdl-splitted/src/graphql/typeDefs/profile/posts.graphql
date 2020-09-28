@@ -1,9 +1,11 @@
 type Post {
-  author: User
-  content: String
   id: ID!
-  published: Boolean!
   title: String!
+  content: String
+  published: Boolean!
+  createdAt: DateTime
+  updatedAt: DateTime
+  author: User
 }
 
 type Query {

@@ -12,8 +12,9 @@
     "prisma:introspect": "npx prisma introspect",
     "prisma:generate": "npx prisma generate",
     "prisma:migrate:save": "npx prisma migrate save --experimental",
-    "prisma:migrate:up": "npx prisma migrate up --experimental",
+    "prisma:migrate:up": "npx prisma migrate up --experimental --verbose",
     "prisma:studio": "npx prisma studio --experimental",
+    "prisma:seed": "ts-node prisma/seed.ts",
     "codegen": "graphql-codegen --config codegen.yml"
   },
   "keywords": [],
