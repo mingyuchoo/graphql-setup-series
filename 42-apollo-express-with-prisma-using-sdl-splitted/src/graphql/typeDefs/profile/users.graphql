@@ -1,8 +1,11 @@
 type User {
   id: ID!
-  name: String
+  username: String!
   email: String!
-  age: Int
+  firstName: String
+  lastName: String
+  isAdmin: Boolean
+  role: String
   createdAt: DateTime
   updatedAt: DateTime
   postCount: Int!
@@ -15,8 +18,8 @@ type Query {
 }
 
 type Mutation {
-  createUserByEmail(email: String, name: String): User!
-  updateUserById(id: ID, email: String, name: String): User!
-  addOnePostToUserById(id: ID, email: String): User!
+  createUser(email: String, username: String): User!
+  updateUserById(id: ID, email: String, username: String): User!
+  countUpPostCountById(id: ID, email: String): User!
   deleteUserById(id: ID!): User
 }

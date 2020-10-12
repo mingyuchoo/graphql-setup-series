@@ -15,11 +15,11 @@ const users: IResolvers = {
     },
   },
   Mutation: {
-    createUserByEmail: async (parent, args, context: Context, info) => {
+    createUser: async (parent, args, context: Context, info) => {
       return await context.prisma.user.create({
         data: {
           email: String(args.email),
-          name: String(args.name),
+          username: String(args.username),
         },
       });
     },
@@ -27,14 +27,14 @@ const users: IResolvers = {
       return await context.prisma.user.update({
         data: {
           email: String(args.email),
-          name: String(args.name),
+          username: String(args.username),
         },
         where: { id: Number(args.id) },
       });
     },
-    addOnePostToUserById: async (parent, args, context: Context, info) => {
+    countUpPostCountById: async (parent, args, context: Context, info) => {
       let user = await context.prisma.user.findOne({
-        where: { id: Number(args.id), email: String(args.email) },
+        where: { id: Number(args.id)},
       });
 
       return await context.prisma.user.update({

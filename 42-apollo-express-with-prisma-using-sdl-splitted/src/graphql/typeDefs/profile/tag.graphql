@@ -1,0 +1,13 @@
+// TODO need to implementation
+
+type Tag {
+
+}
+
+type Query {
+
+}
+
+type Mutation {
+  
+}

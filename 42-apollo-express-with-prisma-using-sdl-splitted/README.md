@@ -9,8 +9,8 @@
 1. `npx prisma init`
 2. **`npx prisma migrte save --name '<description>' --experimental`** - generate hhistory
 3. **`npx prisma migrate up --experimental`** - sync with database
-4. `npx prisma studio --experimental` -- run database tool
-5. **`npx prisma generate`** - generate client
+4. **`npx prisma generate`** - generate client
+5. `npx prisma studio --experimental` -- run database tool
 
 ## Make prisma/.env file for Sqlite3
 

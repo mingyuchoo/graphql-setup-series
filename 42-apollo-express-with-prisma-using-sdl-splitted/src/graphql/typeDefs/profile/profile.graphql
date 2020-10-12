@@ -1,0 +1,13 @@
+// TODO need to implementation
+
+type Profile {
+
+}
+
+type Query {
+
+}
+
+type Mutation {
+  
+}
