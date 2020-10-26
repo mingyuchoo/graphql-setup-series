@@ -1,0 +1,25 @@
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  firstName: String
+  lastName: String
+  isAdmin: Boolean
+  role: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  postCount: Int!
+  posts: [Post!]!
+}
+
+type Query {
+  getAllUsers: [User]!
+  getOneUserById(id: ID!): User
+}
+
+type Mutation {
+  createUser(email: String, username: String): User!
+  updateUserById(id: ID, email: String, username: String): User!
+  countUpPostCountById(id: ID, email: String): User!
+  deleteUserById(id: ID!): User
+}
