@@ -23,3 +23,7 @@ type Mutation {
   countUpPostCountById(id: ID, email: String): User!
   deleteUserById(id: ID!): User
 }
+
+type Subscription {
+  newUserJoined: User!
+}

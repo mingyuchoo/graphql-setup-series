@@ -1,8 +1,19 @@
 // src/resolverMap.ts
+import { PubSub } from 'apollo-server-express';
 import { IResolvers } from 'graphql-tools';
 import { Context } from './context';
 
+const pubsub = new PubSub();
+
+// publish triggers
+const NEW_USER_JOINED = 'NEW_USER_JOINED';
+
 const resolvers: IResolvers = {
+  Subscription: {
+    newUserJoined: {
+      subscribe: () => pubsub.asyncIterator([NEW_USER_JOINED]),
+    },
+  },
   Query: {
     getAllPosts: (parent, args, context: Context) => {
       return context.prisma.post.findMany({});
@@ -50,12 +61,17 @@ const resolvers: IResolvers = {
       });
     },
     createUserByEmail: (parent, args, context: Context) => {
-      return context.prisma.user.create({
+      const result = context.prisma.user.create({
         data: {
           email: String(args.email),
           name: String(args.name),
         },
       });
+      // publish
+      result.then((user) => {
+        pubsub.publish(NEW_USER_JOINED, { newUserJoined: user });
+      });
+      return result;
     },
     updateUserById: (parent, args, context: Context) => {
       return context.prisma.user.update({
