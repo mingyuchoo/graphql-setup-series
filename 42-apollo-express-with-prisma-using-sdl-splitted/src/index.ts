@@ -19,5 +19,5 @@ app.use('*', cors());
 server.applyMiddleware({ app, path: '/graphql' });
 
 app.listen(port, () => {
-  console.log(`Apollo server listening at ${port}`);
+  console.log(`🚀  Server ready at ${port} port`);
 });
