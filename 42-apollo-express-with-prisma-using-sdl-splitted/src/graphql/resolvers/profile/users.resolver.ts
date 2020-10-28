@@ -48,7 +48,7 @@ const users: IResolvers = {
       });
     },
     countUpPostCountById: async (parent, args, context: Context, info) => {
-      let user = await context.prisma.user.findOne({
+      const user = await context.prisma.user.findOne({
         where: { id: Number(args.id) },
       });
 

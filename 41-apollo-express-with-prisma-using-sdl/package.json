@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clean": "rimraf dist",
     "lint": "eslint --config .eslintrc.yml --fix './src/**/*.ts'",
     "dev": "nodemon 'src/index.ts' --exec 'ts-node' src/index.ts -e ts,graphql",
-    "build": "tsc -p . && cp -r src/schema dist/schema",
+    "build": "npm run clean && tsc -p . && cp -r src/schema dist/schema",
     "start": "npm run build && node 'dist/index.js'",
     "prisma:introspect": "npx prisma introspect",
     "prisma:generate": "npx prisma generate",
@@ -36,6 +37,7 @@
     "graphql-import-node": "^0.0.4",
     "nodemon": "^2.0.6",
     "prettier": "^2.1.2",
+    "rimraf": "^3.0.2",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.5"
   },

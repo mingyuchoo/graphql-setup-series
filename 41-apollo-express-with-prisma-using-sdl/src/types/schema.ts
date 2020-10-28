@@ -1,7 +1,8 @@
 import { GraphQLResolveInfo } from 'graphql';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & { [P in K]-?: NonNullable<T[P]> };
+export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } &
+  { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -36,11 +37,9 @@ export type Query = {
   getOneUserById?: Maybe<User>;
 };
 
-
 export type QueryGetOnePostByIdArgs = {
   id: Scalars['ID'];
 };
-
 
 export type QueryGetOneUserByIdArgs = {
   id: Scalars['ID'];
@@ -56,29 +55,24 @@ export type Mutation = {
   updateUserById: User;
 };
 
-
 export type MutationCreatePostByEmailArgs = {
   content?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
   title: Scalars['String'];
 };
 
-
 export type MutationCreateUserByEmailArgs = {
   email?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
 };
 
-
 export type MutationDeletePostByIdArgs = {
   id: Scalars['ID'];
 };
 
-
 export type MutationDeleteUserByIdArgs = {
   id: Scalars['ID'];
 };
-
 
 export type MutationUpdatePostByIdArgs = {
   content?: Maybe<Scalars['String']>;
@@ -87,17 +81,13 @@ export type MutationUpdatePostByIdArgs = {
   title: Scalars['String'];
 };
 
-
 export type MutationUpdateUserByIdArgs = {
   email?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['ID']>;
   name?: Maybe<Scalars['String']>;
 };
 
-
-
 export type ResolverTypeWrapper<T> = Promise<T> | T;
-
 
 export type LegacyStitchingResolver<TResult, TParent, TContext, TArgs> = {
   fragment: string;
@@ -108,7 +98,9 @@ export type NewStitchingResolver<TResult, TParent, TContext, TArgs> = {
   selectionSet: string;
   resolve: ResolverFn<TResult, TParent, TContext, TArgs>;
 };
-export type StitchingResolver<TResult, TParent, TContext, TArgs> = LegacyStitchingResolver<TResult, TParent, TContext, TArgs> | NewStitchingResolver<TResult, TParent, TContext, TArgs>;
+export type StitchingResolver<TResult, TParent, TContext, TArgs> =
+  | LegacyStitchingResolver<TResult, TParent, TContext, TArgs>
+  | NewStitchingResolver<TResult, TParent, TContext, TArgs>;
 export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> =
   | ResolverFn<TResult, TParent, TContext, TArgs>
   | StitchingResolver<TResult, TParent, TContext, TArgs>;
@@ -192,7 +184,10 @@ export type ResolversParentTypes = {
   Mutation: {};
 };
 
-export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
+export type UserResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']
+> = {
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -200,7 +195,10 @@ export type UserResolvers<ContextType = any, ParentType extends ResolversParentT
   __isTypeOf?: IsTypeOfResolverFn<ParentType>;
 };
 
-export type PostResolvers<ContextType = any, ParentType extends ResolversParentTypes['Post'] = ResolversParentTypes['Post']> = {
+export type PostResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['Post'] = ResolversParentTypes['Post']
+> = {
   author?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
   content?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
@@ -209,20 +207,66 @@ export type PostResolvers<ContextType = any, ParentType extends ResolversParentT
   __isTypeOf?: IsTypeOfResolverFn<ParentType>;
 };
 
-export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+export type QueryResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
+> = {
   getAllPosts?: Resolver<Array<Maybe<ResolversTypes['Post']>>, ParentType, ContextType>;
   getAllUsers?: Resolver<Array<Maybe<ResolversTypes['User']>>, ParentType, ContextType>;
-  getOnePostById?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<QueryGetOnePostByIdArgs, 'id'>>;
-  getOneUserById?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QueryGetOneUserByIdArgs, 'id'>>;
+  getOnePostById?: Resolver<
+    Maybe<ResolversTypes['Post']>,
+    ParentType,
+    ContextType,
+    RequireFields<QueryGetOnePostByIdArgs, 'id'>
+  >;
+  getOneUserById?: Resolver<
+    Maybe<ResolversTypes['User']>,
+    ParentType,
+    ContextType,
+    RequireFields<QueryGetOneUserByIdArgs, 'id'>
+  >;
 };
 
-export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  createPostByEmail?: Resolver<ResolversTypes['Post'], ParentType, ContextType, RequireFields<MutationCreatePostByEmailArgs, 'title'>>;
-  createUserByEmail?: Resolver<ResolversTypes['User'], ParentType, ContextType, RequireFields<MutationCreateUserByEmailArgs, never>>;
-  deletePostById?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<MutationDeletePostByIdArgs, 'id'>>;
-  deleteUserById?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationDeleteUserByIdArgs, 'id'>>;
-  updatePostById?: Resolver<ResolversTypes['Post'], ParentType, ContextType, RequireFields<MutationUpdatePostByIdArgs, 'title'>>;
-  updateUserById?: Resolver<ResolversTypes['User'], ParentType, ContextType, RequireFields<MutationUpdateUserByIdArgs, never>>;
+export type MutationResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']
+> = {
+  createPostByEmail?: Resolver<
+    ResolversTypes['Post'],
+    ParentType,
+    ContextType,
+    RequireFields<MutationCreatePostByEmailArgs, 'title'>
+  >;
+  createUserByEmail?: Resolver<
+    ResolversTypes['User'],
+    ParentType,
+    ContextType,
+    RequireFields<MutationCreateUserByEmailArgs, never>
+  >;
+  deletePostById?: Resolver<
+    Maybe<ResolversTypes['Post']>,
+    ParentType,
+    ContextType,
+    RequireFields<MutationDeletePostByIdArgs, 'id'>
+  >;
+  deleteUserById?: Resolver<
+    Maybe<ResolversTypes['User']>,
+    ParentType,
+    ContextType,
+    RequireFields<MutationDeleteUserByIdArgs, 'id'>
+  >;
+  updatePostById?: Resolver<
+    ResolversTypes['Post'],
+    ParentType,
+    ContextType,
+    RequireFields<MutationUpdatePostByIdArgs, 'title'>
+  >;
+  updateUserById?: Resolver<
+    ResolversTypes['User'],
+    ParentType,
+    ContextType,
+    RequireFields<MutationUpdateUserByIdArgs, never>
+  >;
 };
 
 export type Resolvers<ContextType = any> = {
@@ -231,7 +275,6 @@ export type Resolvers<ContextType = any> = {
   Query?: QueryResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
 };
-
 
 /**
  * @deprecated
