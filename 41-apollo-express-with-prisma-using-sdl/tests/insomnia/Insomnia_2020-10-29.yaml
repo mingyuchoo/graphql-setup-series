@@ -1,11 +1,11 @@
 _type: export
 __export_format: 4
-__export_date: 2020-10-28T21:48:38.719Z
+__export_date: 2020-10-30T00:20:56.687Z
 __export_source: insomnia.desktop.app:v2020.4.2
 resources:
   - _id: req_3601c02614d64bb79e82ddc5b8af2be9
     parentId: fld_1561775f028f4ffa971d29948742825a
-    modified: 1603921607685
+    modified: 1604017224721
     created: 1603921436039
     url: http://localhost:4000/graphql
     name: createOneUserByEmail
@@ -13,8 +13,8 @@ resources:
     method: POST
     body:
       mimeType: application/graphql
-      text: '{"query":"mutation {\n  createUserByEmail(email: \"a\", name: \"a\")
-        {\n    id\n    name\n  }\n}"}'
+      text: '{"query":"mutation {\n  createUserByEmail(email: \"chris@email.com\",
+        name: \"chris\") {\n    id\n    name\n    email\n  }\n}"}'
     parameters: []
     headers:
       - name: Content-Type
