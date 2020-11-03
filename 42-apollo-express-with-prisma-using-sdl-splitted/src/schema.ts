@@ -1,10 +1,11 @@
-import { merge } from 'lodash';
 import 'graphql-import-node';
-import { makeExecutableSchema } from 'graphql-tools';
-import { GraphQLSchema } from 'graphql';
 
-import * as typeDefs from './graphql/typeDefs';
+import { GraphQLSchema } from 'graphql';
+import { makeExecutableSchema } from 'graphql-tools';
+import { merge } from 'lodash';
+
 import * as resolvers from './graphql/resolvers';
+import * as typeDefs from './graphql/typeDefs';
 
 const schema: GraphQLSchema = makeExecutableSchema({
   typeDefs: merge(Object.values(typeDefs)),

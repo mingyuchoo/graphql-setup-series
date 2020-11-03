@@ -1,7 +1,8 @@
-import http from 'http';
+import { ApolloServer } from 'apollo-server-express';
 import cors from 'cors';
 import express from 'express';
-import { ApolloServer } from 'apollo-server-express';
+import http from 'http';
+
 import { createContext } from './context';
 import schema from './schema';
 
