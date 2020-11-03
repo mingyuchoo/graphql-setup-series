@@ -1,6 +1,7 @@
 // src/resolverMap.ts
 import { PubSub } from 'apollo-server-express';
 import { IResolvers } from 'graphql-tools';
+
 import { Context } from './context';
 
 const pubsub = new PubSub();
