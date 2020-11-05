@@ -8,8 +8,10 @@ parserOptions:
   sourceType: module
 plugins:
   - prettier
+  - simple-import-sort
 extends:
   - eslint:recommended
   - plugin:prettier/recommended
 rules:
   prettier/prettier: error
+  simple-import-sort/sort: error

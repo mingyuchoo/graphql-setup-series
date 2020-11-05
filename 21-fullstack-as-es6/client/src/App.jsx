@@ -1,7 +1,7 @@
-import React from 'react';
-import { gql, useQuery } from '@apollo/client';
-
 import './App.css';
+
+import { gql, useQuery } from '@apollo/client';
+import React from 'react';
 
 // 그래프QL 쿼리
 const GET_ALL_USERS = gql`
@@ -22,8 +22,8 @@ export default function App() {
   if (error) return <h2>에러 발생</h2>; // 에러 상태
   if (!data) return <h2>데이터가 없습니다.</h2>; // 데이터가 없는 상태
 
-  return data.books.map((book) => (
-    <p>
+  return data.books.map((book, index) => (
+    <p key={index}>
       {book.title}:{book.author}
     </p>
   ));
