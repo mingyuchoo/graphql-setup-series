@@ -1,5 +1,5 @@
 {
-  "name": "04-apollo-server-graphql-sqlite",
+  "name": "30-apollo-server-with-sequelize-sqlite3",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
