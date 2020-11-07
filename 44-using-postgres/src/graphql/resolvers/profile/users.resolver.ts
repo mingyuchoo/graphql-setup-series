@@ -16,52 +16,40 @@ const users: IResolvers = {
     },
   },
   Query: {
-    getAllUsers: async (parent, args, context: Context, info) => {
-      return await context.prisma.user.findMany({});
+    getAllUsers: (parent, args, context: Context) => {
+      return context.prisma.user.findMany({});
     },
-    getOneUserById: async (parent, args, context: Context, info) => {
-      return await context.prisma.user.findOne({
+    getOneUserById: (parent, args, context: Context) => {
+      return context.prisma.user.findOne({
         where: { id: Number(args.id) },
       });
-      // return await context.prisma.$queryRaw`SELECT * FROM User WHERE id = ${args.id};`;
     },
   },
   Mutation: {
-    createUser: async (parent, args, context: Context, info) => {
-      const storedUser = await context.prisma.user.create({
+    createUserByEmail: (parent, args, context: Context) => {
+      const result = context.prisma.user.create({
         data: {
           email: String(args.email),
-          username: String(args.username),
+          name: String(args.name),
         },
       });
       // publish
-      pubsub.publish(NEW_USER_JOINED, { newUserJoined: storedUser });
-
-      return storedUser;
+      result.then((user) => {
+        pubsub.publish(NEW_USER_JOINED, { newUserJoined: user });
+      });
+      return result;
     },
-    updateUserById: async (parent, args, context: Context, info) => {
-      return await context.prisma.user.update({
+    updateUserById: (parent, args, context: Context) => {
+      return context.prisma.user.update({
         data: {
           email: String(args.email),
-          username: String(args.username),
+          name: String(args.name),
         },
         where: { id: Number(args.id) },
       });
     },
-    countUpPostCountById: async (parent, args, context: Context, info) => {
-      const user = await context.prisma.user.findOne({
-        where: { id: Number(args.id) },
-      });
-
-      return await context.prisma.user.update({
-        data: {
-          postCount: (user?.postCount || 0) + 1,
-        },
-        where: { id: Number(args.id), email: String(args.email) },
-      });
-    },
-    deleteUserById: async (parent, args, context: Context, info) => {
-      return await context.prisma.user.delete({
+    deleteUserById: (parent, args, context: Context) => {
+      return context.prisma.user.delete({
         where: { id: Number(args.id) },
       });
     },
