@@ -1,0 +1,9 @@
+overwrite: true
+schema: http://localhost:4000/graphql
+generates:
+  src/types/typeDefs/profileTypes.ts:
+    schema: src/graphql/typeDefs/profile/*.graphql
+    plugins:
+      - 'typescript'
+      - 'typescript-resolvers'
+      - 'typescript-operations'
