@@ -1,3 +1,8 @@
+enum PostSortDirection {
+  asc
+  desc
+}
+
 type Post {
   author: User
   content: String
@@ -6,9 +11,24 @@ type Post {
   title: String!
 }
 
+input PostUniqueFilterInput {
+  id: Int!
+}
+
+input PostFilterInput {
+  title: String
+  content: String
+}
+
+input PostSortInput {
+  id: PostSortDirection = desc
+}
+
 type Query {
-  getAllPosts: [Post]!
-  getOnePostById(id: Int!): Post
+  posts(where: PostFilterInput, orderBy: PostSortInput, take: Int, skip: Int): [Post]!
+  posts(where: PostFilterInput): [Post]!
+  post(where: PostUniqueFilterInput): Post
+  searchPosts(searchString: String): [Post]!
 }
 
 type Mutation {

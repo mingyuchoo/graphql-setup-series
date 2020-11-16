@@ -4,12 +4,24 @@ import { Context } from '../../../context';
 
 const posts: IResolvers = {
   Query: {
-    getAllPosts: async (_, args, ctx: Context) => {
-      return await ctx.prisma.post.findMany({});
+    posts: async (_, args, ctx: Context) => {
+      return await ctx.prisma.post.findMany({
+        ...args,
+      });
     },
-    getOnePostById: async (_, args, ctx: Context) => {
+    post: async (_, args, ctx: Context) => {
       return await ctx.prisma.post.findOne({
-        where: { id: Number(args.id) },
+        ...args,
+      });
+    },
+    searchUsers: async (_, { searchString }, ctx: Context) => {
+      return await ctx.prisma.post.findMany({
+        where: {
+          OR: [
+            { title: { contains: searchString === null ? '' : searchString } },
+            { content: { contains: searchString === null ? '' : searchString } },
+          ],
+        },
       });
     },
   },

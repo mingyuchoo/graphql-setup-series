@@ -10,13 +10,13 @@ type User {
   posts: [Post!]!
 }
 
+input UserUniqueFilterInput {
+  id: Int!
+}
+
 input UserFilterInput {
   name: String
   email: String
-}
-
-input UserUniqueFilterInput {
-  id: Int!
 }
 
 input UserSortInput {

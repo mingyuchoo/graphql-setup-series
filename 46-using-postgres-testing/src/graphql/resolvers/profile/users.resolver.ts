@@ -1,7 +1,6 @@
 // src/resolverMap.ts
 import { PubSub } from 'apollo-server-express';
 import { IResolvers } from 'graphql-tools';
-import { isContext } from 'vm';
 
 import { Context } from '../../../context';
 
