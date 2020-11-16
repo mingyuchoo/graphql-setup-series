@@ -26,7 +26,6 @@ input PostSortInput {
 
 type Query {
   posts(where: PostFilterInput, orderBy: PostSortInput, take: Int, skip: Int): [Post]!
-  posts(where: PostFilterInput): [Post]!
   post(where: PostUniqueFilterInput): Post
   searchPosts(searchString: String): [Post]!
 }
