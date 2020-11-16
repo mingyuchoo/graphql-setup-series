@@ -4,18 +4,18 @@ import { Context } from '../../../context';
 
 const posts: IResolvers = {
   Query: {
-    getAllPosts: (parent, args, context: Context) => {
-      return context.prisma.post.findMany({});
+    getAllPosts: async (_, args, ctx: Context) => {
+      return await ctx.prisma.post.findMany({});
     },
-    getOnePostById: (parent, args, context: Context) => {
-      return context.prisma.post.findOne({
+    getOnePostById: async (_, args, ctx: Context) => {
+      return await ctx.prisma.post.findOne({
         where: { id: Number(args.id) },
       });
     },
   },
   Mutation: {
-    createPostByEmail: (parent, args, context: Context) => {
-      return context.prisma.post.create({
+    createPostByEmail: async (_, args, ctx: Context) => {
+      return await ctx.prisma.post.create({
         data: {
           title: String(args.title),
           content: String(args.content),
@@ -26,8 +26,8 @@ const posts: IResolvers = {
         },
       });
     },
-    updatePostById: (parent, args, context: Context) => {
-      return context.prisma.post.update({
+    updatePostById: async (_, args, ctx: Context) => {
+      return await ctx.prisma.post.update({
         data: {
           title: String(args.title),
           content: String(args.content),
@@ -36,17 +36,17 @@ const posts: IResolvers = {
         where: { id: Number(args.id) },
       });
     },
-    deletePostById: (parent, args, context: Context) => {
-      return context.prisma.post.delete({
+    deletePostById: async (_, args, ctx: Context) => {
+      return await ctx.prisma.post.delete({
         where: { id: Number(args.id) },
       });
     },
   },
   Post: {
-    author: async (parent, args, context: Context, info) => {
-      return await context.prisma.post
+    author: async (_, args, ctx: Context, info) => {
+      return await ctx.prisma.post
         .findOne({
-          where: { id: Number(parent.id) },
+          where: { id: Number(_.id) },
         })
         .author();
     },

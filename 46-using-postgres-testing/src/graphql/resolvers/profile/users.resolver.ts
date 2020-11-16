@@ -16,31 +16,29 @@ const users: IResolvers = {
     },
   },
   Query: {
-    getAllUsers: (parent, args, context: Context) => {
-      return context.prisma.user.findMany({});
+    getAllUsers: async (_, args, ctx: Context) => {
+      return await ctx.prisma.user.findMany({});
     },
-    getOneUserById: (parent, args, context: Context) => {
-      return context.prisma.user.findOne({
+    getOneUserById: async (_, args, ctx: Context) => {
+      return await ctx.prisma.user.findOne({
         where: { id: Number(args.id) },
       });
     },
   },
   Mutation: {
-    createUserByEmail: (parent, args, context: Context) => {
-      const result = context.prisma.user.create({
+    createUserByEmail: async (_, args, ctx: Context) => {
+      const result = ctx.prisma.user.create({
         data: {
           email: String(args.email),
           name: String(args.name),
         },
       });
-      // publish
-      result.then((user) => {
+      return await result.then((user) => {
         pubsub.publish(NEW_USER_JOINED, { newUserJoined: user });
       });
-      return result;
     },
-    updateUserById: (parent, args, context: Context) => {
-      return context.prisma.user.update({
+    updateUserById: async (_, args, ctx: Context) => {
+      return await ctx.prisma.user.update({
         data: {
           email: String(args.email),
           name: String(args.name),
@@ -48,17 +46,17 @@ const users: IResolvers = {
         where: { id: Number(args.id) },
       });
     },
-    deleteUserById: (parent, args, context: Context) => {
-      return context.prisma.user.delete({
+    deleteUserById: async (_, args, ctx: Context) => {
+      return await ctx.prisma.user.delete({
         where: { id: Number(args.id) },
       });
     },
   },
   User: {
-    posts: async (parent, args, context: Context, info) => {
-      return await context.prisma.user
+    posts: async (_, args, ctx: Context, info) => {
+      return await ctx.prisma.user
         .findOne({
-          where: { id: Number(parent.id) },
+          where: { id: Number(_.id) },
         })
         .posts();
     },
