@@ -27,7 +27,7 @@
     "@babel/register": "^7.12.1",
     "apollo-server": "^2.19.0",
     "bcryptjs": "^2.4.3",
-    "eslint": "^7.12.1",
+    "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "graphql": "^15.4.0",
@@ -38,6 +38,6 @@
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
-    "apollo": "^2.31.0"
+    "apollo": "^2.31.1"
   }
 }
