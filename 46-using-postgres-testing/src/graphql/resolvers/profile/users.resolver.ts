@@ -1,6 +1,7 @@
 // src/resolverMap.ts
 import { PubSub } from 'apollo-server-express';
 import { IResolvers } from 'graphql-tools';
+import { isContext } from 'vm';
 
 import { Context } from '../../../context';
 
@@ -16,12 +17,24 @@ const users: IResolvers = {
     },
   },
   Query: {
-    getAllUsers: async (_, args, ctx: Context) => {
-      return await ctx.prisma.user.findMany({});
+    users: async (_, args, ctx: Context) => {
+      return await ctx.prisma.user.findMany({
+        ...args,
+      });
     },
-    getOneUserById: async (_, args, ctx: Context) => {
+    user: async (_, args, ctx: Context) => {
       return await ctx.prisma.user.findOne({
-        where: { id: Number(args.id) },
+        ...args,
+      });
+    },
+    searchUsers: async (_, { searchString }, ctx: Context) => {
+      return await ctx.prisma.user.findMany({
+        where: {
+          OR: [
+            { name: { contains: searchString === null ? '' : searchString } },
+            { email: { contains: searchString === null ? '' : searchString } },
+          ],
+        },
       });
     },
   },
