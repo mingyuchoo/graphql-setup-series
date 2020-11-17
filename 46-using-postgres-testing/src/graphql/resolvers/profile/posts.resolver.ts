@@ -14,7 +14,7 @@ const posts: IResolvers = {
         ...args,
       });
     },
-    searchUsers: async (_, { searchString }, ctx: Context) => {
+    searchPosts: async (_, { searchString }, ctx: Context) => {
       return await ctx.prisma.post.findMany({
         where: {
           OR: [
