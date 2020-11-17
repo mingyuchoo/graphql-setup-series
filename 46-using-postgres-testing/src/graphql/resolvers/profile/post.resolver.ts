@@ -2,7 +2,16 @@ import { IResolvers } from 'graphql-tools';
 
 import { Context } from '../../../context';
 
-const posts: IResolvers = {
+const Post: IResolvers = {
+  Post: {
+    author: async (_, args, ctx: Context, info) => {
+      return await ctx.prisma.post
+        .findOne({
+          where: { id: Number(_.id) },
+        })
+        .author();
+    },
+  },
   Query: {
     posts: async (_, args, ctx: Context) => {
       return await ctx.prisma.post.findMany({
@@ -54,15 +63,6 @@ const posts: IResolvers = {
       });
     },
   },
-  Post: {
-    author: async (_, args, ctx: Context, info) => {
-      return await ctx.prisma.post
-        .findOne({
-          where: { id: Number(_.id) },
-        })
-        .author();
-    },
-  },
 };
 
-export default posts;
+export default Post;

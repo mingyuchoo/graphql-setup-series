@@ -9,10 +9,14 @@ const pubsub = new PubSub();
 // publish triggers
 const NEW_USER_JOINED = 'NEW_USER_JOINED';
 
-const users: IResolvers = {
-  Subscription: {
-    newUserJoined: {
-      subscribe: () => pubsub.asyncIterator([NEW_USER_JOINED]),
+const User: IResolvers = {
+  User: {
+    posts: async (_, args, ctx: Context, info) => {
+      return await ctx.prisma.user
+        .findOne({
+          where: { id: Number(_.id) },
+        })
+        .posts();
     },
   },
   Query: {
@@ -64,15 +68,11 @@ const users: IResolvers = {
       });
     },
   },
-  User: {
-    posts: async (_, args, ctx: Context, info) => {
-      return await ctx.prisma.user
-        .findOne({
-          where: { id: Number(_.id) },
-        })
-        .posts();
+  Subscription: {
+    newUserJoined: {
+      subscribe: () => pubsub.asyncIterator([NEW_USER_JOINED]),
     },
   },
 };
 
-export default users;
+export default User;
