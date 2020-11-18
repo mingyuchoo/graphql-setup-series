@@ -68,8 +68,23 @@ app.use('*', cors());
 const httpServer = http.createServer(app);
 
 // 미들웨어 설정
-server.applyMiddleware({ app });
-server.applyMiddleware({ app, path: '/graphql' });
+server.applyMiddleware({
+  app,
+  path: '/graphql',
+  onHealthCheck: () => {
+    return new Promise((resolve, reject) => {
+      //database check or other asynchronous action
+      // Replace the `true` in this conditional with more specific checks!
+      if (true) {
+        console.log('health check called');
+        resolve();
+      } else {
+        console.log('health check failed');
+        reject();
+      }
+    });
+  },
+});
 server.installSubscriptionHandlers(httpServer);
 
 // 서버 실행

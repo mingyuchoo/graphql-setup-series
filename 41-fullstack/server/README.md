@@ -1,5 +1,11 @@
 # Apollo Server
 
+## Health check
+
+```
+http://localhost:4000/.well-known/apollo/server-health
+```
+
 ## Configuring PlayGround
 
 ```
