@@ -15,7 +15,7 @@
     "prisma:migrate:save": "npx prisma migrate save --experimental",
     "prisma:migrate:up": "npx prisma migrate up --experimental --verbose",
     "prisma:studio": "npx prisma studio",
-    "prisma:seed": "ts-node prisma/seed.ts",
+    "prisma:seed": "ts-node ./prisma/seed.ts",
     "docker:build": "docker-compose --file docker-compose.yml up --build --detach",
     "docker:exec:postgresql-db": "docker exec --interactive=true --tty=true postgresql-db /bin/bash",
     "codegen": "graphql-codegen --config codegen.yml"
