@@ -2,7 +2,7 @@
 import { PubSub } from 'apollo-server-express';
 import { IResolvers } from 'graphql-tools';
 
-import { Context } from '../../../context';
+import { Context } from '../../context';
 
 const pubsub = new PubSub();
 
@@ -11,27 +11,27 @@ const NEW_USER_JOINED = 'NEW_USER_JOINED';
 
 const User: IResolvers = {
   User: {
-    posts: async (_, args, ctx: Context, info) => {
-      return await ctx.prisma.user
+    posts: async (parent, args, context: Context, info) => {
+      return await context.prisma.user
         .findOne({
-          where: { id: Number(_.id) },
+          where: { id: parent.id },
         })
         .posts();
     },
   },
   Query: {
-    users: async (_, args, ctx: Context) => {
-      return await ctx.prisma.user.findMany({
+    users: async (parent, args, context: Context) => {
+      return await context.prisma.user.findMany({
         ...args,
       });
     },
-    user: async (_, args, ctx: Context) => {
-      return await ctx.prisma.user.findOne({
+    user: async (parent, args, context: Context) => {
+      return await context.prisma.user.findOne({
         ...args,
       });
     },
-    searchUsers: async (_, { searchString }, ctx: Context) => {
-      return await ctx.prisma.user.findMany({
+    searchUsers: async (parent, { searchString }, context: Context) => {
+      return await context.prisma.user.findMany({
         where: {
           OR: [
             { name: { contains: searchString === null ? '' : searchString } },
@@ -42,29 +42,31 @@ const User: IResolvers = {
     },
   },
   Mutation: {
-    createUserByEmail: async (_, args, ctx: Context) => {
-      const result = ctx.prisma.user.create({
+    createUserByEmail: async (parent, args, context: Context) => {
+      const result = context.prisma.user.create({
         data: {
           email: String(args.email),
           name: String(args.name),
         },
       });
-      return await result.then((user) => {
+      result.then((user) => {
         pubsub.publish(NEW_USER_JOINED, { newUserJoined: user });
       });
+
+      return result;
     },
-    updateUserById: async (_, args, ctx: Context) => {
-      return await ctx.prisma.user.update({
+    updateOneUser: async (parent, args, context: Context) => {
+      return await context.prisma.user.update({
         data: {
-          email: String(args.email),
-          name: String(args.name),
+          email: args.email,
+          name: args.name,
         },
-        where: { id: Number(args.id) },
+        where: args.where,
       });
     },
-    deleteUserById: async (_, args, ctx: Context) => {
-      return await ctx.prisma.user.delete({
-        where: { id: Number(args.id) },
+    deleteOneUser: async (parent, args, context: Context) => {
+      return await context.prisma.user.delete({
+        where: args.where,
       });
     },
   },

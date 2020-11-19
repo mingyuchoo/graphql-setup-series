@@ -1,11 +1,6 @@
-enum SortDirection {
-  asc
-  desc
-}
-
 type User {
-  email: String!
   id: Int!
+  email: String!
   name: String
   posts: [Post!]!
 }
@@ -30,9 +25,9 @@ type Query {
 }
 
 type Mutation {
-  createUserByEmail(email: String, name: String): User!
-  updateUserById(id: Int!, email: String, name: String): User!
-  deleteUserById(id: Int!): User
+  createUserByEmail(email: String!, name: String): User!
+  updateOneUser(where: UserUniqueFilterInput, email: String, name: String): User!
+  deleteOneUser(where: UserUniqueFilterInput): User
 }
 
 type Subscription {
