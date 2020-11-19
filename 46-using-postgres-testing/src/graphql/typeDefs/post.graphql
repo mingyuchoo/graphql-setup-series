@@ -1,9 +1,14 @@
 type Post {
   id: Int!
-  author: User
+  # author: User # TODO Break up my schema by concern, not by type.
   title: String!
   content: String
   published: Boolean!
+}
+
+# Break up my schema by concern, not by type.
+extend type User {
+  posts: [Post!]!
 }
 
 input PostUniqueFilterInput {
@@ -12,7 +17,7 @@ input PostUniqueFilterInput {
 
 input PostFilterInput {
   title: String!
-  content: String!
+  content: String
 }
 
 input PostSortInput {

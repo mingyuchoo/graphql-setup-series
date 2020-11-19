@@ -11,13 +11,14 @@ const pubsub = new PubSub();
 const NEW_USER_JOINED = 'NEW_USER_JOINED';
 
 const User: IResolvers = {
-  User: {
-    posts: async (parent: types.User, args, context: Context) => {
-      return await context.prisma.user
+  // move from post.resolver.ts because break up my schema by concern, not by type.
+  Post: {
+    author: async (parent, args, context: Context, info) => {
+      return await context.prisma.post
         .findOne({
-          where: { id: parent.id },
+          where: { id: Number(parent.id) },
         })
-        .posts();
+        .author();
     },
   },
   Query: {

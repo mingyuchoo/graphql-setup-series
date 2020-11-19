@@ -2,7 +2,11 @@ type User {
   id: Int!
   email: String!
   name: String
-  posts: [Post!]!
+  # posts: [Post!]! # TODO Break up my schema by concern, not by type.
+}
+
+extend type Post {
+  author: User # Break up my schema by concern, not by type.
 }
 
 input UserUniqueFilterInput {

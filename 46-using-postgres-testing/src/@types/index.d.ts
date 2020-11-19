@@ -28,12 +28,20 @@ export type Post = {
   title: Scalars['String'];
 };
 
+export type User = {
+  __typename?: 'User';
+  email: Scalars['String'];
+  id: Scalars['Int'];
+  name?: Maybe<Scalars['String']>;
+  posts: Array<Post>;
+};
+
 export type PostUniqueFilterInput = {
   id: Scalars['Int'];
 };
 
 export type PostFilterInput = {
-  content: Scalars['String'];
+  content?: Maybe<Scalars['String']>;
   title: Scalars['String'];
 };
 
@@ -144,14 +152,6 @@ export type MutationUpdateOneUserArgs = {
 
 
 
-export type User = {
-  __typename?: 'User';
-  email: Scalars['String'];
-  id: Scalars['Int'];
-  name?: Maybe<Scalars['String']>;
-  posts: Array<Post>;
-};
-
 export type UserUniqueFilterInput = {
   id: Scalars['Int'];
 };
@@ -253,6 +253,7 @@ export type ResolversTypes = {
   String: ResolverTypeWrapper<Scalars['String']>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  User: ResolverTypeWrapper<User>;
   PostUniqueFilterInput: PostUniqueFilterInput;
   PostFilterInput: PostFilterInput;
   PostSortInput: PostSortInput;
@@ -261,7 +262,6 @@ export type ResolversTypes = {
   Date: ResolverTypeWrapper<Scalars['Date']>;
   Time: ResolverTypeWrapper<Scalars['Time']>;
   DateTime: ResolverTypeWrapper<Scalars['DateTime']>;
-  User: ResolverTypeWrapper<User>;
   UserUniqueFilterInput: UserUniqueFilterInput;
   UserFilterInput: UserFilterInput;
   UserSortInput: UserSortInput;
@@ -274,6 +274,7 @@ export type ResolversParentTypes = {
   String: Scalars['String'];
   Int: Scalars['Int'];
   Boolean: Scalars['Boolean'];
+  User: User;
   PostUniqueFilterInput: PostUniqueFilterInput;
   PostFilterInput: PostFilterInput;
   PostSortInput: PostSortInput;
@@ -282,7 +283,6 @@ export type ResolversParentTypes = {
   Date: Scalars['Date'];
   Time: Scalars['Time'];
   DateTime: Scalars['DateTime'];
-  User: User;
   UserUniqueFilterInput: UserUniqueFilterInput;
   UserFilterInput: UserFilterInput;
   UserSortInput: UserSortInput;
@@ -295,6 +295,14 @@ export type PostResolvers<ContextType = any, ParentType extends ResolversParentT
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   published?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
+  email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  posts?: Resolver<Array<ResolversTypes['Post']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -330,26 +338,18 @@ export interface DateTimeScalarConfig extends GraphQLScalarTypeConfig<ResolversT
   name: 'DateTime';
 }
 
-export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
-  email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  posts?: Resolver<Array<ResolversTypes['Post']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
 export type SubscriptionResolvers<ContextType = any, ParentType extends ResolversParentTypes['Subscription'] = ResolversParentTypes['Subscription']> = {
   newUserJoined?: SubscriptionResolver<ResolversTypes['User'], "newUserJoined", ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
   Post?: PostResolvers<ContextType>;
+  User?: UserResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Date?: GraphQLScalarType;
   Time?: GraphQLScalarType;
   DateTime?: GraphQLScalarType;
-  User?: UserResolvers<ContextType>;
   Subscription?: SubscriptionResolvers<ContextType>;
 };
 

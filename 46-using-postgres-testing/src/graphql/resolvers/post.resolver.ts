@@ -4,13 +4,14 @@ import * as types from '../../@types';
 import { Context } from '../../context';
 
 const Post: IResolvers = {
-  Post: {
-    author: async (parent, args, context: Context, info) => {
-      return await context.prisma.post
+  // move from user.resolver.ts because break up my schema by concern, not by type.
+  User: {
+    posts: async (parent: types.User, args, context: Context) => {
+      return await context.prisma.user
         .findOne({
-          where: { id: Number(parent.id) },
+          where: { id: parent.id },
         })
-        .author();
+        .posts();
     },
   },
   Query: {
