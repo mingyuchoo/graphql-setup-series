@@ -11,24 +11,24 @@ input PostUniqueFilterInput {
 }
 
 input PostFilterInput {
-  title: String
-  content: String
+  title: String!
+  content: String!
 }
 
 input PostSortInput {
-  id: SortDirection = desc
+  id: SortDirection! = desc
 }
 
 type Query {
   feed: [Post]!
-  posts(where: PostFilterInput, orderBy: PostSortInput, take: Int, skip: Int): [Post]!
-  post(where: PostUniqueFilterInput): Post
+  posts(where: PostFilterInput!, orderBy: PostSortInput!, take: Int!, skip: Int!): [Post]!
+  post(where: PostUniqueFilterInput!): Post
   searchPosts(searchString: String): [Post]!
 }
 
 type Mutation {
   createPostByEmail(email: String!, title: String!, content: String): Post
-  updateOnePost(where: PostUniqueFilterInput, title: String!, content: String): Post
-  publish(where: PostUniqueFilterInput): Post
-  deleteOnePost(where: PostUniqueFilterInput): Post
+  updateOnePost(where: PostUniqueFilterInput!, title: String!, content: String): Post
+  publish(where: PostUniqueFilterInput!): Post
+  deleteOnePost(where: PostUniqueFilterInput!): Post
 }

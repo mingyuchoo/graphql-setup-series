@@ -2,6 +2,7 @@
 import { PubSub } from 'apollo-server-express';
 import { IResolvers } from 'graphql-tools';
 
+import * as types from '../../@types';
 import { Context } from '../../context';
 
 const pubsub = new PubSub();
@@ -11,7 +12,7 @@ const NEW_USER_JOINED = 'NEW_USER_JOINED';
 
 const User: IResolvers = {
   User: {
-    posts: async (parent, args, context: Context, info) => {
+    posts: async (parent: types.User, args, context: Context) => {
       return await context.prisma.user
         .findOne({
           where: { id: parent.id },
@@ -30,12 +31,12 @@ const User: IResolvers = {
         ...args,
       });
     },
-    searchUsers: async (parent, { searchString }, context: Context) => {
+    searchUsers: async (parent, args: types.QuerySearchUsersArgs, context: Context) => {
       return await context.prisma.user.findMany({
         where: {
           OR: [
-            { name: { contains: searchString === null ? '' : searchString } },
-            { email: { contains: searchString === null ? '' : searchString } },
+            { name: { contains: args.searchString === null ? '' : args.searchString } },
+            { email: { contains: args.searchString === null ? '' : args.searchString } },
           ],
         },
       });

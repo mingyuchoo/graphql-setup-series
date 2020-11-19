@@ -1,5 +1,6 @@
 import { IResolvers } from 'graphql-tools';
 
+import * as types from '../../@types';
 import { Context } from '../../context';
 
 const Post: IResolvers = {
@@ -18,29 +19,29 @@ const Post: IResolvers = {
         where: { published: true },
       });
     },
-    posts: async (parent, args, context: Context) => {
+    posts: async (parent, args: types.QueryPostsArgs, context: Context) => {
       return await context.prisma.post.findMany({
         ...args,
       });
     },
-    post: async (parent, args, context: Context) => {
+    post: async (parent, args: types.QueryPostArgs, context: Context) => {
       return await context.prisma.post.findOne({
         ...args,
       });
     },
-    searchPosts: async (parent, { searchString }, context: Context) => {
+    searchPosts: async (parent, args: types.QuerySearchPostsArgs, context: Context) => {
       return await context.prisma.post.findMany({
         where: {
           OR: [
-            { title: { contains: searchString === null ? '' : searchString } },
-            { content: { contains: searchString === null ? '' : searchString } },
+            { title: { contains: args.searchString === null ? '' : args.searchString } },
+            { content: { contains: args.searchString === null ? '' : args.searchString } },
           ],
         },
       });
     },
   },
   Mutation: {
-    createPostByEmail: async (parent, args, context: Context) => {
+    createPostByEmail: async (parent, args: types.MutationCreatePostByEmailArgs, context: Context) => {
       return await context.prisma.post.create({
         data: {
           title: String(args.title),
@@ -52,7 +53,7 @@ const Post: IResolvers = {
         },
       });
     },
-    updateOnePost: async (parent, args, context: Context) => {
+    updateOnePost: async (parent, args: types.MutationUpdateOnePostArgs, context: Context) => {
       return await context.prisma.post.update({
         data: {
           title: args.title,
@@ -61,7 +62,7 @@ const Post: IResolvers = {
         where: args.where,
       });
     },
-    publish: async (parent, args, context: Context) => {
+    publish: async (parent, args: types.MutationPublishArgs, context: Context) => {
       return await context.prisma.post.update({
         data: {
           published: true,
@@ -69,7 +70,7 @@ const Post: IResolvers = {
         where: args.where,
       });
     },
-    deleteOnePost: async (parent, args, context: Context) => {
+    deleteOnePost: async (parent, args: types.MutationDeleteOnePostArgs, context: Context) => {
       return await context.prisma.post.delete({
         ...args,
       });
