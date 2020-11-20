@@ -1,0 +1,26 @@
+{
+  "name": "reviews",
+  "scripts": {
+    "clean": "rimraf dist",
+    "dev": "nodemon 'src/index.ts' --exec 'ts-node' src/index.ts -e ts",
+    "start": "npm run build && node 'dist/index.js'",
+    "build": "npm run clean && tsc -p .",
+    "typescript": "latest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/federation": "latest",
+    "apollo-server": "latest",
+    "graphql": "latest",
+    "typescript": "latest"
+  },
+  "devDependencies": {
+    "@types/graphql": "latest",
+    "@types/node": "latest",
+    "nodemon": "latest",
+    "rimraf": "latest",
+    "ts-node": "latest"
+  }
+}
