@@ -41,8 +41,8 @@ export type PostUniqueFilterInput = {
 };
 
 export type PostFilterInput = {
-  content?: Maybe<Scalars['String']>;
   title: Scalars['String'];
+  content?: Maybe<Scalars['String']>;
 };
 
 export type PostSortInput = {
@@ -67,10 +67,10 @@ export type QueryPostArgs = {
 
 
 export type QueryPostsArgs = {
-  orderBy: PostSortInput;
-  skip: Scalars['Int'];
-  take: Scalars['Int'];
   where: PostFilterInput;
+  orderBy: PostSortInput;
+  take: Scalars['Int'];
+  skip: Scalars['Int'];
 };
 
 
@@ -90,10 +90,10 @@ export type QueryUserArgs = {
 
 
 export type QueryUsersArgs = {
-  orderBy?: Maybe<UserSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  take?: Maybe<Scalars['Int']>;
-  where?: Maybe<UserFilterInput>;
+  where: UserFilterInput;
+  orderBy: UserSortInput;
+  take: Scalars['Int'];
+  skip: Scalars['Int'];
 };
 
 export type Mutation = {
@@ -109,9 +109,9 @@ export type Mutation = {
 
 
 export type MutationCreatePostByEmailArgs = {
-  content?: Maybe<Scalars['String']>;
   email: Scalars['String'];
   title: Scalars['String'];
+  content?: Maybe<Scalars['String']>;
 };
 
 
@@ -137,16 +137,16 @@ export type MutationPublishArgs = {
 
 
 export type MutationUpdateOnePostArgs = {
-  content?: Maybe<Scalars['String']>;
-  title: Scalars['String'];
   where: PostUniqueFilterInput;
+  title: Scalars['String'];
+  content?: Maybe<Scalars['String']>;
 };
 
 
 export type MutationUpdateOneUserArgs = {
-  email?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
   where: UserUniqueFilterInput;
+  email: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
 };
 
 
@@ -157,12 +157,12 @@ export type UserUniqueFilterInput = {
 };
 
 export type UserFilterInput = {
-  email?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
+  email: Scalars['String'];
 };
 
 export type UserSortInput = {
-  id?: Maybe<SortDirection>;
+  id?: SortDirection;
 };
 
 export type Subscription = {
@@ -309,11 +309,11 @@ export type UserResolvers<ContextType = any, ParentType extends ResolversParentT
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   feed?: Resolver<Array<Maybe<ResolversTypes['Post']>>, ParentType, ContextType>;
   post?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<QueryPostArgs, 'where'>>;
-  posts?: Resolver<Array<Maybe<ResolversTypes['Post']>>, ParentType, ContextType, RequireFields<QueryPostsArgs, 'orderBy' | 'skip' | 'take' | 'where'>>;
+  posts?: Resolver<Array<Maybe<ResolversTypes['Post']>>, ParentType, ContextType, RequireFields<QueryPostsArgs, 'where' | 'orderBy' | 'take' | 'skip'>>;
   searchPosts?: Resolver<Array<Maybe<ResolversTypes['Post']>>, ParentType, ContextType, RequireFields<QuerySearchPostsArgs, never>>;
   searchUsers?: Resolver<Array<Maybe<ResolversTypes['User']>>, ParentType, ContextType, RequireFields<QuerySearchUsersArgs, never>>;
   user?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QueryUserArgs, 'where'>>;
-  users?: Resolver<Array<Maybe<ResolversTypes['User']>>, ParentType, ContextType, RequireFields<QueryUsersArgs, never>>;
+  users?: Resolver<Array<Maybe<ResolversTypes['User']>>, ParentType, ContextType, RequireFields<QueryUsersArgs, 'where' | 'orderBy' | 'take' | 'skip'>>;
 };
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
@@ -322,8 +322,8 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   deleteOnePost?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<MutationDeleteOnePostArgs, 'where'>>;
   deleteOneUser?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationDeleteOneUserArgs, 'where'>>;
   publish?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<MutationPublishArgs, 'where'>>;
-  updateOnePost?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<MutationUpdateOnePostArgs, 'title' | 'where'>>;
-  updateOneUser?: Resolver<ResolversTypes['User'], ParentType, ContextType, RequireFields<MutationUpdateOneUserArgs, 'where'>>;
+  updateOnePost?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<MutationUpdateOnePostArgs, 'where' | 'title'>>;
+  updateOneUser?: Resolver<ResolversTypes['User'], ParentType, ContextType, RequireFields<MutationUpdateOneUserArgs, 'where' | 'email'>>;
 };
 
 export interface DateScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Date'], any> {

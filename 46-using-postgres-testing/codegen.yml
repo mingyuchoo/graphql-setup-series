@@ -1,8 +1,8 @@
 overwrite: true
-schema: http://localhost:4000/graphql
+# schema: http://localhost:4000/graphql
+schema: src/graphql/typeDefs/**/*.graphql
 generates:
   src/@types/index.d.ts:
-    schema: src/graphql/typeDefs/**/*.graphql
     plugins:
       - typescript
       - typescript-resolvers

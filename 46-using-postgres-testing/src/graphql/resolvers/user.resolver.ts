@@ -22,12 +22,15 @@ const User: IResolvers = {
     },
   },
   Query: {
-    users: async (parent, args, context: Context) => {
+    users: async (parent, { where, orderBy, take, skip }: types.QueryUsersArgs, context: Context) => {
       return await context.prisma.user.findMany({
-        ...args,
+        where,
+        orderBy,
+        take,
+        skip,
       });
     },
-    user: async (parent, args, context: Context) => {
+    user: async (parent, args: types.QueryUserArgs, context: Context) => {
       return await context.prisma.user.findOne({
         ...args,
       });
@@ -44,20 +47,24 @@ const User: IResolvers = {
     },
   },
   Mutation: {
-    createUserByEmail: async (parent, args, context: Context) => {
-      const result = context.prisma.user.create({
+    createUserByEmail: async (parent, args: types.MutationCreateUserByEmailArgs, context: Context) => {
+      const resultUserInfo = await context.prisma.user.create({
         data: {
           email: String(args.email),
           name: String(args.name),
         },
       });
-      result.then((user) => {
-        pubsub.publish(NEW_USER_JOINED, { newUserJoined: user });
-      });
 
-      return result;
+      void pubsub.publish(NEW_USER_JOINED, { newUserJoined: resultUserInfo });
+
+      // // ==> Promises must be handled appropriately or explicitly marked as ignored with the `void` operator.
+      // result.then((user) => {
+      //   pubsub.publish(NEW_USER_JOINED, { newUserJoined: user });
+      // });
+
+      return resultUserInfo;
     },
-    updateOneUser: async (parent, args, context: Context) => {
+    updateOneUser: async (parent, args: types.MutationUpdateOneUserArgs, context: Context) => {
       return await context.prisma.user.update({
         data: {
           email: args.email,
@@ -66,9 +73,9 @@ const User: IResolvers = {
         where: args.where,
       });
     },
-    deleteOneUser: async (parent, args, context: Context) => {
+    deleteOneUser: async (parent, args: types.MutationDeleteOneUserArgs, context: Context) => {
       return await context.prisma.user.delete({
-        where: args.where,
+        ...args,
       });
     },
   },
