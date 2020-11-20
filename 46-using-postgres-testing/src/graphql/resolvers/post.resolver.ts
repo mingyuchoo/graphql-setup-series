@@ -15,7 +15,7 @@ const Post: IResolvers = {
     },
   },
   Query: {
-    feed: async (_, args, context: Context) => {
+    feed: async (parent, args, context: Context) => {
       return await context.prisma.post.findMany({
         where: { published: true },
       });
