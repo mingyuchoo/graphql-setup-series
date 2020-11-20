@@ -1,46 +1,7 @@
 import { buildFederatedSchema } from '@apollo/federation';
 import { ApolloServer, gql } from 'apollo-server';
 
-const typeDefs = gql`
-  extend type Query {
-    topProducts(first: Int = 5): [Product]
-  }
-
-  type Product @key(fields: "upc") {
-    upc: String!
-    name: String
-    price: Int
-    weight: Int
-  }
-`;
-
-const resolvers = {
-  Product: {
-    __resolveReference(object: any) {
-      return products.find((product) => product.upc === object.upc);
-    },
-  },
-  Query: {
-    topProducts(_: any, args: any) {
-      return products.slice(0, args.first);
-    },
-  },
-};
-
-const server = new ApolloServer({
-  schema: buildFederatedSchema([
-    {
-      typeDefs,
-      resolvers,
-    },
-  ]),
-});
-
-server.listen({ port: 4003 }).then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
-});
-
-const products = [
+const productData = [
   {
     upc: '1',
     name: 'Table',
@@ -60,3 +21,42 @@ const products = [
     weight: 50,
   },
 ];
+
+const typeDefs = gql`
+  extend type Query {
+    topProducts(first: Int = 5): [Product]
+  }
+
+  type Product @key(fields: "upc") {
+    upc: String!
+    name: String
+    price: Int
+    weight: Int
+  }
+`;
+
+const resolvers = {
+  Product: {
+    __resolveReference(object: any) {
+      return productData.find((product) => product.upc === object.upc);
+    },
+  },
+  Query: {
+    topProducts(_: any, args: any) {
+      return productData.slice(0, args.first);
+    },
+  },
+};
+
+const server = new ApolloServer({
+  schema: buildFederatedSchema([
+    {
+      typeDefs,
+      resolvers,
+    },
+  ]),
+});
+
+server.listen({ port: 4003 }).then(({ url }) => {
+  console.log(`🚀 Service ready at ${url}`);
+});

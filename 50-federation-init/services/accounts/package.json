@@ -3,8 +3,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "dev": "nodemon 'src/index.ts' --exec 'ts-node' src/index.ts -e ts",
+    "build": "npm run clean && tsc -p tsconfig.json src/*.ts",
     "start": "npm run build && node 'dist/index.js'",
-    "build": "npm run clean && tsc -p .",
     "typescript": "latest"
   },
   "keywords": [],

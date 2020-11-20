@@ -1,6 +1,12 @@
 import { buildFederatedSchema } from '@apollo/federation';
 import { ApolloServer, gql } from 'apollo-server';
 
+const inventoryData = [
+  { upc: '1', inStock: true },
+  { upc: '2', inStock: false },
+  { upc: '3', inStock: true },
+];
+
 const typeDefs = gql`
   extend type Product @key(fields: "upc") {
     upc: String! @external
@@ -16,7 +22,7 @@ const resolvers = {
     __resolveReference(object: any) {
       return {
         ...object,
-        ...inventory.find((product) => product.upc === object.upc),
+        ...inventoryData.find((product) => product.upc === object.upc),
       };
     },
     shippingEstimate(object: any) {
@@ -38,11 +44,5 @@ const server = new ApolloServer({
 });
 
 server.listen({ port: 4004 }).then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
+  console.log(`🚀 Service ready at ${url}`);
 });
-
-const inventory = [
-  { upc: '1', inStock: true },
-  { upc: '2', inStock: false },
-  { upc: '3', inStock: true },
-];

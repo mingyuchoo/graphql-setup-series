@@ -4,6 +4,7 @@
     "module": "commonjs",
     "lib": ["esnext"],
     "outDir": "dist",
+    "rootDir": "src",
     "allowJs": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -14,5 +15,6 @@
     "types": ["node"],
     "typeRoots": ["./node_modules/@types", "src/@types"]
   },
-  "exclude": ["node_modules"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }
