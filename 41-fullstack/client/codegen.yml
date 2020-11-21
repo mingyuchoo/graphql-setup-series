@@ -1,6 +1,0 @@
-overwrite: true
-schema: https://sleepy-plains-38954.herokuapp.com/graphql
-generates:
-  src/types/profileTypes.ts:
-    plugins:
-      - 'typescript'
