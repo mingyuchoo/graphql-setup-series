@@ -12,32 +12,27 @@
     "seq:db:seed:undo:all": "sequelize db:seed:undo:all",
     "lint": "eslint --config .eslintrc.yml --fix './src/**/*.{js,jsx}'",
     "dev": "nodemon --exec babel-node src/index.js",
-    "babel": "babel src --out-dir lib",
-    "start": "node lib/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/node": "^7.12.6",
-    "@babel/preset-env": "^7.12.1",
-    "@babel/register": "^7.12.1",
-    "apollo-server": "^2.19.0",
-    "bcryptjs": "^2.4.3",
-    "eslint": "^7.13.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "graphql": "^15.4.0",
-    "nodemon": "^2.0.6",
-    "prettier": "^2.1.2",
-    "sequelize": "^6.3.5",
-    "sequelize-cli": "^6.2.0",
-    "sqlite3": "^5.0.0"
-  },
   "devDependencies": {
-    "apollo": "^2.31.1"
+    "@babel/core": "latest",
+    "@babel/node": "latest",
+    "@babel/preset-env": "latest",
+    "@babel/register": "latest",
+    "apollo": "latest",
+    "apollo-server": "latest",
+    "bcryptjs": "latest",
+    "eslint": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-plugin-prettier": "latest",
+    "graphql": "latest",
+    "nodemon": "latest",
+    "prettier": "latest",
+    "sequelize": "latest",
+    "sequelize-cli": "latest",
+    "sqlite3": "latest"
   }
 }
