@@ -3,6 +3,9 @@
 ## Reference
 
 - <https://helloinyong.tistory.com/265>
+- https://medium.com/@nzaghini/properly-test-a-graphql-server-d178241464e7
+- https://github.com/mingyuchoo/graphql-server-addc-2018
+
 
 ## How to Run
 

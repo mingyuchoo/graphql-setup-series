@@ -16,7 +16,10 @@ extends:
   - eslint:recommended
   - plugin:@typescript-eslint/recommended
   - plugin:@typescript-eslint/recommended-requiring-type-checking
+  - plugin:jest/recommended
   - plugin:prettier/recommended
+ignorePatterns:
+  - src/**/*.d.ts
 rules:
   prettier/prettier: error
   simple-import-sort/imports: error

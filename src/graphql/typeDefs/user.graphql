@@ -1,0 +1,39 @@
+type User {
+  id: Int!
+  email: String!
+  name: String
+  # posts: [Post!]! # TODO Break up my schema by concern, not by type.
+}
+
+extend type Post {
+  author: User # Break up my schema by concern, not by type.
+}
+
+input UserUniqueFilterInput {
+  id: Int!
+}
+
+input UserFilterInput {
+  name: String!
+  email: String!
+}
+
+input UserSortInput {
+  id: SortDirection! = desc
+}
+
+type Query {
+  users(where: UserFilterInput!, orderBy: UserSortInput!, take: Int!, skip: Int!): [User]!
+  user(where: UserUniqueFilterInput!): User
+  searchUsers(searchString: String): [User]!
+}
+
+type Mutation {
+  createUserByEmail(email: String!, name: String): User!
+  updateOneUser(where: UserUniqueFilterInput!, email: String!, name: String): User!
+  deleteOneUser(where: UserUniqueFilterInput!): User
+}
+
+type Subscription {
+  newUserJoined: User!
+}

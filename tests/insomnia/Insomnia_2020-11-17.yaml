@@ -1,0 +1,455 @@
+_type: export
+__export_format: 4
+__export_date: 2020-11-16T20:25:51.354Z
+__export_source: insomnia.desktop.app:v2020.4.2
+resources:
+  - _id: req_b0d1f21987834409b61f25bbcedcd8ca
+    parentId: fld_9fd4eab4eee2461e8bfcbc6a7575b51b
+    modified: 1605558197112
+    created: 1600975308202
+    url: http://localhost:4000/graphql
+    name: users
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"query Users {\n  users(\n    where: {\n      name: \"chris\",
+        \n      email: \"chris@email.com\"\n    },\n    orderBy: {id:
+        desc},\n    take: 10,\n    skip: 0,\n  )
+        {\n    id\n    name\n    email\n    posts
+        {\n      id\n      title\n    }\n  }\n}","operationName":"Users"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1602532101243.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_9fd4eab4eee2461e8bfcbc6a7575b51b
+    parentId: fld_462b69154ebf466a90ab0732495ea576
+    modified: 1602532166528
+    created: 1602532132369
+    name: Queries
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1602532070168
+    _type: request_group
+  - _id: fld_462b69154ebf466a90ab0732495ea576
+    parentId: wrk_1b3924364fa342cda857ec02365a5421
+    modified: 1602532070118
+    created: 1602532070118
+    name: Local
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1602532070118
+    _type: request_group
+  - _id: wrk_1b3924364fa342cda857ec02365a5421
+    parentId: null
+    modified: 1600975294674
+    created: 1600975294674
+    name: GraphQL
+    description: ""
+    scope: spec
+    _type: workspace
+  - _id: req_e50a01b900b64ac68fdba325bf0275c3
+    parentId: fld_9fd4eab4eee2461e8bfcbc6a7575b51b
+    modified: 1605558298250
+    created: 1602532245242
+    url: http://localhost:4000/graphql
+    name: user
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"# Write your query or mutation here\nquery User{\n  user
+        (\n    where: {id: 1}\n  )
+        {\n    id\n    name\n    email\n  }\n}\n","operationName":"User"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1602483451460.9531
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_25152e6e5809468b9975d7eeb00ec08e
+    parentId: fld_9fd4eab4eee2461e8bfcbc6a7575b51b
+    modified: 1605558218955
+    created: 1605558147911
+    url: http://localhost:4000/graphql
+    name: searchUsers
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"query SearchUsers {\n  searchUsers(\n\t\tsearchString:
+        \"ali\"\n  ) {\n    id\n    name\n    email\n    posts
+        {\n      id\n      title\n    }\n  }\n}","operationName":"SearchUsers"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1602434801678.4062
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_209cf0ebddbc4342908fbe2fd968e4da
+    parentId: fld_9fd4eab4eee2461e8bfcbc6a7575b51b
+    modified: 1602532476590
+    created: 1602532207856
+    url: http://localhost:4000/graphql
+    name: getAllPosts
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"# Write your query or mutation here\nquery {\n  getAllPosts
+        {\n    id\n    title\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1601753704722.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9afbb66ad03a4639aeb042537444b9ba
+    parentId: fld_9fd4eab4eee2461e8bfcbc6a7575b51b
+    modified: 1602532569845
+    created: 1602532485574
+    url: http://localhost:4000/graphql
+    name: getAllPostsPublished
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"# Write your query or mutation here\nquery
+        {\n  getCountOfPostsPublished\n  getAllPostsPublished
+        {\n    id\n    title\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1601559105592.5625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_57ee720b1475420ebf272fae80978ee3
+    parentId: fld_9fd4eab4eee2461e8bfcbc6a7575b51b
+    modified: 1602532364581
+    created: 1602532315150
+    url: http://localhost:4000/graphql
+    name: getOnePostById
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"# Write your query or mutation here\nquery
+        {\n  getOnePostById(id: 1) {\n    id\n    title\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1601364506462.375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_15c93a6df4984ffcb45b307b29a16a97
+    parentId: fld_9fd4eab4eee2461e8bfcbc6a7575b51b
+    modified: 1602532426667
+    created: 1602532387797
+    url: http://localhost:4000/graphql
+    name: getCountOfPosts
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"# Write your query or mutation here\nquery {\n  getCountOfPosts
+        \n}\n"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1601169907332.1875
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_cdcf0986b80d4c239431c069082ff200
+    parentId: fld_9fd4eab4eee2461e8bfcbc6a7575b51b
+    modified: 1602532457065
+    created: 1602532442223
+    url: http://localhost:4000/graphql
+    name: getCountOfPostsPublished
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"# Write your query or mutation here\nquery
+        {\n  getCountOfPostsPublished \n}\n"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1601072607767.0938
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_6f473705ecb545af9b34d644e329b1f7
+    parentId: fld_9d177c662e49402c95552345bf5e1525
+    modified: 1602533418282
+    created: 1602532585226
+    url: http://localhost:4000/graphql
+    name: createUser
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation {\n  createUser(email: \"happy@email.com\", username:
+        \"HappyMan\") {\n    id\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1602337502113.3125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_9d177c662e49402c95552345bf5e1525
+    parentId: fld_462b69154ebf466a90ab0732495ea576
+    modified: 1602532163051
+    created: 1602532139966
+    name: Mutations
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1602532070118
+    _type: request_group
+  - _id: req_f03c2911b89047868ae65123531a6899
+    parentId: fld_9d177c662e49402c95552345bf5e1525
+    modified: 1602533362681
+    created: 1602533280817
+    url: http://localhost:4000/graphql
+    name: updateUserById
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation {\n  updateUserById(id: 2, email: \"rich@email.com\",
+        username: \"RichMan\")
+        {\n    id\n    email\n    username\n    firstName\n    lastName\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1602240202548.2188
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d052ccdd52c14bd08fe2c61257eef77d
+    parentId: fld_9d177c662e49402c95552345bf5e1525
+    modified: 1602533407748
+    created: 1602533373143
+    url: http://localhost:4000/graphql
+    name: deleteUserById
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation {\n  deleteUserById(id: 2)
+        {\n    id\n    email\n    username\n    firstName\n    lastName\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1602191552765.6719
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9532ef0c21b24daf88afb38db8acd91e
+    parentId: fld_9d177c662e49402c95552345bf5e1525
+    modified: 1602533672803
+    created: 1602533425352
+    url: http://localhost:4000/graphql
+    name: createPostByEmail
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation {\n  createPostByEmail(email: \"alice@email.com\",
+        title: \"Kingdom\") {\n    id\n    title\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1602191552715.6719
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_87f9b502de6f425e8479975b5a9c9d06
+    parentId: fld_9d177c662e49402c95552345bf5e1525
+    modified: 1602533675740
+    created: 1602533539984
+    url: http://localhost:4000/graphql
+    name: updatePostById
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation {\n  updatePostById(id: 4, title: \"Kingdom\",
+        content: \"New World\", published: false)
+        {\n    id\n    title\n    content\n    published\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1602191552665.6719
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9771f5c365aa4c2fa998e595a76775df
+    parentId: fld_9d177c662e49402c95552345bf5e1525
+    modified: 1602533687248
+    created: 1602533640508
+    url: http://localhost:4000/graphql
+    name: deletePostById
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation {\n  deletePostById(id: 4)
+        {\n    id\n    title\n    content\n    published\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1602191552615.6719
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_63cdee494bf0eac11e6f7b197ee6e94aec3128f2
+    parentId: wrk_1b3924364fa342cda857ec02365a5421
+    modified: 1600975295829
+    created: 1600975295829
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1600975295829
+    _type: environment
+  - _id: jar_63cdee494bf0eac11e6f7b197ee6e94aec3128f2
+    parentId: wrk_1b3924364fa342cda857ec02365a5421
+    modified: 1600975295831
+    created: 1600975295831
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_b3ba46805bbf4eca9e58970de8829d6d
+    parentId: wrk_1b3924364fa342cda857ec02365a5421
+    modified: 1600975294684
+    created: 1600975294684
+    fileName: GraphQL
+    contents: ""
+    contentType: yaml
+    _type: api_spec

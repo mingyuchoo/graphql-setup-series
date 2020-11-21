@@ -1,17 +1,19 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "module": "commonjs",
-    "lib": ["dom", "es6"],
-    "allowJs": true,
-    "sourceMap": true,
+    "lib": ["esnext"],
     "outDir": "dist",
     "rootDir": "src",
-    "removeComments": true,
-    "strict": true,
+    "allowJs": true,
     "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "strict": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "types": ["jest", "node"],
+    "typeRoots": ["./node_modules/@types", "src/@types"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]
