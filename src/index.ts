@@ -1,6 +1,7 @@
-import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import cors from 'cors';
+import express from 'express';
+
 import schema from './schema';
 
 const port = process.env.PORT || 4000;
@@ -21,10 +22,10 @@ server.applyMiddleware({
       // Replace the `true` in this conditional with more specific checks!
       if (true) {
         console.log('health check called');
-        resolve();
+        resolve(0);
       } else {
         console.log('health check failed');
-        reject();
+        reject(-1);
       }
     });
   },
