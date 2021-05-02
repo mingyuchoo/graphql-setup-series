@@ -1,0 +1,1383 @@
+scalar DateTime
+
+type BatchPayload {
+  count: Int!
+}
+
+enum UserScalarFieldEnum {
+  id
+  email
+  firstName
+  lastName
+  role
+}
+
+enum ProfileScalarFieldEnum {
+  id
+  bio
+  userId
+}
+
+enum PostScalarFieldEnum {
+  id
+  createdAt
+  title
+  content
+  published
+  authorId
+  keywords
+}
+
+enum CategoryScalarFieldEnum {
+  id
+  name
+}
+
+enum CommentScalarFieldEnum {
+  id
+  title
+  content
+  postId
+}
+
+enum TagScalarFieldEnum {
+  name
+}
+
+enum SortOrder {
+  asc
+  desc
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+input UserWhereInput {
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+  id: IntFilter
+  email: StringFilter
+  firstName: StringFilter
+  lastName: StringFilter
+  role: EnumRoleFilter
+  profile: ProfileWhereInput
+  posts: PostListRelationFilter
+}
+
+input UserOrderByInput {
+  id: SortOrder
+  email: SortOrder
+  firstName: SortOrder
+  lastName: SortOrder
+  role: SortOrder
+}
+
+input UserWhereUniqueInput {
+  id: Int
+  email: String
+}
+
+input ProfileWhereInput {
+  AND: [ProfileWhereInput!]
+  OR: [ProfileWhereInput!]
+  NOT: [ProfileWhereInput!]
+  id: IntFilter
+  bio: StringFilter
+  userId: IntFilter
+  user: UserWhereInput
+}
+
+input ProfileOrderByInput {
+  id: SortOrder
+  bio: SortOrder
+  userId: SortOrder
+}
+
+input ProfileWhereUniqueInput {
+  id: Int
+}
+
+input PostWhereInput {
+  AND: [PostWhereInput!]
+  OR: [PostWhereInput!]
+  NOT: [PostWhereInput!]
+  id: IntFilter
+  createdAt: DateTimeFilter
+  title: StringFilter
+  content: StringNullableFilter
+  published: BoolFilter
+  authorId: IntNullableFilter
+  author: UserWhereInput
+  categories: CategoryListRelationFilter
+  comments: CommentListRelationFilter
+  keywords: StringFilter
+  tags: TagListRelationFilter
+}
+
+input PostOrderByInput {
+  id: SortOrder
+  createdAt: SortOrder
+  title: SortOrder
+  content: SortOrder
+  published: SortOrder
+  authorId: SortOrder
+  keywords: SortOrder
+}
+
+input PostWhereUniqueInput {
+  id: Int
+}
+
+input CategoryWhereInput {
+  AND: [CategoryWhereInput!]
+  OR: [CategoryWhereInput!]
+  NOT: [CategoryWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  posts: PostListRelationFilter
+}
+
+input CategoryOrderByInput {
+  id: SortOrder
+  name: SortOrder
+}
+
+input CategoryWhereUniqueInput {
+  id: Int
+}
+
+input CommentWhereInput {
+  AND: [CommentWhereInput!]
+  OR: [CommentWhereInput!]
+  NOT: [CommentWhereInput!]
+  id: IntFilter
+  title: StringFilter
+  content: StringNullableFilter
+  postId: IntNullableFilter
+  post: PostWhereInput
+}
+
+input CommentOrderByInput {
+  id: SortOrder
+  title: SortOrder
+  content: SortOrder
+  postId: SortOrder
+}
+
+input CommentWhereUniqueInput {
+  id: Int
+}
+
+input TagWhereInput {
+  AND: [TagWhereInput!]
+  OR: [TagWhereInput!]
+  NOT: [TagWhereInput!]
+  name: StringFilter
+  posts: PostListRelationFilter
+}
+
+input TagOrderByInput {
+  name: SortOrder
+}
+
+input TagWhereUniqueInput {
+  name: String
+}
+
+input UserCreateInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  role: Role
+  profile: ProfileCreateOneWithoutUserInput
+  posts: PostCreateManyWithoutAuthorInput
+}
+
+input UserUpdateInput {
+  email: StringFieldUpdateOperationsInput
+  firstName: StringFieldUpdateOperationsInput
+  lastName: StringFieldUpdateOperationsInput
+  role: EnumRoleFieldUpdateOperationsInput
+  profile: ProfileUpdateOneWithoutUserInput
+  posts: PostUpdateManyWithoutAuthorInput
+}
+
+input UserUpdateManyMutationInput {
+  email: StringFieldUpdateOperationsInput
+  firstName: StringFieldUpdateOperationsInput
+  lastName: StringFieldUpdateOperationsInput
+  role: EnumRoleFieldUpdateOperationsInput
+}
+
+input ProfileCreateInput {
+  bio: String!
+  user: UserCreateOneWithoutProfileInput!
+}
+
+input ProfileUpdateInput {
+  bio: StringFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutProfileInput
+}
+
+input ProfileUpdateManyMutationInput {
+  bio: StringFieldUpdateOperationsInput
+}
+
+input PostCreateInput {
+  createdAt: DateTime
+  title: String!
+  content: String
+  published: Boolean
+  keywords: String!
+  author: UserCreateOneWithoutPostsInput
+  categories: CategoryCreateManyWithoutPostsInput
+  comments: CommentCreateManyWithoutPostInput
+  tags: TagCreateManyWithoutPostsInput
+}
+
+input PostUpdateInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  content: NullableStringFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  keywords: StringFieldUpdateOperationsInput
+  author: UserUpdateOneWithoutPostsInput
+  categories: CategoryUpdateManyWithoutPostsInput
+  comments: CommentUpdateManyWithoutPostInput
+  tags: TagUpdateManyWithoutPostsInput
+}
+
+input PostUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  content: NullableStringFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  keywords: StringFieldUpdateOperationsInput
+}
+
+input CategoryCreateInput {
+  name: String!
+  posts: PostCreateManyWithoutCategoriesInput
+}
+
+input CategoryUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  posts: PostUpdateManyWithoutCategoriesInput
+}
+
+input CategoryUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+}
+
+input CommentCreateInput {
+  title: String!
+  content: String
+  post: PostCreateOneWithoutCommentsInput
+}
+
+input CommentUpdateInput {
+  title: StringFieldUpdateOperationsInput
+  content: NullableStringFieldUpdateOperationsInput
+  post: PostUpdateOneWithoutCommentsInput
+}
+
+input CommentUpdateManyMutationInput {
+  title: StringFieldUpdateOperationsInput
+  content: NullableStringFieldUpdateOperationsInput
+}
+
+input TagCreateInput {
+  name: String!
+  posts: PostCreateManyWithoutTagsInput
+}
+
+input TagUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  posts: PostUpdateManyWithoutTagsInput
+}
+
+input TagUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+}
+
+input IntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input StringFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringFilter
+}
+
+input EnumRoleFilter {
+  equals: Role
+  in: [Role!]
+  notIn: [Role!]
+  not: NestedEnumRoleFilter
+}
+
+input ProfileRelationFilter {
+  is: ProfileWhereInput
+  isNot: ProfileWhereInput
+}
+
+input PostListRelationFilter {
+  every: PostWhereInput
+  some: PostWhereInput
+  none: PostWhereInput
+}
+
+input UserRelationFilter {
+  is: UserWhereInput
+  isNot: UserWhereInput
+}
+
+input DateTimeFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeFilter
+}
+
+input StringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableFilter
+}
+
+input BoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input IntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableFilter
+}
+
+input CategoryListRelationFilter {
+  every: CategoryWhereInput
+  some: CategoryWhereInput
+  none: CategoryWhereInput
+}
+
+input CommentListRelationFilter {
+  every: CommentWhereInput
+  some: CommentWhereInput
+  none: CommentWhereInput
+}
+
+input TagListRelationFilter {
+  every: TagWhereInput
+  some: TagWhereInput
+  none: TagWhereInput
+}
+
+input PostRelationFilter {
+  is: PostWhereInput
+  isNot: PostWhereInput
+}
+
+input ProfileCreateOneWithoutUserInput {
+  create: ProfileCreateWithoutUserInput
+  connect: ProfileWhereUniqueInput
+  connectOrCreate: ProfileCreateOrConnectWithoutuserInput
+}
+
+input PostCreateManyWithoutAuthorInput {
+  create: [PostCreateWithoutAuthorInput!]
+  connect: [PostWhereUniqueInput!]
+  connectOrCreate: [PostCreateOrConnectWithoutauthorInput!]
+}
+
+input StringFieldUpdateOperationsInput {
+  set: String
+}
+
+input EnumRoleFieldUpdateOperationsInput {
+  set: Role
+}
+
+input ProfileUpdateOneWithoutUserInput {
+  create: ProfileCreateWithoutUserInput
+  connect: ProfileWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: ProfileUpdateWithoutUserInput
+  upsert: ProfileUpsertWithoutUserInput
+  connectOrCreate: ProfileCreateOrConnectWithoutuserInput
+}
+
+input PostUpdateManyWithoutAuthorInput {
+  create: [PostCreateWithoutAuthorInput!]
+  connect: [PostWhereUniqueInput!]
+  set: [PostWhereUniqueInput!]
+  disconnect: [PostWhereUniqueInput!]
+  delete: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutAuthorInput!]
+  updateMany: [PostUpdateManyWithWhereWithoutAuthorInput!]
+  deleteMany: [PostScalarWhereInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutAuthorInput!]
+  connectOrCreate: [PostCreateOrConnectWithoutauthorInput!]
+}
+
+input UserCreateOneWithoutProfileInput {
+  create: UserCreateWithoutProfileInput
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutprofileInput
+}
+
+input UserUpdateOneRequiredWithoutProfileInput {
+  create: UserCreateWithoutProfileInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutProfileInput
+  upsert: UserUpsertWithoutProfileInput
+  connectOrCreate: UserCreateOrConnectWithoutprofileInput
+}
+
+input UserCreateOneWithoutPostsInput {
+  create: UserCreateWithoutPostsInput
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutpostsInput
+}
+
+input CategoryCreateManyWithoutPostsInput {
+  create: [CategoryCreateWithoutPostsInput!]
+  connect: [CategoryWhereUniqueInput!]
+  connectOrCreate: [CategoryCreateOrConnectWithoutpostsInput!]
+}
+
+input CommentCreateManyWithoutPostInput {
+  create: [CommentCreateWithoutPostInput!]
+  connect: [CommentWhereUniqueInput!]
+  connectOrCreate: [CommentCreateOrConnectWithoutpostInput!]
+}
+
+input TagCreateManyWithoutPostsInput {
+  create: [TagCreateWithoutPostsInput!]
+  connect: [TagWhereUniqueInput!]
+  connectOrCreate: [TagCreateOrConnectWithoutpostsInput!]
+}
+
+input DateTimeFieldUpdateOperationsInput {
+  set: DateTime
+}
+
+input NullableStringFieldUpdateOperationsInput {
+  set: String
+}
+
+input BoolFieldUpdateOperationsInput {
+  set: Boolean
+}
+
+input UserUpdateOneWithoutPostsInput {
+  create: UserCreateWithoutPostsInput
+  connect: UserWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: UserUpdateWithoutPostsInput
+  upsert: UserUpsertWithoutPostsInput
+  connectOrCreate: UserCreateOrConnectWithoutpostsInput
+}
+
+input CategoryUpdateManyWithoutPostsInput {
+  create: [CategoryCreateWithoutPostsInput!]
+  connect: [CategoryWhereUniqueInput!]
+  set: [CategoryWhereUniqueInput!]
+  disconnect: [CategoryWhereUniqueInput!]
+  delete: [CategoryWhereUniqueInput!]
+  update: [CategoryUpdateWithWhereUniqueWithoutPostsInput!]
+  updateMany: [CategoryUpdateManyWithWhereWithoutPostsInput!]
+  deleteMany: [CategoryScalarWhereInput!]
+  upsert: [CategoryUpsertWithWhereUniqueWithoutPostsInput!]
+  connectOrCreate: [CategoryCreateOrConnectWithoutpostsInput!]
+}
+
+input CommentUpdateManyWithoutPostInput {
+  create: [CommentCreateWithoutPostInput!]
+  connect: [CommentWhereUniqueInput!]
+  set: [CommentWhereUniqueInput!]
+  disconnect: [CommentWhereUniqueInput!]
+  delete: [CommentWhereUniqueInput!]
+  update: [CommentUpdateWithWhereUniqueWithoutPostInput!]
+  updateMany: [CommentUpdateManyWithWhereWithoutPostInput!]
+  deleteMany: [CommentScalarWhereInput!]
+  upsert: [CommentUpsertWithWhereUniqueWithoutPostInput!]
+  connectOrCreate: [CommentCreateOrConnectWithoutpostInput!]
+}
+
+input TagUpdateManyWithoutPostsInput {
+  create: [TagCreateWithoutPostsInput!]
+  connect: [TagWhereUniqueInput!]
+  set: [TagWhereUniqueInput!]
+  disconnect: [TagWhereUniqueInput!]
+  delete: [TagWhereUniqueInput!]
+  update: [TagUpdateWithWhereUniqueWithoutPostsInput!]
+  updateMany: [TagUpdateManyWithWhereWithoutPostsInput!]
+  deleteMany: [TagScalarWhereInput!]
+  upsert: [TagUpsertWithWhereUniqueWithoutPostsInput!]
+  connectOrCreate: [TagCreateOrConnectWithoutpostsInput!]
+}
+
+input PostCreateManyWithoutCategoriesInput {
+  create: [PostCreateWithoutCategoriesInput!]
+  connect: [PostWhereUniqueInput!]
+  connectOrCreate: [PostCreateOrConnectWithoutcategoriesInput!]
+}
+
+input PostUpdateManyWithoutCategoriesInput {
+  create: [PostCreateWithoutCategoriesInput!]
+  connect: [PostWhereUniqueInput!]
+  set: [PostWhereUniqueInput!]
+  disconnect: [PostWhereUniqueInput!]
+  delete: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutCategoriesInput!]
+  updateMany: [PostUpdateManyWithWhereWithoutCategoriesInput!]
+  deleteMany: [PostScalarWhereInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutCategoriesInput!]
+  connectOrCreate: [PostCreateOrConnectWithoutcategoriesInput!]
+}
+
+input PostCreateOneWithoutCommentsInput {
+  create: PostCreateWithoutCommentsInput
+  connect: PostWhereUniqueInput
+  connectOrCreate: PostCreateOrConnectWithoutcommentsInput
+}
+
+input PostUpdateOneWithoutCommentsInput {
+  create: PostCreateWithoutCommentsInput
+  connect: PostWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: PostUpdateWithoutCommentsInput
+  upsert: PostUpsertWithoutCommentsInput
+  connectOrCreate: PostCreateOrConnectWithoutcommentsInput
+}
+
+input PostCreateManyWithoutTagsInput {
+  create: [PostCreateWithoutTagsInput!]
+  connect: [PostWhereUniqueInput!]
+  connectOrCreate: [PostCreateOrConnectWithouttagsInput!]
+}
+
+input PostUpdateManyWithoutTagsInput {
+  create: [PostCreateWithoutTagsInput!]
+  connect: [PostWhereUniqueInput!]
+  set: [PostWhereUniqueInput!]
+  disconnect: [PostWhereUniqueInput!]
+  delete: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutTagsInput!]
+  updateMany: [PostUpdateManyWithWhereWithoutTagsInput!]
+  deleteMany: [PostScalarWhereInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutTagsInput!]
+  connectOrCreate: [PostCreateOrConnectWithouttagsInput!]
+}
+
+input NestedIntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input NestedStringFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringFilter
+}
+
+input NestedEnumRoleFilter {
+  equals: Role
+  in: [Role!]
+  notIn: [Role!]
+  not: NestedEnumRoleFilter
+}
+
+input NestedDateTimeFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeFilter
+}
+
+input NestedStringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableFilter
+}
+
+input NestedBoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input NestedIntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableFilter
+}
+
+input ProfileCreateWithoutUserInput {
+  bio: String!
+}
+
+input ProfileCreateOrConnectWithoutuserInput {
+  where: ProfileWhereUniqueInput!
+  create: ProfileCreateWithoutUserInput!
+}
+
+input PostCreateWithoutAuthorInput {
+  createdAt: DateTime
+  title: String!
+  content: String
+  published: Boolean
+  keywords: String!
+  categories: CategoryCreateManyWithoutPostsInput
+  comments: CommentCreateManyWithoutPostInput
+  tags: TagCreateManyWithoutPostsInput
+}
+
+input PostCreateOrConnectWithoutauthorInput {
+  where: PostWhereUniqueInput!
+  create: PostCreateWithoutAuthorInput!
+}
+
+input ProfileUpdateWithoutUserInput {
+  bio: StringFieldUpdateOperationsInput
+}
+
+input ProfileUpsertWithoutUserInput {
+  update: ProfileUpdateWithoutUserInput!
+  create: ProfileCreateWithoutUserInput!
+}
+
+input PostUpdateWithWhereUniqueWithoutAuthorInput {
+  where: PostWhereUniqueInput!
+  data: PostUpdateWithoutAuthorInput!
+}
+
+input PostUpdateManyWithWhereWithoutAuthorInput {
+  where: PostScalarWhereInput!
+  data: PostUpdateManyMutationInput!
+}
+
+input PostScalarWhereInput {
+  AND: [PostScalarWhereInput!]
+  OR: [PostScalarWhereInput!]
+  NOT: [PostScalarWhereInput!]
+  id: IntFilter
+  createdAt: DateTimeFilter
+  title: StringFilter
+  content: StringNullableFilter
+  published: BoolFilter
+  authorId: IntNullableFilter
+  keywords: StringFilter
+}
+
+input PostUpsertWithWhereUniqueWithoutAuthorInput {
+  where: PostWhereUniqueInput!
+  update: PostUpdateWithoutAuthorInput!
+  create: PostCreateWithoutAuthorInput!
+}
+
+input UserCreateWithoutProfileInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  role: Role
+  posts: PostCreateManyWithoutAuthorInput
+}
+
+input UserCreateOrConnectWithoutprofileInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutProfileInput!
+}
+
+input UserUpdateWithoutProfileInput {
+  email: StringFieldUpdateOperationsInput
+  firstName: StringFieldUpdateOperationsInput
+  lastName: StringFieldUpdateOperationsInput
+  role: EnumRoleFieldUpdateOperationsInput
+  posts: PostUpdateManyWithoutAuthorInput
+}
+
+input UserUpsertWithoutProfileInput {
+  update: UserUpdateWithoutProfileInput!
+  create: UserCreateWithoutProfileInput!
+}
+
+input UserCreateWithoutPostsInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  role: Role
+  profile: ProfileCreateOneWithoutUserInput
+}
+
+input UserCreateOrConnectWithoutpostsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutPostsInput!
+}
+
+input CategoryCreateWithoutPostsInput {
+  name: String!
+}
+
+input CategoryCreateOrConnectWithoutpostsInput {
+  where: CategoryWhereUniqueInput!
+  create: CategoryCreateWithoutPostsInput!
+}
+
+input CommentCreateWithoutPostInput {
+  title: String!
+  content: String
+}
+
+input CommentCreateOrConnectWithoutpostInput {
+  where: CommentWhereUniqueInput!
+  create: CommentCreateWithoutPostInput!
+}
+
+input TagCreateWithoutPostsInput {
+  name: String!
+}
+
+input TagCreateOrConnectWithoutpostsInput {
+  where: TagWhereUniqueInput!
+  create: TagCreateWithoutPostsInput!
+}
+
+input UserUpdateWithoutPostsInput {
+  email: StringFieldUpdateOperationsInput
+  firstName: StringFieldUpdateOperationsInput
+  lastName: StringFieldUpdateOperationsInput
+  role: EnumRoleFieldUpdateOperationsInput
+  profile: ProfileUpdateOneWithoutUserInput
+}
+
+input UserUpsertWithoutPostsInput {
+  update: UserUpdateWithoutPostsInput!
+  create: UserCreateWithoutPostsInput!
+}
+
+input CategoryUpdateWithWhereUniqueWithoutPostsInput {
+  where: CategoryWhereUniqueInput!
+  data: CategoryUpdateWithoutPostsInput!
+}
+
+input CategoryUpdateManyWithWhereWithoutPostsInput {
+  where: CategoryScalarWhereInput!
+  data: CategoryUpdateManyMutationInput!
+}
+
+input CategoryScalarWhereInput {
+  AND: [CategoryScalarWhereInput!]
+  OR: [CategoryScalarWhereInput!]
+  NOT: [CategoryScalarWhereInput!]
+  id: IntFilter
+  name: StringFilter
+}
+
+input CategoryUpsertWithWhereUniqueWithoutPostsInput {
+  where: CategoryWhereUniqueInput!
+  update: CategoryUpdateWithoutPostsInput!
+  create: CategoryCreateWithoutPostsInput!
+}
+
+input CommentUpdateWithWhereUniqueWithoutPostInput {
+  where: CommentWhereUniqueInput!
+  data: CommentUpdateWithoutPostInput!
+}
+
+input CommentUpdateManyWithWhereWithoutPostInput {
+  where: CommentScalarWhereInput!
+  data: CommentUpdateManyMutationInput!
+}
+
+input CommentScalarWhereInput {
+  AND: [CommentScalarWhereInput!]
+  OR: [CommentScalarWhereInput!]
+  NOT: [CommentScalarWhereInput!]
+  id: IntFilter
+  title: StringFilter
+  content: StringNullableFilter
+  postId: IntNullableFilter
+}
+
+input CommentUpsertWithWhereUniqueWithoutPostInput {
+  where: CommentWhereUniqueInput!
+  update: CommentUpdateWithoutPostInput!
+  create: CommentCreateWithoutPostInput!
+}
+
+input TagUpdateWithWhereUniqueWithoutPostsInput {
+  where: TagWhereUniqueInput!
+  data: TagUpdateWithoutPostsInput!
+}
+
+input TagUpdateManyWithWhereWithoutPostsInput {
+  where: TagScalarWhereInput!
+  data: TagUpdateManyMutationInput!
+}
+
+input TagScalarWhereInput {
+  AND: [TagScalarWhereInput!]
+  OR: [TagScalarWhereInput!]
+  NOT: [TagScalarWhereInput!]
+  name: StringFilter
+}
+
+input TagUpsertWithWhereUniqueWithoutPostsInput {
+  where: TagWhereUniqueInput!
+  update: TagUpdateWithoutPostsInput!
+  create: TagCreateWithoutPostsInput!
+}
+
+input PostCreateWithoutCategoriesInput {
+  createdAt: DateTime
+  title: String!
+  content: String
+  published: Boolean
+  keywords: String!
+  author: UserCreateOneWithoutPostsInput
+  comments: CommentCreateManyWithoutPostInput
+  tags: TagCreateManyWithoutPostsInput
+}
+
+input PostCreateOrConnectWithoutcategoriesInput {
+  where: PostWhereUniqueInput!
+  create: PostCreateWithoutCategoriesInput!
+}
+
+input PostUpdateWithWhereUniqueWithoutCategoriesInput {
+  where: PostWhereUniqueInput!
+  data: PostUpdateWithoutCategoriesInput!
+}
+
+input PostUpdateManyWithWhereWithoutCategoriesInput {
+  where: PostScalarWhereInput!
+  data: PostUpdateManyMutationInput!
+}
+
+input PostUpsertWithWhereUniqueWithoutCategoriesInput {
+  where: PostWhereUniqueInput!
+  update: PostUpdateWithoutCategoriesInput!
+  create: PostCreateWithoutCategoriesInput!
+}
+
+input PostCreateWithoutCommentsInput {
+  createdAt: DateTime
+  title: String!
+  content: String
+  published: Boolean
+  keywords: String!
+  author: UserCreateOneWithoutPostsInput
+  categories: CategoryCreateManyWithoutPostsInput
+  tags: TagCreateManyWithoutPostsInput
+}
+
+input PostCreateOrConnectWithoutcommentsInput {
+  where: PostWhereUniqueInput!
+  create: PostCreateWithoutCommentsInput!
+}
+
+input PostUpdateWithoutCommentsInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  content: NullableStringFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  keywords: StringFieldUpdateOperationsInput
+  author: UserUpdateOneWithoutPostsInput
+  categories: CategoryUpdateManyWithoutPostsInput
+  tags: TagUpdateManyWithoutPostsInput
+}
+
+input PostUpsertWithoutCommentsInput {
+  update: PostUpdateWithoutCommentsInput!
+  create: PostCreateWithoutCommentsInput!
+}
+
+input PostCreateWithoutTagsInput {
+  createdAt: DateTime
+  title: String!
+  content: String
+  published: Boolean
+  keywords: String!
+  author: UserCreateOneWithoutPostsInput
+  categories: CategoryCreateManyWithoutPostsInput
+  comments: CommentCreateManyWithoutPostInput
+}
+
+input PostCreateOrConnectWithouttagsInput {
+  where: PostWhereUniqueInput!
+  create: PostCreateWithoutTagsInput!
+}
+
+input PostUpdateWithWhereUniqueWithoutTagsInput {
+  where: PostWhereUniqueInput!
+  data: PostUpdateWithoutTagsInput!
+}
+
+input PostUpdateManyWithWhereWithoutTagsInput {
+  where: PostScalarWhereInput!
+  data: PostUpdateManyMutationInput!
+}
+
+input PostUpsertWithWhereUniqueWithoutTagsInput {
+  where: PostWhereUniqueInput!
+  update: PostUpdateWithoutTagsInput!
+  create: PostCreateWithoutTagsInput!
+}
+
+input PostUpdateWithoutAuthorInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  content: NullableStringFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  keywords: StringFieldUpdateOperationsInput
+  categories: CategoryUpdateManyWithoutPostsInput
+  comments: CommentUpdateManyWithoutPostInput
+  tags: TagUpdateManyWithoutPostsInput
+}
+
+input CategoryUpdateWithoutPostsInput {
+  name: StringFieldUpdateOperationsInput
+}
+
+input CommentUpdateWithoutPostInput {
+  title: StringFieldUpdateOperationsInput
+  content: NullableStringFieldUpdateOperationsInput
+}
+
+input TagUpdateWithoutPostsInput {
+  name: StringFieldUpdateOperationsInput
+}
+
+input PostUpdateWithoutCategoriesInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  content: NullableStringFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  keywords: StringFieldUpdateOperationsInput
+  author: UserUpdateOneWithoutPostsInput
+  comments: CommentUpdateManyWithoutPostInput
+  tags: TagUpdateManyWithoutPostsInput
+}
+
+input PostUpdateWithoutTagsInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  content: NullableStringFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  keywords: StringFieldUpdateOperationsInput
+  author: UserUpdateOneWithoutPostsInput
+  categories: CategoryUpdateManyWithoutPostsInput
+  comments: CommentUpdateManyWithoutPostInput
+}
+
+type AggregateUser {
+  count: UserCountAggregateOutputType
+  avg: UserAvgAggregateOutputType
+  sum: UserSumAggregateOutputType
+  min: UserMinAggregateOutputType
+  max: UserMaxAggregateOutputType
+}
+
+type AggregateProfile {
+  count: ProfileCountAggregateOutputType
+  avg: ProfileAvgAggregateOutputType
+  sum: ProfileSumAggregateOutputType
+  min: ProfileMinAggregateOutputType
+  max: ProfileMaxAggregateOutputType
+}
+
+type AggregatePost {
+  count: PostCountAggregateOutputType
+  avg: PostAvgAggregateOutputType
+  sum: PostSumAggregateOutputType
+  min: PostMinAggregateOutputType
+  max: PostMaxAggregateOutputType
+}
+
+type AggregateCategory {
+  count: CategoryCountAggregateOutputType
+  avg: CategoryAvgAggregateOutputType
+  sum: CategorySumAggregateOutputType
+  min: CategoryMinAggregateOutputType
+  max: CategoryMaxAggregateOutputType
+}
+
+type AggregateComment {
+  count: CommentCountAggregateOutputType
+  avg: CommentAvgAggregateOutputType
+  sum: CommentSumAggregateOutputType
+  min: CommentMinAggregateOutputType
+  max: CommentMaxAggregateOutputType
+}
+
+type AggregateTag {
+  count: TagCountAggregateOutputType
+  min: TagMinAggregateOutputType
+  max: TagMaxAggregateOutputType
+}
+
+type UserCountAggregateOutputType {
+  id: Int!
+  email: Int
+  firstName: Int
+  lastName: Int
+  role: Int
+  _all: Int!
+}
+
+type UserAvgAggregateOutputType {
+  id: Float!
+}
+
+type UserSumAggregateOutputType {
+  id: Int!
+}
+
+type UserMinAggregateOutputType {
+  id: Int!
+  email: String
+  firstName: String
+  lastName: String
+  role: Role
+}
+
+type UserMaxAggregateOutputType {
+  id: Int!
+  email: String
+  firstName: String
+  lastName: String
+  role: Role
+}
+
+type ProfileCountAggregateOutputType {
+  id: Int!
+  bio: Int
+  userId: Int!
+  _all: Int!
+}
+
+type ProfileAvgAggregateOutputType {
+  id: Float!
+  userId: Float!
+}
+
+type ProfileSumAggregateOutputType {
+  id: Int!
+  userId: Int!
+}
+
+type ProfileMinAggregateOutputType {
+  id: Int!
+  bio: String
+  userId: Int!
+}
+
+type ProfileMaxAggregateOutputType {
+  id: Int!
+  bio: String
+  userId: Int!
+}
+
+type PostCountAggregateOutputType {
+  id: Int!
+  createdAt: Int
+  title: Int
+  content: Int
+  published: Int
+  authorId: Int
+  keywords: Int
+  _all: Int!
+}
+
+type PostAvgAggregateOutputType {
+  id: Float!
+  authorId: Float
+}
+
+type PostSumAggregateOutputType {
+  id: Int!
+  authorId: Int
+}
+
+type PostMinAggregateOutputType {
+  id: Int!
+  createdAt: DateTime
+  title: String
+  content: String
+  published: Boolean
+  authorId: Int
+  keywords: String
+}
+
+type PostMaxAggregateOutputType {
+  id: Int!
+  createdAt: DateTime
+  title: String
+  content: String
+  published: Boolean
+  authorId: Int
+  keywords: String
+}
+
+type CategoryCountAggregateOutputType {
+  id: Int!
+  name: Int
+  _all: Int!
+}
+
+type CategoryAvgAggregateOutputType {
+  id: Float!
+}
+
+type CategorySumAggregateOutputType {
+  id: Int!
+}
+
+type CategoryMinAggregateOutputType {
+  id: Int!
+  name: String
+}
+
+type CategoryMaxAggregateOutputType {
+  id: Int!
+  name: String
+}
+
+type CommentCountAggregateOutputType {
+  id: Int!
+  title: Int
+  content: Int
+  postId: Int
+  _all: Int!
+}
+
+type CommentAvgAggregateOutputType {
+  id: Float!
+  postId: Float
+}
+
+type CommentSumAggregateOutputType {
+  id: Int!
+  postId: Int
+}
+
+type CommentMinAggregateOutputType {
+  id: Int!
+  title: String
+  content: String
+  postId: Int
+}
+
+type CommentMaxAggregateOutputType {
+  id: Int!
+  title: String
+  content: String
+  postId: Int
+}
+
+type TagCountAggregateOutputType {
+  name: Int
+  _all: Int!
+}
+
+type TagMinAggregateOutputType {
+  name: String
+}
+
+type TagMaxAggregateOutputType {
+  name: String
+}
+
+type User {
+  id: Int!
+  email: String!
+  firstName: String!
+  lastName: String!
+  role: Role!
+  profile: Profile
+  posts(where: PostWhereInput, orderBy: PostOrderByInput, cursor: PostWhereUniqueInput, take: Int, skip: Int, distinct: PostScalarFieldEnum): [Post!]!
+}
+
+type Query {
+  findUniqueUser(where: UserWhereUniqueInput!): User
+  findFirstUser(where: UserWhereInput, orderBy: [UserOrderByInput!], cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, skip: Int, take: Int): [User!]
+  findManyUser(where: UserWhereInput, orderBy: [UserOrderByInput!], cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, skip: Int, take: Int): [User!]
+  findManyUserCount(where: UserWhereInput, orderBy: [UserOrderByInput!], cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, skip: Int, take: Int): Int!
+  aggregateUser(where: UserWhereInput, orderBy: [UserOrderByInput!], cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, skip: Int, take: Int): AggregateUser
+  findUniqueProfile(where: ProfileWhereUniqueInput!): Profile
+  findFirstProfile(where: ProfileWhereInput, orderBy: [ProfileOrderByInput!], cursor: ProfileWhereUniqueInput, distinct: ProfileScalarFieldEnum, skip: Int, take: Int): [Profile!]
+  findManyProfile(where: ProfileWhereInput, orderBy: [ProfileOrderByInput!], cursor: ProfileWhereUniqueInput, distinct: ProfileScalarFieldEnum, skip: Int, take: Int): [Profile!]
+  findManyProfileCount(where: ProfileWhereInput, orderBy: [ProfileOrderByInput!], cursor: ProfileWhereUniqueInput, distinct: ProfileScalarFieldEnum, skip: Int, take: Int): Int!
+  aggregateProfile(where: ProfileWhereInput, orderBy: [ProfileOrderByInput!], cursor: ProfileWhereUniqueInput, distinct: ProfileScalarFieldEnum, skip: Int, take: Int): AggregateProfile
+  findUniquePost(where: PostWhereUniqueInput!): Post
+  findFirstPost(where: PostWhereInput, orderBy: [PostOrderByInput!], cursor: PostWhereUniqueInput, distinct: PostScalarFieldEnum, skip: Int, take: Int): [Post!]
+  findManyPost(where: PostWhereInput, orderBy: [PostOrderByInput!], cursor: PostWhereUniqueInput, distinct: PostScalarFieldEnum, skip: Int, take: Int): [Post!]
+  findManyPostCount(where: PostWhereInput, orderBy: [PostOrderByInput!], cursor: PostWhereUniqueInput, distinct: PostScalarFieldEnum, skip: Int, take: Int): Int!
+  aggregatePost(where: PostWhereInput, orderBy: [PostOrderByInput!], cursor: PostWhereUniqueInput, distinct: PostScalarFieldEnum, skip: Int, take: Int): AggregatePost
+  findUniqueCategory(where: CategoryWhereUniqueInput!): Category
+  findFirstCategory(where: CategoryWhereInput, orderBy: [CategoryOrderByInput!], cursor: CategoryWhereUniqueInput, distinct: CategoryScalarFieldEnum, skip: Int, take: Int): [Category!]
+  findManyCategory(where: CategoryWhereInput, orderBy: [CategoryOrderByInput!], cursor: CategoryWhereUniqueInput, distinct: CategoryScalarFieldEnum, skip: Int, take: Int): [Category!]
+  findManyCategoryCount(where: CategoryWhereInput, orderBy: [CategoryOrderByInput!], cursor: CategoryWhereUniqueInput, distinct: CategoryScalarFieldEnum, skip: Int, take: Int): Int!
+  aggregateCategory(where: CategoryWhereInput, orderBy: [CategoryOrderByInput!], cursor: CategoryWhereUniqueInput, distinct: CategoryScalarFieldEnum, skip: Int, take: Int): AggregateCategory
+  findUniqueComment(where: CommentWhereUniqueInput!): Comment
+  findFirstComment(where: CommentWhereInput, orderBy: [CommentOrderByInput!], cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, skip: Int, take: Int): [Comment!]
+  findManyComment(where: CommentWhereInput, orderBy: [CommentOrderByInput!], cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, skip: Int, take: Int): [Comment!]
+  findManyCommentCount(where: CommentWhereInput, orderBy: [CommentOrderByInput!], cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, skip: Int, take: Int): Int!
+  aggregateComment(where: CommentWhereInput, orderBy: [CommentOrderByInput!], cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, skip: Int, take: Int): AggregateComment
+  findUniqueTag(where: TagWhereUniqueInput!): Tag
+  findFirstTag(where: TagWhereInput, orderBy: [TagOrderByInput!], cursor: TagWhereUniqueInput, distinct: TagScalarFieldEnum, skip: Int, take: Int): [Tag!]
+  findManyTag(where: TagWhereInput, orderBy: [TagOrderByInput!], cursor: TagWhereUniqueInput, distinct: TagScalarFieldEnum, skip: Int, take: Int): [Tag!]
+  findManyTagCount(where: TagWhereInput, orderBy: [TagOrderByInput!], cursor: TagWhereUniqueInput, distinct: TagScalarFieldEnum, skip: Int, take: Int): Int!
+  aggregateTag(where: TagWhereInput, orderBy: [TagOrderByInput!], cursor: TagWhereUniqueInput, distinct: TagScalarFieldEnum, skip: Int, take: Int): AggregateTag
+}
+
+type Mutation {
+  createOneUser(data: UserCreateInput!): User!
+  updateOneUser(where: UserWhereUniqueInput!, data: UserUpdateInput!): User!
+  deleteOneUser(where: UserWhereUniqueInput!): User
+  upsertOneUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User
+  deleteManyUser(where: UserWhereInput): BatchPayload
+  updateManyUser(where: UserWhereInput, data: UserUpdateManyMutationInput): BatchPayload
+  createOneProfile(data: ProfileCreateInput!): Profile!
+  updateOneProfile(where: ProfileWhereUniqueInput!, data: ProfileUpdateInput!): Profile!
+  deleteOneProfile(where: ProfileWhereUniqueInput!): Profile
+  upsertOneProfile(where: ProfileWhereUniqueInput!, create: ProfileCreateInput!, update: ProfileUpdateInput!): Profile
+  deleteManyProfile(where: ProfileWhereInput): BatchPayload
+  updateManyProfile(where: ProfileWhereInput, data: ProfileUpdateManyMutationInput): BatchPayload
+  createOnePost(data: PostCreateInput!): Post!
+  updateOnePost(where: PostWhereUniqueInput!, data: PostUpdateInput!): Post!
+  deleteOnePost(where: PostWhereUniqueInput!): Post
+  upsertOnePost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post
+  deleteManyPost(where: PostWhereInput): BatchPayload
+  updateManyPost(where: PostWhereInput, data: PostUpdateManyMutationInput): BatchPayload
+  createOneCategory(data: CategoryCreateInput!): Category!
+  updateOneCategory(where: CategoryWhereUniqueInput!, data: CategoryUpdateInput!): Category!
+  deleteOneCategory(where: CategoryWhereUniqueInput!): Category
+  upsertOneCategory(where: CategoryWhereUniqueInput!, create: CategoryCreateInput!, update: CategoryUpdateInput!): Category
+  deleteManyCategory(where: CategoryWhereInput): BatchPayload
+  updateManyCategory(where: CategoryWhereInput, data: CategoryUpdateManyMutationInput): BatchPayload
+  createOneComment(data: CommentCreateInput!): Comment!
+  updateOneComment(where: CommentWhereUniqueInput!, data: CommentUpdateInput!): Comment!
+  deleteOneComment(where: CommentWhereUniqueInput!): Comment
+  upsertOneComment(where: CommentWhereUniqueInput!, create: CommentCreateInput!, update: CommentUpdateInput!): Comment
+  deleteManyComment(where: CommentWhereInput): BatchPayload
+  updateManyComment(where: CommentWhereInput, data: CommentUpdateManyMutationInput): BatchPayload
+  createOneTag(data: TagCreateInput!): Tag!
+  updateOneTag(where: TagWhereUniqueInput!, data: TagUpdateInput!): Tag!
+  deleteOneTag(where: TagWhereUniqueInput!): Tag
+  upsertOneTag(where: TagWhereUniqueInput!, create: TagCreateInput!, update: TagUpdateInput!): Tag
+  deleteManyTag(where: TagWhereInput): BatchPayload
+  updateManyTag(where: TagWhereInput, data: TagUpdateManyMutationInput): BatchPayload
+}
+
+type Profile {
+  id: Int!
+  bio: String!
+  userId: Int!
+  user: User!
+}
+
+type Post {
+  id: Int!
+  createdAt: DateTime!
+  title: String!
+  content: String
+  published: Boolean!
+  authorId: Int
+  author: User
+  categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, cursor: CategoryWhereUniqueInput, take: Int, skip: Int, distinct: CategoryScalarFieldEnum): [Category!]!
+  comments(where: CommentWhereInput, orderBy: CommentOrderByInput, cursor: CommentWhereUniqueInput, take: Int, skip: Int, distinct: CommentScalarFieldEnum): [Comment!]!
+  keywords: String!
+  tags(where: TagWhereInput, orderBy: TagOrderByInput, cursor: TagWhereUniqueInput, take: Int, skip: Int, distinct: TagScalarFieldEnum): [Tag!]!
+}
+
+type Category {
+  id: Int!
+  name: String!
+  posts(where: PostWhereInput, orderBy: PostOrderByInput, cursor: PostWhereUniqueInput, take: Int, skip: Int, distinct: PostScalarFieldEnum): [Post!]!
+}
+
+type Comment {
+  id: Int!
+  title: String!
+  content: String
+  postId: Int
+  post: Post
+}
+
+type Tag {
+  name: String!
+  posts(where: PostWhereInput, orderBy: PostOrderByInput, cursor: PostWhereUniqueInput, take: Int, skip: Int, distinct: PostScalarFieldEnum): [Post!]!
+}

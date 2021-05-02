@@ -1,0 +1,108 @@
+type Tag {
+  name: String!
+  posts: [Post!]!
+}
+
+input TagCreateInput {
+  name: String!
+  posts: PostCreateManyWithoutTagsInput
+}
+
+input TagCreateManyWithoutPostsInput {
+  connect: [TagWhereUniqueInput!]
+  connectOrCreate: [TagCreateOrConnectWithoutpostsInput!]
+  create: [TagCreateWithoutPostsInput!]
+}
+
+input TagCreateOrConnectWithoutpostsInput {
+  create: TagCreateWithoutPostsInput!
+  where: TagWhereUniqueInput!
+}
+
+input TagCreateWithoutPostsInput {
+  name: String!
+}
+
+input TagListRelationFilter {
+  every: TagWhereInput
+  none: TagWhereInput
+  some: TagWhereInput
+}
+
+input TagOrderByInput {
+  name: SortOrder
+}
+
+input TagScalarWhereInput {
+  AND: [TagScalarWhereInput!]
+  name: StringFilter
+  NOT: [TagScalarWhereInput!]
+  OR: [TagScalarWhereInput!]
+}
+
+input TagUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  posts: PostUpdateManyWithoutTagsInput
+}
+
+input TagUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+}
+
+input TagUpdateManyWithoutPostsInput {
+  connect: [TagWhereUniqueInput!]
+  connectOrCreate: [TagCreateOrConnectWithoutpostsInput!]
+  create: [TagCreateWithoutPostsInput!]
+  delete: [TagWhereUniqueInput!]
+  deleteMany: [TagScalarWhereInput!]
+  disconnect: [TagWhereUniqueInput!]
+  set: [TagWhereUniqueInput!]
+  update: [TagUpdateWithWhereUniqueWithoutPostsInput!]
+  updateMany: [TagUpdateManyWithWhereWithoutPostsInput!]
+  upsert: [TagUpsertWithWhereUniqueWithoutPostsInput!]
+}
+
+input TagUpdateManyWithWhereWithoutPostsInput {
+  data: TagUpdateManyMutationInput!
+  where: TagScalarWhereInput!
+}
+
+input TagUpdateWithoutPostsInput {
+  name: StringFieldUpdateOperationsInput
+}
+
+input TagUpdateWithWhereUniqueWithoutPostsInput {
+  data: TagUpdateWithoutPostsInput!
+  where: TagWhereUniqueInput!
+}
+
+input TagUpsertWithWhereUniqueWithoutPostsInput {
+  create: TagCreateWithoutPostsInput!
+  update: TagUpdateWithoutPostsInput!
+  where: TagWhereUniqueInput!
+}
+
+input TagWhereInput {
+  AND: [TagWhereInput!]
+  name: StringFilter
+  NOT: [TagWhereInput!]
+  OR: [TagWhereInput!]
+  posts: PostListRelationFilter
+}
+
+input TagWhereUniqueInput {
+  name: String
+}
+
+type Query {
+  tag(where: TagWhereUniqueInput!): Tag
+  tags(cursor: TagWhereUniqueInput, take: Int, skip: Int, orderBy: [TagOrderByInput!], where: TagWhereInput): [Tag!]!
+}
+
+type Mutation {
+  createTag(data: TagCreateInput!): Tag!
+  deleteTag(where: TagWhereUniqueInput!): Tag
+  deleteTags(where: TagWhereInput): BatchPayload!
+  updateTag(data: TagUpdateInput!, where: TagWhereUniqueInput!): Tag
+  updateTags(data: TagUpdateManyMutationInput!, where: TagWhereInput): BatchPayload!
+}

@@ -1,0 +1,91 @@
+type Profile {
+  bio: String!
+  id: Int!
+  user: User!
+}
+
+input ProfileCreateInput {
+  bio: String!
+  user: UserCreateOneWithoutProfileInput!
+}
+
+input ProfileCreateOneWithoutUserInput {
+  connect: ProfileWhereUniqueInput
+  connectOrCreate: ProfileCreateOrConnectWithoutuserInput
+  create: ProfileCreateWithoutUserInput
+}
+
+input ProfileCreateOrConnectWithoutuserInput {
+  create: ProfileCreateWithoutUserInput!
+  where: ProfileWhereUniqueInput!
+}
+
+input ProfileCreateWithoutUserInput {
+  bio: String!
+}
+
+input ProfileOrderByInput {
+  bio: SortOrder
+  id: SortOrder
+  userId: SortOrder
+}
+
+input ProfileUpdateInput {
+  bio: StringFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutProfileInput
+}
+
+input ProfileUpdateManyMutationInput {
+  bio: StringFieldUpdateOperationsInput
+}
+
+input ProfileUpdateOneWithoutUserInput {
+  connect: ProfileWhereUniqueInput
+  connectOrCreate: ProfileCreateOrConnectWithoutuserInput
+  create: ProfileCreateWithoutUserInput
+  delete: Boolean
+  disconnect: Boolean
+  update: ProfileUpdateWithoutUserInput
+  upsert: ProfileUpsertWithoutUserInput
+}
+
+input ProfileUpdateWithoutUserInput {
+  bio: StringFieldUpdateOperationsInput
+}
+
+input ProfileUpsertWithoutUserInput {
+  create: ProfileCreateWithoutUserInput!
+  update: ProfileUpdateWithoutUserInput!
+}
+
+input ProfileWhereInput {
+  AND: [ProfileWhereInput!]
+  bio: StringFilter
+  id: IntFilter
+  NOT: [ProfileWhereInput!]
+  OR: [ProfileWhereInput!]
+  user: UserWhereInput
+  userId: IntFilter
+}
+
+input ProfileWhereUniqueInput {
+  id: Int
+}
+
+type Query {
+  profile(where: ProfileWhereUniqueInput!): Profile
+  profiles(
+    cursor: ProfileWhereUniqueInput
+    take: Int
+    skip: Int
+    orderBy: [ProfileOrderByInput!]
+    where: ProfileWhereInput
+  ): [Profile!]!
+}
+type Mutation {
+  createProfile(data: ProfileCreateInput!): Profile!
+  deleteProfile(where: ProfileWhereUniqueInput!): Profile
+  deleteProfiles(where: ProfileWhereInput): BatchPayload!
+  updateProfile(data: ProfileUpdateInput!, where: ProfileWhereUniqueInput!): Profile
+  updateProfiles(data: ProfileUpdateManyMutationInput!, where: ProfileWhereInput): BatchPayload!
+}

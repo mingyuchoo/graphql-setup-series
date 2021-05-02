@@ -1,0 +1,3 @@
+NODE_ENV=development
+APOLLO_KEY=<my_secure_key>
+

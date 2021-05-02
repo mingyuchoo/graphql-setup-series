@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo-db
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_DATABASE_USERNAME: test
+      MONGO_DATABASE_PASSWORD: test
+      MONGO_DATABASE_NAME: test
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: admin
+    volumes:
+      - ./init/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./init/mongod.service:/lib/systemd/system/mongod.service
+      - ./init/mongod.conf:/etc/mongod.conf
+      # - ./db_data:/data/db
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express-web
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root
+# volumes:
+#   db_data:

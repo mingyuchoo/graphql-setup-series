@@ -1,0 +1,352 @@
+type Post {
+  author: User
+  categories(cursor: CategoryWhereUniqueInput, take: Int, skip: Int): [Category!]!
+  comments(cursor: CommentWhereUniqueInput, take: Int, skip: Int): [Comment!]!
+  content: String
+  createdAt: DateTime!
+  id: Int!
+  keywords: [String!]!
+  published: Boolean!
+  tags(cursor: TagWhereUniqueInput, take: Int, skip: Int): [Tag!]!
+  title: String!
+}
+
+input PostCreateInput {
+  author: UserCreateOneWithoutPostsInput
+  categories: CategoryCreateManyWithoutPostsInput
+  comments: CommentCreateManyWithoutPostInput
+  content: String
+  createdAt: DateTime
+  keywords: PostCreatekeywordsInput
+  published: Boolean
+  tags: TagCreateManyWithoutPostsInput
+  title: String!
+}
+
+input PostCreatekeywordsInput {
+  set: [String!]!
+}
+
+input PostCreateManyWithoutAuthorInput {
+  connect: [PostWhereUniqueInput!]
+  connectOrCreate: [PostCreateOrConnectWithoutauthorInput!]
+  create: [PostCreateWithoutAuthorInput!]
+}
+
+input PostCreateManyWithoutCategoriesInput {
+  connect: [PostWhereUniqueInput!]
+  connectOrCreate: [PostCreateOrConnectWithoutcategoriesInput!]
+  create: [PostCreateWithoutCategoriesInput!]
+}
+
+input PostCreateManyWithoutTagsInput {
+  connect: [PostWhereUniqueInput!]
+  connectOrCreate: [PostCreateOrConnectWithouttagsInput!]
+  create: [PostCreateWithoutTagsInput!]
+}
+
+input PostCreateOneWithoutCommentsInput {
+  connect: PostWhereUniqueInput
+  connectOrCreate: PostCreateOrConnectWithoutcommentsInput
+  create: PostCreateWithoutCommentsInput
+}
+
+input PostCreateOrConnectWithoutauthorInput {
+  create: PostCreateWithoutAuthorInput!
+  where: PostWhereUniqueInput!
+}
+
+input PostCreateOrConnectWithoutcategoriesInput {
+  create: PostCreateWithoutCategoriesInput!
+  where: PostWhereUniqueInput!
+}
+
+input PostCreateOrConnectWithoutcommentsInput {
+  create: PostCreateWithoutCommentsInput!
+  where: PostWhereUniqueInput!
+}
+
+input PostCreateOrConnectWithouttagsInput {
+  create: PostCreateWithoutTagsInput!
+  where: PostWhereUniqueInput!
+}
+
+input PostCreateWithoutAuthorInput {
+  categories: CategoryCreateManyWithoutPostsInput
+  comments: CommentCreateManyWithoutPostInput
+  content: String
+  createdAt: DateTime
+  keywords: PostCreatekeywordsInput
+  published: Boolean
+  tags: TagCreateManyWithoutPostsInput
+  title: String!
+}
+
+input PostCreateWithoutCategoriesInput {
+  author: UserCreateOneWithoutPostsInput
+  comments: CommentCreateManyWithoutPostInput
+  content: String
+  createdAt: DateTime
+  keywords: PostCreatekeywordsInput
+  published: Boolean
+  tags: TagCreateManyWithoutPostsInput
+  title: String!
+}
+
+input PostCreateWithoutCommentsInput {
+  author: UserCreateOneWithoutPostsInput
+  categories: CategoryCreateManyWithoutPostsInput
+  content: String
+  createdAt: DateTime
+  keywords: PostCreatekeywordsInput
+  published: Boolean
+  tags: TagCreateManyWithoutPostsInput
+  title: String!
+}
+
+input PostCreateWithoutTagsInput {
+  author: UserCreateOneWithoutPostsInput
+  categories: CategoryCreateManyWithoutPostsInput
+  comments: CommentCreateManyWithoutPostInput
+  content: String
+  createdAt: DateTime
+  keywords: PostCreatekeywordsInput
+  published: Boolean
+  title: String!
+}
+
+input PostListRelationFilter {
+  every: PostWhereInput
+  none: PostWhereInput
+  some: PostWhereInput
+}
+
+input PostOrderByInput {
+  content: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  keywords: SortOrder
+  published: SortOrder
+  title: SortOrder
+}
+
+input PostScalarWhereInput {
+  AND: [PostScalarWhereInput!]
+  content: StringNullableFilter
+  createdAt: DateTimeFilter
+  id: IntFilter
+  keywords: StringNullableListFilter
+  NOT: [PostScalarWhereInput!]
+  OR: [PostScalarWhereInput!]
+  published: BoolFilter
+  title: StringFilter
+}
+
+input PostUpdateInput {
+  author: UserUpdateOneWithoutPostsInput
+  categories: CategoryUpdateManyWithoutPostsInput
+  comments: CommentUpdateManyWithoutPostInput
+  content: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  keywords: PostUpdatekeywordsInput
+  published: BoolFieldUpdateOperationsInput
+  tags: TagUpdateManyWithoutPostsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input PostUpdatekeywordsInput {
+  set: [String!]!
+}
+
+input PostUpdateManyMutationInput {
+  content: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  keywords: PostUpdatekeywordsInput
+  published: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input PostUpdateManyWithoutAuthorInput {
+  connect: [PostWhereUniqueInput!]
+  connectOrCreate: [PostCreateOrConnectWithoutauthorInput!]
+  create: [PostCreateWithoutAuthorInput!]
+  delete: [PostWhereUniqueInput!]
+  deleteMany: [PostScalarWhereInput!]
+  disconnect: [PostWhereUniqueInput!]
+  set: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutAuthorInput!]
+  updateMany: [PostUpdateManyWithWhereWithoutAuthorInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutAuthorInput!]
+}
+
+input PostUpdateManyWithoutCategoriesInput {
+  connect: [PostWhereUniqueInput!]
+  connectOrCreate: [PostCreateOrConnectWithoutcategoriesInput!]
+  create: [PostCreateWithoutCategoriesInput!]
+  delete: [PostWhereUniqueInput!]
+  deleteMany: [PostScalarWhereInput!]
+  disconnect: [PostWhereUniqueInput!]
+  set: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutCategoriesInput!]
+  updateMany: [PostUpdateManyWithWhereWithoutCategoriesInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutCategoriesInput!]
+}
+
+input PostUpdateManyWithoutTagsInput {
+  connect: [PostWhereUniqueInput!]
+  connectOrCreate: [PostCreateOrConnectWithouttagsInput!]
+  create: [PostCreateWithoutTagsInput!]
+  delete: [PostWhereUniqueInput!]
+  deleteMany: [PostScalarWhereInput!]
+  disconnect: [PostWhereUniqueInput!]
+  set: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutTagsInput!]
+  updateMany: [PostUpdateManyWithWhereWithoutTagsInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutTagsInput!]
+}
+
+input PostUpdateManyWithWhereWithoutAuthorInput {
+  data: PostUpdateManyMutationInput!
+  where: PostScalarWhereInput!
+}
+
+input PostUpdateManyWithWhereWithoutCategoriesInput {
+  data: PostUpdateManyMutationInput!
+  where: PostScalarWhereInput!
+}
+
+input PostUpdateManyWithWhereWithoutTagsInput {
+  data: PostUpdateManyMutationInput!
+  where: PostScalarWhereInput!
+}
+
+input PostUpdateOneWithoutCommentsInput {
+  connect: PostWhereUniqueInput
+  connectOrCreate: PostCreateOrConnectWithoutcommentsInput
+  create: PostCreateWithoutCommentsInput
+  delete: Boolean
+  disconnect: Boolean
+  update: PostUpdateWithoutCommentsInput
+  upsert: PostUpsertWithoutCommentsInput
+}
+
+input PostUpdateWithoutAuthorInput {
+  categories: CategoryUpdateManyWithoutPostsInput
+  comments: CommentUpdateManyWithoutPostInput
+  content: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  keywords: PostUpdatekeywordsInput
+  published: BoolFieldUpdateOperationsInput
+  tags: TagUpdateManyWithoutPostsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input PostUpdateWithoutCategoriesInput {
+  author: UserUpdateOneWithoutPostsInput
+  comments: CommentUpdateManyWithoutPostInput
+  content: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  keywords: PostUpdatekeywordsInput
+  published: BoolFieldUpdateOperationsInput
+  tags: TagUpdateManyWithoutPostsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input PostUpdateWithoutCommentsInput {
+  author: UserUpdateOneWithoutPostsInput
+  categories: CategoryUpdateManyWithoutPostsInput
+  content: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  keywords: PostUpdatekeywordsInput
+  published: BoolFieldUpdateOperationsInput
+  tags: TagUpdateManyWithoutPostsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input PostUpdateWithoutTagsInput {
+  author: UserUpdateOneWithoutPostsInput
+  categories: CategoryUpdateManyWithoutPostsInput
+  comments: CommentUpdateManyWithoutPostInput
+  content: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  keywords: PostUpdatekeywordsInput
+  published: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input PostUpdateWithWhereUniqueWithoutAuthorInput {
+  data: PostUpdateWithoutAuthorInput!
+  where: PostWhereUniqueInput!
+}
+
+input PostUpdateWithWhereUniqueWithoutCategoriesInput {
+  data: PostUpdateWithoutCategoriesInput!
+  where: PostWhereUniqueInput!
+}
+
+input PostUpdateWithWhereUniqueWithoutTagsInput {
+  data: PostUpdateWithoutTagsInput!
+  where: PostWhereUniqueInput!
+}
+
+input PostUpsertWithoutCommentsInput {
+  create: PostCreateWithoutCommentsInput!
+  update: PostUpdateWithoutCommentsInput!
+}
+
+input PostUpsertWithWhereUniqueWithoutAuthorInput {
+  create: PostCreateWithoutAuthorInput!
+  update: PostUpdateWithoutAuthorInput!
+  where: PostWhereUniqueInput!
+}
+
+input PostUpsertWithWhereUniqueWithoutCategoriesInput {
+  create: PostCreateWithoutCategoriesInput!
+  update: PostUpdateWithoutCategoriesInput!
+  where: PostWhereUniqueInput!
+}
+
+input PostUpsertWithWhereUniqueWithoutTagsInput {
+  create: PostCreateWithoutTagsInput!
+  update: PostUpdateWithoutTagsInput!
+  where: PostWhereUniqueInput!
+}
+
+input PostWhereInput {
+  AND: [PostWhereInput!]
+  author: UserWhereInput
+  categories: CategoryListRelationFilter
+  comments: CommentListRelationFilter
+  content: StringNullableFilter
+  createdAt: DateTimeFilter
+  id: IntFilter
+  keywords: StringNullableListFilter
+  NOT: [PostWhereInput!]
+  OR: [PostWhereInput!]
+  published: BoolFilter
+  tags: TagListRelationFilter
+  title: StringFilter
+}
+
+input PostWhereUniqueInput {
+  id: Int
+}
+
+type Query {
+  post(where: PostWhereUniqueInput!): Post
+  posts(
+    cursor: PostWhereUniqueInput
+    take: Int
+    skip: Int
+    orderBy: [PostOrderByInput!]
+    where: PostWhereInput
+  ): [Post!]!
+}
+
+type Mutation {
+  createPost(data: PostCreateInput!): Post!
+  deletePost(where: PostWhereUniqueInput!): Post
+  deletePosts(where: PostWhereInput): BatchPayload!
+  updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
+  updatePosts(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
+}

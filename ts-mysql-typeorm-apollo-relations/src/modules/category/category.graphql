@@ -1,0 +1,117 @@
+type Category {
+  id: Int!
+  name: String!
+  posts(cursor: PostWhereUniqueInput, take: Int, skip: Int): [Post!]!
+}
+
+input CategoryCreateInput {
+  name: String!
+  posts: PostCreateManyWithoutCategoriesInput
+}
+
+input CategoryCreateManyWithoutPostsInput {
+  connect: [CategoryWhereUniqueInput!]
+  connectOrCreate: [CategoryCreateOrConnectWithoutpostsInput!]
+  create: [CategoryCreateWithoutPostsInput!]
+}
+
+input CategoryCreateOrConnectWithoutpostsInput {
+  create: CategoryCreateWithoutPostsInput!
+  where: CategoryWhereUniqueInput!
+}
+
+input CategoryCreateWithoutPostsInput {
+  name: String!
+}
+
+input CategoryListRelationFilter {
+  every: CategoryWhereInput
+  none: CategoryWhereInput
+  some: CategoryWhereInput
+}
+
+input CategoryOrderByInput {
+  id: SortOrder
+  name: SortOrder
+}
+
+input CategoryScalarWhereInput {
+  AND: [CategoryScalarWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  NOT: [CategoryScalarWhereInput!]
+  OR: [CategoryScalarWhereInput!]
+}
+
+input CategoryUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  posts: PostUpdateManyWithoutCategoriesInput
+}
+
+input CategoryUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+}
+
+input CategoryUpdateManyWithoutPostsInput {
+  connect: [CategoryWhereUniqueInput!]
+  connectOrCreate: [CategoryCreateOrConnectWithoutpostsInput!]
+  create: [CategoryCreateWithoutPostsInput!]
+  delete: [CategoryWhereUniqueInput!]
+  deleteMany: [CategoryScalarWhereInput!]
+  disconnect: [CategoryWhereUniqueInput!]
+  set: [CategoryWhereUniqueInput!]
+  update: [CategoryUpdateWithWhereUniqueWithoutPostsInput!]
+  updateMany: [CategoryUpdateManyWithWhereWithoutPostsInput!]
+  upsert: [CategoryUpsertWithWhereUniqueWithoutPostsInput!]
+}
+
+input CategoryUpdateManyWithWhereWithoutPostsInput {
+  data: CategoryUpdateManyMutationInput!
+  where: CategoryScalarWhereInput!
+}
+
+input CategoryUpdateWithoutPostsInput {
+  name: StringFieldUpdateOperationsInput
+}
+
+input CategoryUpdateWithWhereUniqueWithoutPostsInput {
+  data: CategoryUpdateWithoutPostsInput!
+  where: CategoryWhereUniqueInput!
+}
+
+input CategoryUpsertWithWhereUniqueWithoutPostsInput {
+  create: CategoryCreateWithoutPostsInput!
+  update: CategoryUpdateWithoutPostsInput!
+  where: CategoryWhereUniqueInput!
+}
+
+input CategoryWhereInput {
+  AND: [CategoryWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  NOT: [CategoryWhereInput!]
+  OR: [CategoryWhereInput!]
+  posts: PostListRelationFilter
+}
+
+input CategoryWhereUniqueInput {
+  id: Int
+}
+
+type Query {
+  categories(
+    cursor: CategoryWhereUniqueInput
+    take: Int
+    skip: Int
+    orderBy: [CategoryOrderByInput!]
+    where: CategoryWhereInput
+  ): [Category!]!
+  category(where: CategoryWhereUniqueInput!): Category
+}
+type Mutation {
+  createCategory(data: CategoryCreateInput!): Category!
+  deleteCategories(where: CategoryWhereInput): BatchPayload!
+  deleteCategory(where: CategoryWhereUniqueInput!): Category
+  updateCategories(data: CategoryUpdateManyMutationInput!, where: CategoryWhereInput): BatchPayload!
+  updateCategory(data: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category
+}

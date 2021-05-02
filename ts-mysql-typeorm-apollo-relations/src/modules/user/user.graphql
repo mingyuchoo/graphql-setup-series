@@ -1,0 +1,160 @@
+type User {
+  email: String!
+  firstName: String!
+  id: Int!
+  lastName: String!
+  posts(cursor: PostWhereUniqueInput, take: Int, skip: Int): [Post!]!
+  profile: Profile
+  role: Role!
+}
+
+input UserCreateInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  posts: PostCreateManyWithoutAuthorInput
+  profile: ProfileCreateOneWithoutUserInput
+  role: Role
+}
+
+input UserCreateOneWithoutPostsInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutpostsInput
+  create: UserCreateWithoutPostsInput
+}
+
+input UserCreateOneWithoutProfileInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutprofileInput
+  create: UserCreateWithoutProfileInput
+}
+
+input UserCreateOrConnectWithoutpostsInput {
+  create: UserCreateWithoutPostsInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateOrConnectWithoutprofileInput {
+  create: UserCreateWithoutProfileInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateWithoutPostsInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  profile: ProfileCreateOneWithoutUserInput
+  role: Role
+}
+
+input UserCreateWithoutProfileInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  posts: PostCreateManyWithoutAuthorInput
+  role: Role
+}
+
+input UserOrderByInput {
+  email: SortOrder
+  firstName: SortOrder
+  id: SortOrder
+  lastName: SortOrder
+  role: SortOrder
+}
+
+input UserUpdateInput {
+  email: StringFieldUpdateOperationsInput
+  firstName: StringFieldUpdateOperationsInput
+  lastName: StringFieldUpdateOperationsInput
+  posts: PostUpdateManyWithoutAuthorInput
+  profile: ProfileUpdateOneWithoutUserInput
+  role: EnumRoleFieldUpdateOperationsInput
+}
+
+input UserUpdateManyMutationInput {
+  email: StringFieldUpdateOperationsInput
+  firstName: StringFieldUpdateOperationsInput
+  lastName: StringFieldUpdateOperationsInput
+  role: EnumRoleFieldUpdateOperationsInput
+}
+
+input UserUpdateOneRequiredWithoutProfileInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutprofileInput
+  create: UserCreateWithoutProfileInput
+  update: UserUpdateWithoutProfileInput
+  upsert: UserUpsertWithoutProfileInput
+}
+
+input UserUpdateOneWithoutPostsInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutpostsInput
+  create: UserCreateWithoutPostsInput
+  delete: Boolean
+  disconnect: Boolean
+  update: UserUpdateWithoutPostsInput
+  upsert: UserUpsertWithoutPostsInput
+}
+
+input UserUpdateWithoutPostsInput {
+  email: StringFieldUpdateOperationsInput
+  firstName: StringFieldUpdateOperationsInput
+  lastName: StringFieldUpdateOperationsInput
+  profile: ProfileUpdateOneWithoutUserInput
+  role: EnumRoleFieldUpdateOperationsInput
+}
+
+input UserUpdateWithoutProfileInput {
+  email: StringFieldUpdateOperationsInput
+  firstName: StringFieldUpdateOperationsInput
+  lastName: StringFieldUpdateOperationsInput
+  posts: PostUpdateManyWithoutAuthorInput
+  role: EnumRoleFieldUpdateOperationsInput
+}
+
+input UserUpsertWithoutPostsInput {
+  create: UserCreateWithoutPostsInput!
+  update: UserUpdateWithoutPostsInput!
+}
+
+input UserUpsertWithoutProfileInput {
+  create: UserCreateWithoutProfileInput!
+  update: UserUpdateWithoutProfileInput!
+}
+
+input UserWhereInput {
+  AND: [UserWhereInput!]
+  email: StringFilter
+  firstName: StringFilter
+  id: IntFilter
+  lastName: StringFilter
+  NOT: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  posts: PostListRelationFilter
+  profile: ProfileWhereInput
+  role: EnumRoleFilter
+}
+
+input UserWhereUniqueInput {
+  email: String
+  id: Int
+}
+
+type Query {
+  user(where: UserWhereUniqueInput!): User
+  users(
+    cursor: UserWhereUniqueInput
+    take: Int
+    skip: Int
+    orderBy: [UserOrderByInput!]
+    where: UserWhereInput
+  ): [User!]!
+}
+type Mutation {
+  createUser(data: UserCreateInput!): User!
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteUsers(where: UserWhereInput): BatchPayload!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+}

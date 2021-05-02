@@ -1,0 +1,5 @@
+---
+upgrade: true
+# reject:
+#   - '@prisma/cli'
+#   - '@prisma/client'

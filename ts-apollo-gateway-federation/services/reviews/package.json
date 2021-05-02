@@ -1,0 +1,19 @@
+{
+  "name": "reviews",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc -p .",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@apollo/federation": "latest",
+    "apollo-server": "latest",
+    "graphql": "latest",
+    "typescript": "latest"
+  },
+  "devDependencies": {
+    "@types/graphql": "latest",
+    "@types/node": "latest",
+    "rimraf": "latest"
+  }
+}

@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  mysql-db:
+    image: 'mysql:latest'
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    container_name: mysql-db
+    ports:
+      - 3306:3306
+    networks:
+      - graphql-net
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mydb
+      - MYSQL_USER=myusername
+      - MYSQL_PASSWORD=mypassword
+      - TZ='Asia/Seoul'
+
+networks:
+  graphql-net:

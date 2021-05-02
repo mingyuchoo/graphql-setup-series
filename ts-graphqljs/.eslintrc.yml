@@ -1,0 +1,31 @@
+---
+env:
+  browser: true
+  es6: true
+  node: true
+parser: '@typescript-eslint/parser'
+parserOptions:
+  project: 'tsconfig.json'
+  ecmaVersion: 6
+  sourceType: module
+plugins:
+  - '@typescript-eslint'
+  - simple-import-sort
+  - prettier
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/recommended
+  - plugin:@typescript-eslint/recommended-requiring-type-checking
+  - plugin:jest/recommended
+  - plugin:prettier/recommended
+ignorePatterns:
+  - src/**/*.d.ts
+rules:
+  prettier/prettier: error
+  simple-import-sort/imports: error
+  simple-import-sort/exports: error
+  '@typescript-eslint/no-unused-vars': off
+  '@typescript-eslint/explicit-module-boundary-types': off
+  '@typescript-eslint/no-unsafe-return': off
+  '@typescript-eslint/no-unsafe-call': off
+  '@typescript-eslint/no-unsafe-member-access': off

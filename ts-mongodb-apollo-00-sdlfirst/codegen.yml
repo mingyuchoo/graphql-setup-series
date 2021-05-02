@@ -1,0 +1,7 @@
+overwrite: true
+#schema: src/**/*.graphql
+schema: schema.graphql
+generates:
+  '@types/codegen.d.ts':
+    plugins:
+      - typescript

@@ -1,0 +1,354 @@
+_type: export
+__export_format: 4
+__export_date: 2020-12-17T06:51:14.939Z
+__export_source: insomnia.desktop.app:v2020.5.2
+resources:
+  - _id: req_209cf0ebddbc4342908fbe2fd968e4da
+    parentId: fld_84197c2cee4b465e876dd34f5ea46714
+    modified: 1608187422137
+    created: 1602532207856
+    url: http://localhost:4000/graphql
+    name: FindManyPost
+    description: ''
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"query FindManyPost($orderBy: [PostOrderByInput], $take:
+        Int){\n  findManyPost(orderBy: $orderBy, take: $take)
+        {\n    _id\n    title\n    content\n  }\n}","variables":{"orderBy":{"_id":"desc"},"take":10},"operationName":"FindManyPost"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        _id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1605755094656
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_84197c2cee4b465e876dd34f5ea46714
+    parentId: fld_462b69154ebf466a90ab0732495ea576
+    modified: 1605754985928
+    created: 1605754985928
+    name: post
+    description: ''
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1605754985928
+    _type: request_group
+  - _id: fld_462b69154ebf466a90ab0732495ea576
+    parentId: wrk_1b3924364fa342cda857ec02365a5421
+    modified: 1602532070118
+    created: 1602532070118
+    name: Local
+    description: ''
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1602532070118
+    _type: request_group
+  - _id: wrk_1b3924364fa342cda857ec02365a5421
+    parentId: null
+    modified: 1600975294674
+    created: 1600975294674
+    name: GraphQL
+    description: ''
+    scope: spec
+    _type: workspace
+  - _id: req_57ee720b1475420ebf272fae80978ee3
+    parentId: fld_84197c2cee4b465e876dd34f5ea46714
+    modified: 1608187563182
+    created: 1602532315150
+    url: http://localhost:4000/graphql
+    name: FindUniquePost
+    description: ''
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"query FindUniquePost($where: PostWhereUniqueInput)
+        {\n  findUniquePost(where: $where)
+        {\n    _id\n    title\n    content\n  }\n}","variables":{"where":{"_id":2}},"operationName":"FindUniquePost"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        _id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1605755094631
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5448c5304e8546338e2fa0cea0a1459e
+    parentId: fld_84197c2cee4b465e876dd34f5ea46714
+    modified: 1608187732859
+    created: 1605755094606
+    url: http://localhost:4000/graphql
+    name: createOnePost
+    description: ''
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation CreateOnePost(\n  $data:
+        PostCreateInput!\n){\n  createOnePost(\n    data: $data\n  )
+        {\n    _id\n    title\n    content\n    author
+        {\n      _id\n      email\n      firstName\n      lastName\n      profile
+        {\n        bio\n      }\n    }\n  }\n}","variables":{"data":{"title":"BGM
+        channel","keywords":"bgm"}},"operationName":"CreateOnePost"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        _id: pair_d5d4415b63c54c658d50ec37c6e94d51
+    authentication: {}
+    metaSortKey: -1605755094606
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_87f9b502de6f425e8479975b5a9c9d06
+    parentId: fld_84197c2cee4b465e876dd34f5ea46714
+    modified: 1608187738683
+    created: 1602533539984
+    url: http://localhost:4000/graphql
+    name: updateOnePost
+    description: ''
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation UpdateOnePost(\n  $data: PostUpdateInput!\n  $where:
+        PostWhereUniqueInput!\n){\n  updateOnePost(\n    data: $data\n    where:
+        $where\n  )\n  {\n    _id\n    title\n    content\n  }\n}","variables":{"data":{"title":{"set":"Relaxing
+        JAZZ"}},"where":{"_id":59904}},"operationName":"UpdateOnePost"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        _id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1605754979846
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9771f5c365aa4c2fa998e595a76775df
+    parentId: fld_84197c2cee4b465e876dd34f5ea46714
+    modified: 1608187760316
+    created: 1602533640508
+    url: http://localhost:4000/graphql
+    name: deleteOnePost
+    description: ''
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation DeleteOnePost(\n  $where:
+        PostWhereUniqueInput!\n){\n  deleteOnePost(\n    where: $where\n  )
+        {\n    _id\n    title\n  }\n}","variables":{"where":{"_id":59904}},"operationName":"DeleteOnePost"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        _id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1605754979821
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b0d1f21987834409b61f25bbcedcd8ca
+    parentId: fld_99500b4aa8474cf88fad65d17b529812
+    modified: 1608187382314
+    created: 1600975308202
+    url: http://localhost:4000/graphql
+    name: FindManyUser
+    description: ''
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"query FindManyUser($orderBy: [UserOrderByInput], $take:
+        Int){\n  findManyUser(orderBy: $orderBy, take: $take)
+        {\n    _id\n    email\n    firstName\n    lastName\n  }\n}","variables":{"orderBy":{"_id":"desc"},"take":10},"operationName":"FindManyUser"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        _id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1605352111083.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_99500b4aa8474cf88fad65d17b529812
+    parentId: fld_462b69154ebf466a90ab0732495ea576
+    modified: 1605754974014
+    created: 1605754974014
+    name: user
+    description: ''
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1605754974014
+    _type: request_group
+  - _id: req_e50a01b900b64ac68fdba325bf0275c3
+    parentId: fld_99500b4aa8474cf88fad65d17b529812
+    modified: 1608187535393
+    created: 1602532245242
+    url: http://localhost:4000/graphql
+    name: FindUniqueUser
+    description: ''
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"query FindUniqueUser($where: UserWhereUniqueInput)
+        {\n  findUniqueUser(where: $where)
+        {\n    _id\n    email\n    firstName\n    lastName\n  }\n}","variables":{"where":{"_id":1}},"operationName":"FindUniqueUser"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        _id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1605352111033.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_6f473705ecb545af9b34d644e329b1f7
+    parentId: fld_99500b4aa8474cf88fad65d17b529812
+    modified: 1608187789298
+    created: 1602532585226
+    url: http://localhost:4000/graphql
+    name: createOneUser
+    description: ''
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation CreateOneUser(\n  $data: UserCreateInput!\n)
+        {\n  createOneUser(\n    data: $data\n  )
+        \n  {\n    _id\n\t\temail\n    firstName\n    lastName\n  }\n}","variables":{"data":{"email":"patrick@email.com","firstName":"Patrick","lastName":"Smith"}},"operationName":"CreateOneUser"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        _id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1605352110933.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f03c2911b89047868ae65123531a6899
+    parentId: fld_99500b4aa8474cf88fad65d17b529812
+    modified: 1608187849726
+    created: 1602533280817
+    url: http://localhost:4000/graphql
+    name: updateOneUser
+    description: ''
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation UpdateOneUser(\n  $data: UserUpdateInput!\n  $where:
+        UserWhereUniqueInput!\n) {\n  updateOneUser(\n   data: $data\n   where:
+        $where\n  )
+        {\n    _id\n    email\n    firstName\n    lastName\n  }\n}","variables":{"data":{"firstName":{"set":"Bruce"},"lastName":{"set":"Willis"}},"where":{"_id":60001}},"operationName":"UpdateOneUser"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        _id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1605352110883.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d052ccdd52c14bd08fe2c61257eef77d
+    parentId: fld_99500b4aa8474cf88fad65d17b529812
+    modified: 1608187855795
+    created: 1602533373143
+    url: http://localhost:4000/graphql
+    name: deleteOneUser
+    description: ''
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation DeleteOneUser(\n  $where: UserWhereUniqueInput!\n)
+        {\n  deleteOneUser(\n    where: $where\n  )
+        {\n    _id\n    email\n    firstName\n    lastName\n  }\n}","variables":{"where":{"_id":60001}},"operationName":"DeleteOneUser"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        _id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+    authentication: {}
+    metaSortKey: -1605352110833.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_63cdee494bf0eac11e6f7b197ee6e94aec3128f2
+    parentId: wrk_1b3924364fa342cda857ec02365a5421
+    modified: 1600975295829
+    created: 1600975295829
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1600975295829
+    _type: environment
+  - _id: jar_63cdee494bf0eac11e6f7b197ee6e94aec3128f2
+    parentId: wrk_1b3924364fa342cda857ec02365a5421
+    modified: 1600975295831
+    created: 1600975295831
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_b3ba46805bbf4eca9e58970de8829d6d
+    parentId: wrk_1b3924364fa342cda857ec02365a5421
+    modified: 1600975294684
+    created: 1600975294684
+    fileName: GraphQL
+    contents: ''
+    contentType: yaml
+    _type: api_spec

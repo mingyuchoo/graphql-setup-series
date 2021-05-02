@@ -1,0 +1,39 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "eslint --config .eslintrc.yml --fix './src/**/*.js'",
+    "start": "babel-node src/index.js",
+    "dev": "nodemon --exec 'babel-node src/index.js'",
+    "docker:build": "docker-compose --file docker-compose.yml up --build --detach",
+    "docker:exec": "docker exec --interactive=true --tty=true mongo-db /bin/bash"
+  },
+  "dependencies": {
+    "apollo-server": "^2.19.1",
+    "apollo-server-express": "^2.19.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "^15.4.0",
+    "graphql-middleware": "^6.0.0",
+    "graphql-tools": "^7.0.2",
+    "mongodb": "^3.6.3",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2"
+  }
+}

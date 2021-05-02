@@ -1,0 +1,126 @@
+type Comment {
+  id: Int!
+  title: String!
+  content: String
+  post: Post
+}
+
+input CommentCreateInput {
+  content: String
+  post: PostCreateOneWithoutCommentsInput
+  title: String!
+}
+
+input CommentCreateManyWithoutPostInput {
+  connect: [CommentWhereUniqueInput!]
+  connectOrCreate: [CommentCreateOrConnectWithoutpostInput!]
+  create: [CommentCreateWithoutPostInput!]
+}
+
+input CommentCreateOrConnectWithoutpostInput {
+  create: CommentCreateWithoutPostInput!
+  where: CommentWhereUniqueInput!
+}
+
+input CommentCreateWithoutPostInput {
+  content: String
+  title: String!
+}
+
+input CommentListRelationFilter {
+  every: CommentWhereInput
+  none: CommentWhereInput
+  some: CommentWhereInput
+}
+
+input CommentOrderByInput {
+  content: SortOrder
+  id: SortOrder
+  title: SortOrder
+}
+
+input CommentScalarWhereInput {
+  AND: [CommentScalarWhereInput!]
+  content: StringNullableFilter
+  id: IntFilter
+  NOT: [CommentScalarWhereInput!]
+  OR: [CommentScalarWhereInput!]
+  title: StringFilter
+}
+
+input CommentUpdateInput {
+  content: NullableStringFieldUpdateOperationsInput
+  post: PostUpdateOneWithoutCommentsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input CommentUpdateManyMutationInput {
+  content: NullableStringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input CommentUpdateManyWithoutPostInput {
+  connect: [CommentWhereUniqueInput!]
+  connectOrCreate: [CommentCreateOrConnectWithoutpostInput!]
+  create: [CommentCreateWithoutPostInput!]
+  delete: [CommentWhereUniqueInput!]
+  deleteMany: [CommentScalarWhereInput!]
+  disconnect: [CommentWhereUniqueInput!]
+  set: [CommentWhereUniqueInput!]
+  update: [CommentUpdateWithWhereUniqueWithoutPostInput!]
+  updateMany: [CommentUpdateManyWithWhereWithoutPostInput!]
+  upsert: [CommentUpsertWithWhereUniqueWithoutPostInput!]
+}
+
+input CommentUpdateManyWithWhereWithoutPostInput {
+  data: CommentUpdateManyMutationInput!
+  where: CommentScalarWhereInput!
+}
+
+input CommentUpdateWithoutPostInput {
+  content: NullableStringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input CommentUpdateWithWhereUniqueWithoutPostInput {
+  data: CommentUpdateWithoutPostInput!
+  where: CommentWhereUniqueInput!
+}
+
+input CommentUpsertWithWhereUniqueWithoutPostInput {
+  create: CommentCreateWithoutPostInput!
+  update: CommentUpdateWithoutPostInput!
+  where: CommentWhereUniqueInput!
+}
+
+input CommentWhereInput {
+  AND: [CommentWhereInput!]
+  content: StringNullableFilter
+  id: IntFilter
+  NOT: [CommentWhereInput!]
+  OR: [CommentWhereInput!]
+  post: PostWhereInput
+  title: StringFilter
+}
+
+input CommentWhereUniqueInput {
+  id: Int
+}
+
+type Query {
+  comment(where: CommentWhereUniqueInput!): Comment
+  comments(
+    cursor: CommentWhereUniqueInput
+    take: Int
+    skip: Int
+    orderBy: [CommentOrderByInput!]
+    where: CommentWhereInput
+  ): [Comment!]!
+}
+type Mutation {
+  createComment(data: CommentCreateInput!): Comment!
+  deleteComment(where: CommentWhereUniqueInput!): Comment
+  deleteComments(where: CommentWhereInput): BatchPayload!
+  updateComment(data: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment
+  updateComments(data: CommentUpdateManyMutationInput!, where: CommentWhereInput): BatchPayload!
+}

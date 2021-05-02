@@ -1,0 +1,19 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "myusername",
+  "password": "mypassword",
+  "database": "mydb",
+  "synchronize": true,
+  "logging": true,
+  "entities": ["dist/entity/**/*.js"],
+  "migrations": ["dist/migration/**/*.js"],
+  "subscribers": ["dist/subscriber/**/*.js"],
+  "migrationsTableName": "_typeorm_migration",
+  "cli": {
+    "entitiesDir": "src/entity",
+    "migrationsDir": "src/migration",
+    "subscribersDir": "src/subscriber"
+  }
+}

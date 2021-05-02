@@ -1,0 +1,71 @@
+{
+  "name": "apollo-server-using-mongodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "eslint --config .eslintrc.yml --fix './src/**/*.ts'",
+    "dev": "ts-node-dev --transpile-only --no-notify src/index.ts",
+    "build": "npm run generate && tsc -p .",
+    "start": "node 'dist/index.js'",
+    "test": "npm run generate && jest --verbose --watchAll=false",
+    "generate": "ts-node --transpile-only src/schema",
+    "codegen": "nodemon 'src/index.ts' --exec 'graphql-codegen --config codegen.yml'",
+    "docker:build": "docker-compose --file docker-compose.yml up --build --detach",
+    "docker:exec": "docker exec --interactive=true --tty=true mongo-db /bin/bash"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^2.19.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "^15.4.0",
+    "graphql-middleware": "^6.0.0",
+    "graphql-tools": "^7.0.2",
+    "mongodb": "^3.6.3",
+    "nodemon": "^2.0.6",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.20.0",
+    "@graphql-codegen/typescript": "^1.19.0",
+    "@graphql-codegen/typescript-operations": "^1.17.13",
+    "@graphql-codegen/typescript-resolvers": "^1.18.1",
+    "@types/express": "^4.17.9",
+    "@types/jest": "^26.0.19",
+    "@types/mongodb": "^3.6.3",
+    "@types/node": "^14.14.16",
+    "@types/uuid": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "@typescript-eslint/parser": "^4.11.1",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-prettier": "^3.3.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "get-port": "^5.1.1",
+    "graphql-request": "^3.4.0",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.1.3"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "globals": {
+      "ts-jest": {
+        "diagnostics": {
+          "warnOnly": true
+        }
+      }
+    },
+    "testEnvironment": "node"
+  }
+}

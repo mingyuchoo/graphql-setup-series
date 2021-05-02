@@ -1,0 +1,129 @@
+_type: export
+__export_format: 4
+__export_date: 2020-10-30T00:20:56.687Z
+__export_source: insomnia.desktop.app:v2020.4.2
+resources:
+  - _id: req_3601c02614d64bb79e82ddc5b8af2be9
+    parentId: fld_1561775f028f4ffa971d29948742825a
+    modified: 1604017224721
+    created: 1603921436039
+    url: http://localhost:4000/graphql
+    name: createOneUserByEmail
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation {\n  createUserByEmail(email: \"chris@email.com\",
+        name: \"chris\") {\n    id\n    name\n    email\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_2ef8fc5abd6341999100c47a9bb81f8b
+    authentication: {}
+    metaSortKey: -1603921436039
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_1561775f028f4ffa971d29948742825a
+    parentId: wrk_3905053890ba450abf6620ec2ee9bcc7
+    modified: 1603921362815
+    created: 1603921362815
+    name: Local
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1603921362815
+    _type: request_group
+  - _id: wrk_3905053890ba450abf6620ec2ee9bcc7
+    parentId: null
+    modified: 1603921334533
+    created: 1603921334533
+    name: 41-apollo-express
+    description: ""
+    scope: spec
+    _type: workspace
+  - _id: req_58f53929ff5344cb9fd824ba5e76c007
+    parentId: fld_1561775f028f4ffa971d29948742825a
+    modified: 1603921668507
+    created: 1603921370035
+    url: http://localhost:4000/graphql
+    name: getAllusers
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"query {\n  getAllUsers {\n    id\n    name\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_aad4a908caac4c3ea91a26e2595f98fc
+    authentication: {}
+    metaSortKey: -1603921370035
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1a26c7c73f9e4e5485f5a00e68dff82c
+    parentId: fld_1561775f028f4ffa971d29948742825a
+    modified: 1603921608723
+    created: 1603921559834
+    url: http://localhost:4000/graphql
+    name: deleteUser
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation {\n  deleteUserById(id: 16)
+        {\n    id\n    name\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_aad4a908caac4c3ea91a26e2595f98fc
+    authentication: {}
+    metaSortKey: -1603226735639.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_5c27d889a2c2363b0d170c54e11883107c5ad2fe
+    parentId: wrk_3905053890ba450abf6620ec2ee9bcc7
+    modified: 1603921346286
+    created: 1603921346286
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1603921346286
+    _type: environment
+  - _id: jar_5c27d889a2c2363b0d170c54e11883107c5ad2fe
+    parentId: wrk_3905053890ba450abf6620ec2ee9bcc7
+    modified: 1603921346289
+    created: 1603921346289
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_fc840fe644194c28a7147c66bb15362a
+    parentId: wrk_3905053890ba450abf6620ec2ee9bcc7
+    modified: 1603921334544
+    created: 1603921334544
+    fileName: 41-apollo-express
+    contents: ""
+    contentType: yaml
+    _type: api_spec

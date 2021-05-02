@@ -1,0 +1,2593 @@
+type Query {
+  commentById(_id: MongoID!): Comment
+  commentByIds(_ids: [MongoID!]!, limit: Int = 100, sort: SortFindByIdsCommentInput): [Comment!]!
+  commentOne(
+    """Filter by fields"""
+    filter: FilterFindOneCommentInput
+    skip: Int
+    sort: SortFindOneCommentInput
+  ): Comment
+  commentMany(
+    """Filter by fields"""
+    filter: FilterFindManyCommentInput
+    skip: Int
+    limit: Int = 100
+    sort: SortFindManyCommentInput
+  ): [Comment!]!
+  commentCount(
+    """Filter by fields"""
+    filter: FilterCountCommentInput
+  ): Int
+  commentConnection(
+    """Forward pagination argument for returning at most first edges"""
+    first: Int
+
+    """Forward pagination argument for returning at most first edges"""
+    after: String
+
+    """Backward pagination argument for returning at most last edges"""
+    last: Int
+
+    """Backward pagination argument for returning at most last edges"""
+    before: String
+
+    """Filter by fields"""
+    filter: FilterFindManyCommentInput
+
+    """Sort argument for data ordering"""
+    sort: SortConnectionCommentEnum = _ID_DESC
+  ): CommentConnection
+  commentPagination(
+    """Page number for displaying"""
+    page: Int
+
+    """"""
+    perPage: Int = 20
+
+    """Filter by fields"""
+    filter: FilterFindManyCommentInput
+    sort: SortFindManyCommentInput
+  ): CommentPagination
+  userById(_id: MongoID!): User
+  userByIds(_ids: [MongoID!]!, limit: Int = 100, sort: SortFindByIdsUserInput): [User!]!
+  userOne(
+    """Filter by fields"""
+    filter: FilterFindOneUserInput
+    skip: Int
+    sort: SortFindOneUserInput
+  ): User
+  userMany(
+    """Filter by fields"""
+    filter: FilterFindManyUserInput
+    skip: Int
+    limit: Int = 100
+    sort: SortFindManyUserInput
+  ): [User!]!
+  userCount(
+    """Filter by fields"""
+    filter: FilterCountUserInput
+  ): Int
+  userConnection(
+    """Forward pagination argument for returning at most first edges"""
+    first: Int
+
+    """Forward pagination argument for returning at most first edges"""
+    after: String
+
+    """Backward pagination argument for returning at most last edges"""
+    last: Int
+
+    """Backward pagination argument for returning at most last edges"""
+    before: String
+
+    """Filter by fields"""
+    filter: FilterFindManyUserInput
+
+    """Sort argument for data ordering"""
+    sort: SortConnectionUserEnum = _ID_DESC
+  ): UserConnection
+  userPagination(
+    """Page number for displaying"""
+    page: Int
+
+    """"""
+    perPage: Int = 20
+
+    """Filter by fields"""
+    filter: FilterFindManyUserInput
+    sort: SortFindManyUserInput
+  ): UserPagination
+  postById(_id: MongoID!): Post
+  postByIds(_ids: [MongoID!]!, limit: Int = 100, sort: SortFindByIdsPostInput): [Post!]!
+  postOne(
+    """Filter by fields"""
+    filter: FilterFindOnePostInput
+    skip: Int
+    sort: SortFindOnePostInput
+  ): Post
+  postMany(
+    """Filter by fields"""
+    filter: FilterFindManyPostInput
+    skip: Int
+    limit: Int = 100
+    sort: SortFindManyPostInput
+  ): [Post!]!
+  postCount(
+    """Filter by fields"""
+    filter: FilterCountPostInput
+  ): Int
+  postConnection(
+    """Forward pagination argument for returning at most first edges"""
+    first: Int
+
+    """Forward pagination argument for returning at most first edges"""
+    after: String
+
+    """Backward pagination argument for returning at most last edges"""
+    last: Int
+
+    """Backward pagination argument for returning at most last edges"""
+    before: String
+
+    """Filter by fields"""
+    filter: FilterFindManyPostInput
+
+    """Sort argument for data ordering"""
+    sort: SortConnectionPostEnum = _ID_DESC
+  ): PostConnection
+  postPagination(
+    """Page number for displaying"""
+    page: Int
+
+    """"""
+    perPage: Int = 20
+
+    """Filter by fields"""
+    filter: FilterFindManyPostInput
+    sort: SortFindManyPostInput
+  ): PostPagination
+}
+
+type Comment {
+  """게시글"""
+  body: MongoID!
+
+  """댓글"""
+  text: String!
+
+  """글쓴이"""
+  writer: MongoID!
+
+  """대댓글"""
+  reply: [MongoID]
+  _id: MongoID!
+  updatedAt: Date
+  createdAt: Date
+}
+
+"""
+The `ID` scalar type represents a unique MongoDB identifier in collection. MongoDB by default use 12-byte ObjectId value (https://docs.mongodb.com/manual/reference/bson-types/#objectid). But MongoDB also may accepts string or integer as correct values for _id field.
+"""
+scalar MongoID
+
+scalar Date
+
+enum SortFindByIdsCommentInput {
+  _ID_ASC
+  _ID_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+""""""
+input FilterFindOneCommentInput {
+  """게시글"""
+  body: MongoID
+
+  """댓글"""
+  text: String
+
+  """글쓴이"""
+  writer: MongoID
+
+  """대댓글"""
+  reply: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+}
+
+enum SortFindOneCommentInput {
+  _ID_ASC
+  _ID_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+""""""
+input FilterFindManyCommentInput {
+  """게시글"""
+  body: MongoID
+
+  """댓글"""
+  text: String
+
+  """글쓴이"""
+  writer: MongoID
+
+  """대댓글"""
+  reply: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+}
+
+enum SortFindManyCommentInput {
+  _ID_ASC
+  _ID_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+""""""
+input FilterCountCommentInput {
+  """게시글"""
+  body: MongoID
+
+  """댓글"""
+  text: String
+
+  """글쓴이"""
+  writer: MongoID
+
+  """대댓글"""
+  reply: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+}
+
+"""A connection to a list of items."""
+type CommentConnection {
+  """Total object count."""
+  count: Int!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """Information to aid in pagination."""
+  edges: [CommentEdge!]!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+"""An edge in a connection."""
+type CommentEdge {
+  """The item at the end of the edge"""
+  node: Comment!
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+enum SortConnectionCommentEnum {
+  _ID_DESC
+  _ID_ASC
+}
+
+"""List of items with pagination."""
+type CommentPagination {
+  """Total object count."""
+  count: Int
+
+  """Array of objects."""
+  items: [Comment!]
+
+  """Information to aid in pagination."""
+  pageInfo: PaginationInfo!
+}
+
+type PaginationInfo {
+  currentPage: Int!
+  perPage: Int!
+  pageCount: Int
+  itemCount: Int
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+}
+
+type User {
+  """이메일주소"""
+  email: String!
+
+  """이름"""
+  firstName: String!
+
+  """성"""
+  lastName: String!
+
+  """역할"""
+  role: EnumUserRole!
+  profile: UserProfile
+
+  """등록한 글 목록"""
+  posts: [MongoID]
+  _id: MongoID!
+  updatedAt: Date
+  createdAt: Date
+}
+
+"""역할"""
+enum EnumUserRole {
+  ADMIN
+  USER
+}
+
+type UserProfile {
+  """소개글"""
+  bio: String
+
+  """성별"""
+  gender: EnumUserProfileGender
+
+  """연락처"""
+  contactNumber: String
+}
+
+"""성별"""
+enum EnumUserProfileGender {
+  MAN
+  WOMAN
+}
+
+enum SortFindByIdsUserInput {
+  _ID_ASC
+  _ID_DESC
+  EMAIL_ASC
+  EMAIL_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+""""""
+input FilterFindOneUserInput {
+  """이메일주소"""
+  email: String
+
+  """이름"""
+  firstName: String
+
+  """성"""
+  lastName: String
+
+  """역할"""
+  role: EnumUserRole
+  profile: FilterFindOneUserProfileInput
+
+  """등록한 글 목록"""
+  posts: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: FilterFindOneUserOperatorsInput
+  OR: [FilterFindOneUserInput!]
+  AND: [FilterFindOneUserInput!]
+}
+
+""""""
+input FilterFindOneUserProfileInput {
+  """소개글"""
+  bio: String
+
+  """성별"""
+  gender: EnumUserProfileGender
+
+  """연락처"""
+  contactNumber: String
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input FilterFindOneUserOperatorsInput {
+  email: FilterFindOneUserEmailOperatorsInput
+  _id: FilterFindOneUser_idOperatorsInput
+  createdAt: FilterFindOneUserCreatedAtOperatorsInput
+}
+
+input FilterFindOneUserEmailOperatorsInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+  regex: RegExpAsString
+  exists: Boolean
+}
+
+"""
+The string representation of JavaScript regexp. You may provide it with flags "/^abc.*/i" or without flags like "^abc.*". More info about RegExp characters and flags: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+"""
+scalar RegExpAsString @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-262.pdf")
+
+input FilterFindOneUser_idOperatorsInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+  exists: Boolean
+}
+
+input FilterFindOneUserCreatedAtOperatorsInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+  exists: Boolean
+}
+
+enum SortFindOneUserInput {
+  _ID_ASC
+  _ID_DESC
+  EMAIL_ASC
+  EMAIL_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+""""""
+input FilterFindManyUserInput {
+  """이메일주소"""
+  email: String
+
+  """이름"""
+  firstName: String
+
+  """성"""
+  lastName: String
+
+  """역할"""
+  role: EnumUserRole
+  profile: FilterFindManyUserProfileInput
+
+  """등록한 글 목록"""
+  posts: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: FilterFindManyUserOperatorsInput
+  OR: [FilterFindManyUserInput!]
+  AND: [FilterFindManyUserInput!]
+}
+
+""""""
+input FilterFindManyUserProfileInput {
+  """소개글"""
+  bio: String
+
+  """성별"""
+  gender: EnumUserProfileGender
+
+  """연락처"""
+  contactNumber: String
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input FilterFindManyUserOperatorsInput {
+  email: FilterFindManyUserEmailOperatorsInput
+  _id: FilterFindManyUser_idOperatorsInput
+  createdAt: FilterFindManyUserCreatedAtOperatorsInput
+}
+
+input FilterFindManyUserEmailOperatorsInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+  regex: RegExpAsString
+  exists: Boolean
+}
+
+input FilterFindManyUser_idOperatorsInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+  exists: Boolean
+}
+
+input FilterFindManyUserCreatedAtOperatorsInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+  exists: Boolean
+}
+
+enum SortFindManyUserInput {
+  _ID_ASC
+  _ID_DESC
+  EMAIL_ASC
+  EMAIL_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+""""""
+input FilterCountUserInput {
+  """이메일주소"""
+  email: String
+
+  """이름"""
+  firstName: String
+
+  """성"""
+  lastName: String
+
+  """역할"""
+  role: EnumUserRole
+  profile: FilterCountUserProfileInput
+
+  """등록한 글 목록"""
+  posts: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: FilterCountUserOperatorsInput
+  OR: [FilterCountUserInput!]
+  AND: [FilterCountUserInput!]
+}
+
+""""""
+input FilterCountUserProfileInput {
+  """소개글"""
+  bio: String
+
+  """성별"""
+  gender: EnumUserProfileGender
+
+  """연락처"""
+  contactNumber: String
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input FilterCountUserOperatorsInput {
+  email: FilterCountUserEmailOperatorsInput
+  _id: FilterCountUser_idOperatorsInput
+  createdAt: FilterCountUserCreatedAtOperatorsInput
+}
+
+input FilterCountUserEmailOperatorsInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+  regex: RegExpAsString
+  exists: Boolean
+}
+
+input FilterCountUser_idOperatorsInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+  exists: Boolean
+}
+
+input FilterCountUserCreatedAtOperatorsInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+  exists: Boolean
+}
+
+"""A connection to a list of items."""
+type UserConnection {
+  """Total object count."""
+  count: Int!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """Information to aid in pagination."""
+  edges: [UserEdge!]!
+}
+
+"""An edge in a connection."""
+type UserEdge {
+  """The item at the end of the edge"""
+  node: User!
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+enum SortConnectionUserEnum {
+  _ID_DESC
+  _ID_ASC
+  EMAIL_DESC
+  EMAIL_ASC
+}
+
+"""List of items with pagination."""
+type UserPagination {
+  """Total object count."""
+  count: Int
+
+  """Array of objects."""
+  items: [User!]
+
+  """Information to aid in pagination."""
+  pageInfo: PaginationInfo!
+}
+
+type Post {
+  """제목"""
+  title: String!
+
+  """내용"""
+  content: String!
+
+  """발행여부"""
+  published: Boolean!
+
+  """글쓴이"""
+  author: MongoID!
+
+  """카테고리"""
+  categories: [String]
+
+  """댓글 목록"""
+  comments: [Comment]
+
+  """키워드"""
+  keywords: [String]
+
+  """태그"""
+  tags: [String]
+  _id: MongoID!
+  updatedAt: Date
+  createdAt: Date
+}
+
+enum SortFindByIdsPostInput {
+  _ID_ASC
+  _ID_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+""""""
+input FilterFindOnePostInput {
+  """제목"""
+  title: String
+
+  """내용"""
+  content: String
+
+  """발행여부"""
+  published: Boolean
+
+  """글쓴이"""
+  author: MongoID
+
+  """카테고리"""
+  categories: [String]
+
+  """댓글 목록"""
+  comments: [FilterFindOneCommentInput]
+
+  """키워드"""
+  keywords: [String]
+
+  """태그"""
+  tags: [String]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: FilterFindOnePostOperatorsInput
+  OR: [FilterFindOnePostInput!]
+  AND: [FilterFindOnePostInput!]
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input FilterFindOnePostOperatorsInput {
+  _id: FilterFindOnePost_idOperatorsInput
+  createdAt: FilterFindOnePostCreatedAtOperatorsInput
+}
+
+input FilterFindOnePost_idOperatorsInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+  exists: Boolean
+}
+
+input FilterFindOnePostCreatedAtOperatorsInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+  exists: Boolean
+}
+
+enum SortFindOnePostInput {
+  _ID_ASC
+  _ID_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+""""""
+input FilterFindManyPostInput {
+  """제목"""
+  title: String
+
+  """내용"""
+  content: String
+
+  """발행여부"""
+  published: Boolean
+
+  """글쓴이"""
+  author: MongoID
+
+  """카테고리"""
+  categories: [String]
+
+  """댓글 목록"""
+  comments: [FilterFindManyCommentInput]
+
+  """키워드"""
+  keywords: [String]
+
+  """태그"""
+  tags: [String]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: FilterFindManyPostOperatorsInput
+  OR: [FilterFindManyPostInput!]
+  AND: [FilterFindManyPostInput!]
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input FilterFindManyPostOperatorsInput {
+  _id: FilterFindManyPost_idOperatorsInput
+  createdAt: FilterFindManyPostCreatedAtOperatorsInput
+}
+
+input FilterFindManyPost_idOperatorsInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+  exists: Boolean
+}
+
+input FilterFindManyPostCreatedAtOperatorsInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+  exists: Boolean
+}
+
+enum SortFindManyPostInput {
+  _ID_ASC
+  _ID_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+""""""
+input FilterCountPostInput {
+  """제목"""
+  title: String
+
+  """내용"""
+  content: String
+
+  """발행여부"""
+  published: Boolean
+
+  """글쓴이"""
+  author: MongoID
+
+  """카테고리"""
+  categories: [String]
+
+  """댓글 목록"""
+  comments: [FilterCountCommentInput]
+
+  """키워드"""
+  keywords: [String]
+
+  """태그"""
+  tags: [String]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: FilterCountPostOperatorsInput
+  OR: [FilterCountPostInput!]
+  AND: [FilterCountPostInput!]
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input FilterCountPostOperatorsInput {
+  _id: FilterCountPost_idOperatorsInput
+  createdAt: FilterCountPostCreatedAtOperatorsInput
+}
+
+input FilterCountPost_idOperatorsInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+  exists: Boolean
+}
+
+input FilterCountPostCreatedAtOperatorsInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+  exists: Boolean
+}
+
+"""A connection to a list of items."""
+type PostConnection {
+  """Total object count."""
+  count: Int!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """Information to aid in pagination."""
+  edges: [PostEdge!]!
+}
+
+"""An edge in a connection."""
+type PostEdge {
+  """The item at the end of the edge"""
+  node: Post!
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+enum SortConnectionPostEnum {
+  _ID_DESC
+  _ID_ASC
+}
+
+"""List of items with pagination."""
+type PostPagination {
+  """Total object count."""
+  count: Int
+
+  """Array of objects."""
+  items: [Post!]
+
+  """Information to aid in pagination."""
+  pageInfo: PaginationInfo!
+}
+
+type Mutation {
+  """
+  Create one document with mongoose defaults, setters, hooks and validation
+  """
+  commentCreateOne(record: CreateOneCommentInput!): CreateOneCommentPayload
+
+  """
+  Creates Many documents with mongoose defaults, setters, hooks and validation
+  """
+  commentCreateMany(records: [CreateManyCommentInput!]!): CreateManyCommentPayload
+
+  """
+  Update one document: 1) Retrieve one document by findById. 2) Apply updates to mongoose document. 3) Mongoose applies defaults, setters, hooks and validation. 4) And save it.
+  """
+  commentUpdateById(_id: MongoID!, record: UpdateByIdCommentInput!): UpdateByIdCommentPayload
+
+  """
+  Update one document: 1) Retrieve one document via findOne. 2) Apply updates to mongoose document. 3) Mongoose applies defaults, setters, hooks and validation. 4) And save it.
+  """
+  commentUpdateOne(
+    record: UpdateOneCommentInput!
+
+    """Filter by fields"""
+    filter: FilterUpdateOneCommentInput
+    sort: SortUpdateOneCommentInput
+    skip: Int
+  ): UpdateOneCommentPayload
+
+  """
+  Update many documents without returning them: Use Query.update mongoose method. Do not apply mongoose defaults, setters, hooks and validation. 
+  """
+  commentUpdateMany(
+    record: UpdateManyCommentInput!
+
+    """Filter by fields"""
+    filter: FilterUpdateManyCommentInput
+    sort: SortUpdateManyCommentInput
+    skip: Int
+    limit: Int = 100
+  ): UpdateManyCommentPayload
+
+  """
+  Remove one document: 1) Retrieve one document and remove with hooks via findByIdAndRemove. 2) Return removed document.
+  """
+  commentRemoveById(_id: MongoID!): RemoveByIdCommentPayload
+
+  """
+  Remove one document: 1) Remove with hooks via findOneAndRemove. 2) Return removed document.
+  """
+  commentRemoveOne(
+    """Filter by fields"""
+    filter: FilterRemoveOneCommentInput
+    sort: SortRemoveOneCommentInput
+  ): RemoveOneCommentPayload
+
+  """
+  Remove many documents without returning them: Use Query.remove mongoose method. Do not apply mongoose defaults, setters, hooks and validation. 
+  """
+  commentRemoveMany(
+    """Filter by fields"""
+    filter: FilterRemoveManyCommentInput!
+    limit: Int = 100
+  ): RemoveManyCommentPayload
+
+  """
+  Create one document with mongoose defaults, setters, hooks and validation
+  """
+  userCreateOne(record: CreateOneUserInput!): CreateOneUserPayload
+
+  """
+  Creates Many documents with mongoose defaults, setters, hooks and validation
+  """
+  userCreateMany(records: [CreateManyUserInput!]!): CreateManyUserPayload
+
+  """
+  Update one document: 1) Retrieve one document by findById. 2) Apply updates to mongoose document. 3) Mongoose applies defaults, setters, hooks and validation. 4) And save it.
+  """
+  userUpdateById(_id: MongoID!, record: UpdateByIdUserInput!): UpdateByIdUserPayload
+
+  """
+  Update one document: 1) Retrieve one document via findOne. 2) Apply updates to mongoose document. 3) Mongoose applies defaults, setters, hooks and validation. 4) And save it.
+  """
+  userUpdateOne(
+    record: UpdateOneUserInput!
+
+    """Filter by fields"""
+    filter: FilterUpdateOneUserInput
+    sort: SortUpdateOneUserInput
+    skip: Int
+  ): UpdateOneUserPayload
+
+  """
+  Update many documents without returning them: Use Query.update mongoose method. Do not apply mongoose defaults, setters, hooks and validation. 
+  """
+  userUpdateMany(
+    record: UpdateManyUserInput!
+
+    """Filter by fields"""
+    filter: FilterUpdateManyUserInput
+    sort: SortUpdateManyUserInput
+    skip: Int
+    limit: Int = 100
+  ): UpdateManyUserPayload
+
+  """
+  Remove one document: 1) Retrieve one document and remove with hooks via findByIdAndRemove. 2) Return removed document.
+  """
+  userRemoveById(_id: MongoID!): RemoveByIdUserPayload
+
+  """
+  Remove one document: 1) Remove with hooks via findOneAndRemove. 2) Return removed document.
+  """
+  userRemoveOne(
+    """Filter by fields"""
+    filter: FilterRemoveOneUserInput
+    sort: SortRemoveOneUserInput
+  ): RemoveOneUserPayload
+
+  """
+  Remove many documents without returning them: Use Query.remove mongoose method. Do not apply mongoose defaults, setters, hooks and validation. 
+  """
+  userRemoveMany(
+    """Filter by fields"""
+    filter: FilterRemoveManyUserInput!
+    limit: Int = 100
+  ): RemoveManyUserPayload
+
+  """
+  Create one document with mongoose defaults, setters, hooks and validation
+  """
+  postCreateOne(record: CreateOnePostInput!): CreateOnePostPayload
+
+  """
+  Creates Many documents with mongoose defaults, setters, hooks and validation
+  """
+  postCreateMany(records: [CreateManyPostInput!]!): CreateManyPostPayload
+
+  """
+  Update one document: 1) Retrieve one document by findById. 2) Apply updates to mongoose document. 3) Mongoose applies defaults, setters, hooks and validation. 4) And save it.
+  """
+  postUpdateById(_id: MongoID!, record: UpdateByIdPostInput!): UpdateByIdPostPayload
+
+  """
+  Update one document: 1) Retrieve one document via findOne. 2) Apply updates to mongoose document. 3) Mongoose applies defaults, setters, hooks and validation. 4) And save it.
+  """
+  postUpdateOne(
+    record: UpdateOnePostInput!
+
+    """Filter by fields"""
+    filter: FilterUpdateOnePostInput
+    sort: SortUpdateOnePostInput
+    skip: Int
+  ): UpdateOnePostPayload
+
+  """
+  Update many documents without returning them: Use Query.update mongoose method. Do not apply mongoose defaults, setters, hooks and validation. 
+  """
+  postUpdateMany(
+    record: UpdateManyPostInput!
+
+    """Filter by fields"""
+    filter: FilterUpdateManyPostInput
+    sort: SortUpdateManyPostInput
+    skip: Int
+    limit: Int = 100
+  ): UpdateManyPostPayload
+
+  """
+  Remove one document: 1) Retrieve one document and remove with hooks via findByIdAndRemove. 2) Return removed document.
+  """
+  postRemoveById(_id: MongoID!): RemoveByIdPostPayload
+
+  """
+  Remove one document: 1) Remove with hooks via findOneAndRemove. 2) Return removed document.
+  """
+  postRemoveOne(
+    """Filter by fields"""
+    filter: FilterRemoveOnePostInput
+    sort: SortRemoveOnePostInput
+  ): RemoveOnePostPayload
+
+  """
+  Remove many documents without returning them: Use Query.remove mongoose method. Do not apply mongoose defaults, setters, hooks and validation. 
+  """
+  postRemoveMany(
+    """Filter by fields"""
+    filter: FilterRemoveManyPostInput!
+    limit: Int = 100
+  ): RemoveManyPostPayload
+}
+
+type CreateOneCommentPayload {
+  """Document ID"""
+  recordId: MongoID
+
+  """Created document"""
+  record: Comment
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+interface ErrorInterface {
+  """Generic error message"""
+  message: String
+}
+
+""""""
+input CreateOneCommentInput {
+  """게시글"""
+  body: MongoID!
+
+  """댓글"""
+  text: String!
+
+  """글쓴이"""
+  writer: MongoID!
+
+  """대댓글"""
+  reply: [MongoID]
+  updatedAt: Date
+  createdAt: Date
+}
+
+type CreateManyCommentPayload {
+  """Documents IDs"""
+  recordIds: [MongoID!]!
+
+  """Created documents"""
+  records: [Comment!]
+
+  """Number of created documents"""
+  createdCount: Int!
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input CreateManyCommentInput {
+  """게시글"""
+  body: MongoID!
+
+  """댓글"""
+  text: String!
+
+  """글쓴이"""
+  writer: MongoID!
+
+  """대댓글"""
+  reply: [MongoID]
+  updatedAt: Date
+  createdAt: Date
+}
+
+type UpdateByIdCommentPayload {
+  """Document ID"""
+  recordId: MongoID
+
+  """Updated document"""
+  record: Comment
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input UpdateByIdCommentInput {
+  """게시글"""
+  body: MongoID
+
+  """댓글"""
+  text: String
+
+  """글쓴이"""
+  writer: MongoID
+
+  """대댓글"""
+  reply: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+}
+
+type UpdateOneCommentPayload {
+  """Document ID"""
+  recordId: MongoID
+
+  """Updated document"""
+  record: Comment
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input UpdateOneCommentInput {
+  """게시글"""
+  body: MongoID
+
+  """댓글"""
+  text: String
+
+  """글쓴이"""
+  writer: MongoID
+
+  """대댓글"""
+  reply: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+}
+
+""""""
+input FilterUpdateOneCommentInput {
+  """게시글"""
+  body: MongoID
+
+  """댓글"""
+  text: String
+
+  """글쓴이"""
+  writer: MongoID
+
+  """대댓글"""
+  reply: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+}
+
+enum SortUpdateOneCommentInput {
+  _ID_ASC
+  _ID_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+type UpdateManyCommentPayload {
+  """Affected documents number"""
+  numAffected: Int
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input UpdateManyCommentInput {
+  """게시글"""
+  body: MongoID
+
+  """댓글"""
+  text: String
+
+  """글쓴이"""
+  writer: MongoID
+
+  """대댓글"""
+  reply: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+}
+
+""""""
+input FilterUpdateManyCommentInput {
+  """게시글"""
+  body: MongoID
+
+  """댓글"""
+  text: String
+
+  """글쓴이"""
+  writer: MongoID
+
+  """대댓글"""
+  reply: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+}
+
+enum SortUpdateManyCommentInput {
+  _ID_ASC
+  _ID_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+type RemoveByIdCommentPayload {
+  """Document ID"""
+  recordId: MongoID
+
+  """Removed document"""
+  record: Comment
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+type RemoveOneCommentPayload {
+  """Document ID"""
+  recordId: MongoID
+
+  """Removed document"""
+  record: Comment
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input FilterRemoveOneCommentInput {
+  """게시글"""
+  body: MongoID
+
+  """댓글"""
+  text: String
+
+  """글쓴이"""
+  writer: MongoID
+
+  """대댓글"""
+  reply: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+}
+
+enum SortRemoveOneCommentInput {
+  _ID_ASC
+  _ID_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+type RemoveManyCommentPayload {
+  """Affected documents number"""
+  numAffected: Int
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input FilterRemoveManyCommentInput {
+  """게시글"""
+  body: MongoID
+
+  """댓글"""
+  text: String
+
+  """글쓴이"""
+  writer: MongoID
+
+  """대댓글"""
+  reply: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+}
+
+type CreateOneUserPayload {
+  """Document ID"""
+  recordId: MongoID
+
+  """Created document"""
+  record: User
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input CreateOneUserInput {
+  """이메일주소"""
+  email: String!
+
+  """이름"""
+  firstName: String!
+
+  """성"""
+  lastName: String!
+
+  """역할"""
+  role: EnumUserRole!
+  profile: UserProfileInput
+
+  """등록한 글 목록"""
+  posts: [MongoID]
+  updatedAt: Date
+  createdAt: Date
+}
+
+input UserProfileInput {
+  """소개글"""
+  bio: String
+
+  """성별"""
+  gender: EnumUserProfileGender
+
+  """연락처"""
+  contactNumber: String
+}
+
+type CreateManyUserPayload {
+  """Documents IDs"""
+  recordIds: [MongoID!]!
+
+  """Created documents"""
+  records: [User!]
+
+  """Number of created documents"""
+  createdCount: Int!
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input CreateManyUserInput {
+  """이메일주소"""
+  email: String!
+
+  """이름"""
+  firstName: String!
+
+  """성"""
+  lastName: String!
+
+  """역할"""
+  role: EnumUserRole!
+  profile: UserProfileInput
+
+  """등록한 글 목록"""
+  posts: [MongoID]
+  updatedAt: Date
+  createdAt: Date
+}
+
+type UpdateByIdUserPayload {
+  """Document ID"""
+  recordId: MongoID
+
+  """Updated document"""
+  record: User
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input UpdateByIdUserInput {
+  """이메일주소"""
+  email: String
+
+  """이름"""
+  firstName: String
+
+  """성"""
+  lastName: String
+
+  """역할"""
+  role: EnumUserRole
+  profile: UpdateByIdUserProfileInput
+
+  """등록한 글 목록"""
+  posts: [MongoID]
+  updatedAt: Date
+  createdAt: Date
+}
+
+""""""
+input UpdateByIdUserProfileInput {
+  """소개글"""
+  bio: String
+
+  """성별"""
+  gender: EnumUserProfileGender
+
+  """연락처"""
+  contactNumber: String
+}
+
+type UpdateOneUserPayload {
+  """Document ID"""
+  recordId: MongoID
+
+  """Updated document"""
+  record: User
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input UpdateOneUserInput {
+  """이메일주소"""
+  email: String
+
+  """이름"""
+  firstName: String
+
+  """성"""
+  lastName: String
+
+  """역할"""
+  role: EnumUserRole
+  profile: UpdateOneUserProfileInput
+
+  """등록한 글 목록"""
+  posts: [MongoID]
+  updatedAt: Date
+  createdAt: Date
+}
+
+""""""
+input UpdateOneUserProfileInput {
+  """소개글"""
+  bio: String
+
+  """성별"""
+  gender: EnumUserProfileGender
+
+  """연락처"""
+  contactNumber: String
+}
+
+""""""
+input FilterUpdateOneUserInput {
+  """이메일주소"""
+  email: String
+
+  """이름"""
+  firstName: String
+
+  """성"""
+  lastName: String
+
+  """역할"""
+  role: EnumUserRole
+  profile: FilterUpdateOneUserProfileInput
+
+  """등록한 글 목록"""
+  posts: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: FilterUpdateOneUserOperatorsInput
+  OR: [FilterUpdateOneUserInput!]
+  AND: [FilterUpdateOneUserInput!]
+}
+
+""""""
+input FilterUpdateOneUserProfileInput {
+  """소개글"""
+  bio: String
+
+  """성별"""
+  gender: EnumUserProfileGender
+
+  """연락처"""
+  contactNumber: String
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input FilterUpdateOneUserOperatorsInput {
+  email: FilterUpdateOneUserEmailOperatorsInput
+  _id: FilterUpdateOneUser_idOperatorsInput
+  createdAt: FilterUpdateOneUserCreatedAtOperatorsInput
+}
+
+input FilterUpdateOneUserEmailOperatorsInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+  regex: RegExpAsString
+  exists: Boolean
+}
+
+input FilterUpdateOneUser_idOperatorsInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+  exists: Boolean
+}
+
+input FilterUpdateOneUserCreatedAtOperatorsInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+  exists: Boolean
+}
+
+enum SortUpdateOneUserInput {
+  _ID_ASC
+  _ID_DESC
+  EMAIL_ASC
+  EMAIL_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+type UpdateManyUserPayload {
+  """Affected documents number"""
+  numAffected: Int
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input UpdateManyUserInput {
+  """이메일주소"""
+  email: String
+
+  """이름"""
+  firstName: String
+
+  """성"""
+  lastName: String
+
+  """역할"""
+  role: EnumUserRole
+  profile: UpdateManyUserProfileInput
+
+  """등록한 글 목록"""
+  posts: [MongoID]
+  updatedAt: Date
+  createdAt: Date
+}
+
+""""""
+input UpdateManyUserProfileInput {
+  """소개글"""
+  bio: String
+
+  """성별"""
+  gender: EnumUserProfileGender
+
+  """연락처"""
+  contactNumber: String
+}
+
+""""""
+input FilterUpdateManyUserInput {
+  """이메일주소"""
+  email: String
+
+  """이름"""
+  firstName: String
+
+  """성"""
+  lastName: String
+
+  """역할"""
+  role: EnumUserRole
+  profile: FilterUpdateManyUserProfileInput
+
+  """등록한 글 목록"""
+  posts: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: FilterUpdateManyUserOperatorsInput
+  OR: [FilterUpdateManyUserInput!]
+  AND: [FilterUpdateManyUserInput!]
+}
+
+""""""
+input FilterUpdateManyUserProfileInput {
+  """소개글"""
+  bio: String
+
+  """성별"""
+  gender: EnumUserProfileGender
+
+  """연락처"""
+  contactNumber: String
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input FilterUpdateManyUserOperatorsInput {
+  email: FilterUpdateManyUserEmailOperatorsInput
+  _id: FilterUpdateManyUser_idOperatorsInput
+  createdAt: FilterUpdateManyUserCreatedAtOperatorsInput
+}
+
+input FilterUpdateManyUserEmailOperatorsInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+  regex: RegExpAsString
+  exists: Boolean
+}
+
+input FilterUpdateManyUser_idOperatorsInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+  exists: Boolean
+}
+
+input FilterUpdateManyUserCreatedAtOperatorsInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+  exists: Boolean
+}
+
+enum SortUpdateManyUserInput {
+  _ID_ASC
+  _ID_DESC
+  EMAIL_ASC
+  EMAIL_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+type RemoveByIdUserPayload {
+  """Document ID"""
+  recordId: MongoID
+
+  """Removed document"""
+  record: User
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+type RemoveOneUserPayload {
+  """Document ID"""
+  recordId: MongoID
+
+  """Removed document"""
+  record: User
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input FilterRemoveOneUserInput {
+  """이메일주소"""
+  email: String
+
+  """이름"""
+  firstName: String
+
+  """성"""
+  lastName: String
+
+  """역할"""
+  role: EnumUserRole
+  profile: FilterRemoveOneUserProfileInput
+
+  """등록한 글 목록"""
+  posts: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: FilterRemoveOneUserOperatorsInput
+  OR: [FilterRemoveOneUserInput!]
+  AND: [FilterRemoveOneUserInput!]
+}
+
+""""""
+input FilterRemoveOneUserProfileInput {
+  """소개글"""
+  bio: String
+
+  """성별"""
+  gender: EnumUserProfileGender
+
+  """연락처"""
+  contactNumber: String
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input FilterRemoveOneUserOperatorsInput {
+  email: FilterRemoveOneUserEmailOperatorsInput
+  _id: FilterRemoveOneUser_idOperatorsInput
+  createdAt: FilterRemoveOneUserCreatedAtOperatorsInput
+}
+
+input FilterRemoveOneUserEmailOperatorsInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+  regex: RegExpAsString
+  exists: Boolean
+}
+
+input FilterRemoveOneUser_idOperatorsInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+  exists: Boolean
+}
+
+input FilterRemoveOneUserCreatedAtOperatorsInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+  exists: Boolean
+}
+
+enum SortRemoveOneUserInput {
+  _ID_ASC
+  _ID_DESC
+  EMAIL_ASC
+  EMAIL_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+type RemoveManyUserPayload {
+  """Affected documents number"""
+  numAffected: Int
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input FilterRemoveManyUserInput {
+  """이메일주소"""
+  email: String
+
+  """이름"""
+  firstName: String
+
+  """성"""
+  lastName: String
+
+  """역할"""
+  role: EnumUserRole
+  profile: FilterRemoveManyUserProfileInput
+
+  """등록한 글 목록"""
+  posts: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: FilterRemoveManyUserOperatorsInput
+  OR: [FilterRemoveManyUserInput!]
+  AND: [FilterRemoveManyUserInput!]
+}
+
+""""""
+input FilterRemoveManyUserProfileInput {
+  """소개글"""
+  bio: String
+
+  """성별"""
+  gender: EnumUserProfileGender
+
+  """연락처"""
+  contactNumber: String
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input FilterRemoveManyUserOperatorsInput {
+  email: FilterRemoveManyUserEmailOperatorsInput
+  _id: FilterRemoveManyUser_idOperatorsInput
+  createdAt: FilterRemoveManyUserCreatedAtOperatorsInput
+}
+
+input FilterRemoveManyUserEmailOperatorsInput {
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  ne: String
+  in: [String]
+  nin: [String]
+  regex: RegExpAsString
+  exists: Boolean
+}
+
+input FilterRemoveManyUser_idOperatorsInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+  exists: Boolean
+}
+
+input FilterRemoveManyUserCreatedAtOperatorsInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+  exists: Boolean
+}
+
+type CreateOnePostPayload {
+  """Document ID"""
+  recordId: MongoID
+
+  """Created document"""
+  record: Post
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input CreateOnePostInput {
+  """제목"""
+  title: String!
+
+  """내용"""
+  content: String!
+
+  """발행여부"""
+  published: Boolean!
+
+  """글쓴이"""
+  author: MongoID!
+
+  """카테고리"""
+  categories: [String]
+
+  """댓글 목록"""
+  comments: [CommentInput]
+
+  """키워드"""
+  keywords: [String]
+
+  """태그"""
+  tags: [String]
+  updatedAt: Date
+  createdAt: Date
+}
+
+input CommentInput {
+  """게시글"""
+  body: MongoID!
+
+  """댓글"""
+  text: String!
+
+  """글쓴이"""
+  writer: MongoID!
+
+  """대댓글"""
+  reply: [MongoID]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+}
+
+type CreateManyPostPayload {
+  """Documents IDs"""
+  recordIds: [MongoID!]!
+
+  """Created documents"""
+  records: [Post!]
+
+  """Number of created documents"""
+  createdCount: Int!
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input CreateManyPostInput {
+  """제목"""
+  title: String!
+
+  """내용"""
+  content: String!
+
+  """발행여부"""
+  published: Boolean!
+
+  """글쓴이"""
+  author: MongoID!
+
+  """카테고리"""
+  categories: [String]
+
+  """댓글 목록"""
+  comments: [CommentInput]
+
+  """키워드"""
+  keywords: [String]
+
+  """태그"""
+  tags: [String]
+  updatedAt: Date
+  createdAt: Date
+}
+
+type UpdateByIdPostPayload {
+  """Document ID"""
+  recordId: MongoID
+
+  """Updated document"""
+  record: Post
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input UpdateByIdPostInput {
+  """제목"""
+  title: String
+
+  """내용"""
+  content: String
+
+  """발행여부"""
+  published: Boolean
+
+  """글쓴이"""
+  author: MongoID
+
+  """카테고리"""
+  categories: [String]
+
+  """댓글 목록"""
+  comments: [UpdateByIdCommentInput]
+
+  """키워드"""
+  keywords: [String]
+
+  """태그"""
+  tags: [String]
+  updatedAt: Date
+  createdAt: Date
+}
+
+type UpdateOnePostPayload {
+  """Document ID"""
+  recordId: MongoID
+
+  """Updated document"""
+  record: Post
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input UpdateOnePostInput {
+  """제목"""
+  title: String
+
+  """내용"""
+  content: String
+
+  """발행여부"""
+  published: Boolean
+
+  """글쓴이"""
+  author: MongoID
+
+  """카테고리"""
+  categories: [String]
+
+  """댓글 목록"""
+  comments: [UpdateOneCommentInput]
+
+  """키워드"""
+  keywords: [String]
+
+  """태그"""
+  tags: [String]
+  updatedAt: Date
+  createdAt: Date
+}
+
+""""""
+input FilterUpdateOnePostInput {
+  """제목"""
+  title: String
+
+  """내용"""
+  content: String
+
+  """발행여부"""
+  published: Boolean
+
+  """글쓴이"""
+  author: MongoID
+
+  """카테고리"""
+  categories: [String]
+
+  """댓글 목록"""
+  comments: [FilterUpdateOneCommentInput]
+
+  """키워드"""
+  keywords: [String]
+
+  """태그"""
+  tags: [String]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: FilterUpdateOnePostOperatorsInput
+  OR: [FilterUpdateOnePostInput!]
+  AND: [FilterUpdateOnePostInput!]
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input FilterUpdateOnePostOperatorsInput {
+  _id: FilterUpdateOnePost_idOperatorsInput
+  createdAt: FilterUpdateOnePostCreatedAtOperatorsInput
+}
+
+input FilterUpdateOnePost_idOperatorsInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+  exists: Boolean
+}
+
+input FilterUpdateOnePostCreatedAtOperatorsInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+  exists: Boolean
+}
+
+enum SortUpdateOnePostInput {
+  _ID_ASC
+  _ID_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+type UpdateManyPostPayload {
+  """Affected documents number"""
+  numAffected: Int
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input UpdateManyPostInput {
+  """제목"""
+  title: String
+
+  """내용"""
+  content: String
+
+  """발행여부"""
+  published: Boolean
+
+  """글쓴이"""
+  author: MongoID
+
+  """카테고리"""
+  categories: [String]
+
+  """댓글 목록"""
+  comments: [UpdateManyCommentInput]
+
+  """키워드"""
+  keywords: [String]
+
+  """태그"""
+  tags: [String]
+  updatedAt: Date
+  createdAt: Date
+}
+
+""""""
+input FilterUpdateManyPostInput {
+  """제목"""
+  title: String
+
+  """내용"""
+  content: String
+
+  """발행여부"""
+  published: Boolean
+
+  """글쓴이"""
+  author: MongoID
+
+  """카테고리"""
+  categories: [String]
+
+  """댓글 목록"""
+  comments: [FilterUpdateManyCommentInput]
+
+  """키워드"""
+  keywords: [String]
+
+  """태그"""
+  tags: [String]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: FilterUpdateManyPostOperatorsInput
+  OR: [FilterUpdateManyPostInput!]
+  AND: [FilterUpdateManyPostInput!]
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input FilterUpdateManyPostOperatorsInput {
+  _id: FilterUpdateManyPost_idOperatorsInput
+  createdAt: FilterUpdateManyPostCreatedAtOperatorsInput
+}
+
+input FilterUpdateManyPost_idOperatorsInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+  exists: Boolean
+}
+
+input FilterUpdateManyPostCreatedAtOperatorsInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+  exists: Boolean
+}
+
+enum SortUpdateManyPostInput {
+  _ID_ASC
+  _ID_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+type RemoveByIdPostPayload {
+  """Document ID"""
+  recordId: MongoID
+
+  """Removed document"""
+  record: Post
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+type RemoveOnePostPayload {
+  """Document ID"""
+  recordId: MongoID
+
+  """Removed document"""
+  record: Post
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input FilterRemoveOnePostInput {
+  """제목"""
+  title: String
+
+  """내용"""
+  content: String
+
+  """발행여부"""
+  published: Boolean
+
+  """글쓴이"""
+  author: MongoID
+
+  """카테고리"""
+  categories: [String]
+
+  """댓글 목록"""
+  comments: [FilterRemoveOneCommentInput]
+
+  """키워드"""
+  keywords: [String]
+
+  """태그"""
+  tags: [String]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: FilterRemoveOnePostOperatorsInput
+  OR: [FilterRemoveOnePostInput!]
+  AND: [FilterRemoveOnePostInput!]
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input FilterRemoveOnePostOperatorsInput {
+  _id: FilterRemoveOnePost_idOperatorsInput
+  createdAt: FilterRemoveOnePostCreatedAtOperatorsInput
+}
+
+input FilterRemoveOnePost_idOperatorsInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+  exists: Boolean
+}
+
+input FilterRemoveOnePostCreatedAtOperatorsInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+  exists: Boolean
+}
+
+enum SortRemoveOnePostInput {
+  _ID_ASC
+  _ID_DESC
+  CREATEDAT_ASC
+  CREATEDAT_DESC
+  CREATEDAT__UPDATEDAT_ASC
+  CREATEDAT__UPDATEDAT_DESC
+}
+
+type RemoveManyPostPayload {
+  """Affected documents number"""
+  numAffected: Int
+
+  """
+  Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response.
+  """
+  error: ErrorInterface
+}
+
+""""""
+input FilterRemoveManyPostInput {
+  """제목"""
+  title: String
+
+  """내용"""
+  content: String
+
+  """발행여부"""
+  published: Boolean
+
+  """글쓴이"""
+  author: MongoID
+
+  """카테고리"""
+  categories: [String]
+
+  """댓글 목록"""
+  comments: [FilterRemoveManyCommentInput]
+
+  """키워드"""
+  keywords: [String]
+
+  """태그"""
+  tags: [String]
+  _id: MongoID
+  updatedAt: Date
+  createdAt: Date
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: FilterRemoveManyPostOperatorsInput
+  OR: [FilterRemoveManyPostInput!]
+  AND: [FilterRemoveManyPostInput!]
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input FilterRemoveManyPostOperatorsInput {
+  _id: FilterRemoveManyPost_idOperatorsInput
+  createdAt: FilterRemoveManyPostCreatedAtOperatorsInput
+}
+
+input FilterRemoveManyPost_idOperatorsInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+  exists: Boolean
+}
+
+input FilterRemoveManyPostCreatedAtOperatorsInput {
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  ne: Date
+  in: [Date]
+  nin: [Date]
+  exists: Boolean
+}

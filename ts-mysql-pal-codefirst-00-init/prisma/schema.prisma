@@ -1,0 +1,122 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+model Customer {
+  customerNumber         Int        @id
+  customerName           String
+  contactLastName        String
+  contactFirstName       String
+  phone                  String
+  addressLine1           String
+  addressLine2           String?
+  city                   String
+  state                  String?
+  postalCode             String?
+  country                String
+  salesRepEmployeeNumber Int?
+  creditLimit            Float?
+  Employee              Employee? @relation(fields: [salesRepEmployeeNumber], references: [employeeNumber])
+  Order                 Order[]
+  Payment               Payment[]
+
+  @@index([salesRepEmployeeNumber], name: "salesRepEmployeeNumber")
+}
+
+model Employee {
+  employeeNumber  Int         @id
+  lastName        String
+  firstName       String
+  extension       String
+  email           String
+  officeCode      String
+  reportsTo       Int?
+  jobTitle        String
+  Office         Office     @relation(fields: [officeCode], references: [officeCode])
+  Employee       Employee?  @relation("employeesToemployees_reportsTo", fields: [reportsTo], references: [employeeNumber])
+  Customer       Customer[]
+  other_employees Employee[] @relation("employeesToemployees_reportsTo")
+
+  @@index([officeCode], name: "officeCode")
+  @@index([reportsTo], name: "reportsTo")
+}
+
+model Office {
+  officeCode   String      @id
+  city         String
+  phone        String
+  addressLine1 String
+  addressLine2 String?
+  state        String?
+  country      String
+  postalCode   String
+  territory    String
+  Employee    Employee[]
+}
+
+model OrderDetail {
+  orderNumber     Int
+  productCode     String
+  quantityOrdered Int
+  priceEach       Float
+  orderLineNumber Int
+  Order          Order   @relation(fields: [orderNumber], references: [orderNumber])
+  Product        Product @relation(fields: [productCode], references: [productCode])
+
+  @@id([orderNumber, productCode])
+  @@index([productCode], name: "productCode")
+}
+
+model Order {
+  orderNumber    Int            @id
+  orderDate      DateTime
+  requiredDate   DateTime
+  shippedDate    DateTime?
+  status         String
+  comments       String?
+  customerNumber Int
+  Customer      Customer      @relation(fields: [customerNumber], references: [customerNumber])
+  OrderDetail   OrderDetail[]
+
+  @@index([customerNumber], name: "customerNumber")
+}
+
+model Payment {
+  customerNumber Int
+  checkNumber    String
+  paymentDate    DateTime
+  amount         Float
+  Customer      Customer @relation(fields: [customerNumber], references: [customerNumber])
+
+  @@id([customerNumber, checkNumber])
+}
+
+model ProductLine {
+  productLine     String      @id
+  textDescription String?
+  htmlDescription String?
+  image           String?
+  Product        Product[]
+}
+
+model Product {
+  productCode        String         @id
+  productName        String
+  productLine        String
+  productScale       String
+  productVendor      String
+  productDescription String
+  quantityInStock    Int
+  buyPrice           Float
+  MSRP               Float
+  ProductLine       ProductLine   @relation(fields: [productLine], references: [productLine])
+  OrderDetail       OrderDetail[]
+
+  @@index([productLine], name: "productLine")
+}

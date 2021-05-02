@@ -1,0 +1,40 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "eslint --config .eslintrc.yml --fix './src/**/*.ts'",
+    "dev": "nodemon 'src/index.ts' --exec 'ts-node' src/index.ts -e ts",
+    "build": "npm run clean && tsc -p .",
+    "start": "npm run build && node 'dist/index.js'",
+    "test": "jest --verbose --watchAll=false"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "latest",
+    "typescript": "latest"
+  },
+  "devDependencies": {
+    "@types/graphql": "latest",
+    "@types/jest": "latest",
+    "@types/node": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "eslint": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-plugin-jest": "",
+    "eslint-plugin-prettier": "latest",
+    "eslint-plugin-simple-import-sort": "latest",
+    "graphql-import-node": "latest",
+    "jest": "latest",
+    "nodemon": "latest",
+    "prettier": "latest",
+    "rimraf": "latest",
+    "ts-jest": "latest",
+    "ts-node": "latest"
+  }
+}

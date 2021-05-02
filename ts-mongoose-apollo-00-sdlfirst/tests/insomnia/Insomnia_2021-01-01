@@ -1,0 +1,259 @@
+_type: export
+__export_format: 4
+__export_date: 2021-01-01T04:31:11.750Z
+__export_source: insomnia.desktop.app:v2020.4.2
+resources:
+  - _id: req_bb01d8ad797440eb876465898c715765
+    parentId: fld_aad24aad3be74586a97ac40cd1c4eec7
+    modified: 1609475065272
+    created: 1609396093215
+    url: http://localhost:4000/graphql
+    name: commentCreateOne
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation {\n\tcommentCreateOne(record: {\n    body:
+        \"5fed90fd8f055b37ab0a73b4\",\n    text: \"Good music\",\n   \twriter:
+        \"5fed90d08f055b37ab0a73b2\"\n  }) {\n    recordId,\n    record
+        {\n      _id\n      text\n          }\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        _id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+        id: pair_ad8af4d60a7e4af38bae7aba37245922
+    authentication: {}
+    metaSortKey: -1605553602744.625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_aad24aad3be74586a97ac40cd1c4eec7
+    parentId: fld_462b69154ebf466a90ab0732495ea576
+    modified: 1609396064273
+    created: 1609396064273
+    name: comment
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1609396064273
+    _type: request_group
+  - _id: fld_462b69154ebf466a90ab0732495ea576
+    parentId: wrk_1b3924364fa342cda857ec02365a5421
+    modified: 1602532070118
+    created: 1602532070118
+    name: Local
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1602532070118
+    _type: request_group
+  - _id: wrk_1b3924364fa342cda857ec02365a5421
+    parentId: null
+    modified: 1600975294674
+    created: 1600975294674
+    name: GraphQL
+    description: ""
+    scope: spec
+    _type: workspace
+  - _id: req_7df1cfdfefcc432994ff3fa15792deb2
+    parentId: fld_aad24aad3be74586a97ac40cd1c4eec7
+    modified: 1609475212392
+    created: 1609475073804
+    url: http://localhost:4000/graphql
+    name: commentMany
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"query {\n\tcommentMany(\n    filter: {\n      text:
+        \"system\"\n    }\n    limit: 100\n  )
+        {\n    text\n    createdAt\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        _id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+        id: pair_ad8af4d60a7e4af38bae7aba37245922
+    authentication: {}
+    metaSortKey: -1605452856788.9375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_209cf0ebddbc4342908fbe2fd968e4da
+    parentId: fld_84197c2cee4b465e876dd34f5ea46714
+    modified: 1609475211522
+    created: 1602532207856
+    url: http://localhost:4000/graphql
+    name: postCreateOne
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation {\npostCreateOne(record: {\n\ttitle:
+        \"BGMC\",\n  content: \"GBM channel\",\n  published:true,\n  author:
+        \"5fed90d08f055b37ab0a73b2\",\n  categories: [\"music\"],\n  keywords:
+        [\"dan\", \"farber\"],\n  tags: [\"music\"]\n  })
+        {\n    recordId,\n    record {\n      _id\n      title\n    }\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        _id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+        id: pair_ad8af4d60a7e4af38bae7aba37245922
+    authentication: {}
+    metaSortKey: -1605755094656
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_84197c2cee4b465e876dd34f5ea46714
+    parentId: fld_462b69154ebf466a90ab0732495ea576
+    modified: 1605754985928
+    created: 1605754985928
+    name: post
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1605754985928
+    _type: request_group
+  - _id: req_fe28b891860c4d77a2e0ec05d00791e3
+    parentId: fld_84197c2cee4b465e876dd34f5ea46714
+    modified: 1609475282437
+    created: 1609475220577
+    url: http://localhost:4000/graphql
+    name: postMany
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"query {\n\tpostMany(\n    filter: {\n      title:
+        \"omnis\"\n    }\n    limit: 100\n  )
+        {\n    title\n    content\n    createdAt\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        _id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+        id: pair_ad8af4d60a7e4af38bae7aba37245922
+    authentication: {}
+    metaSortKey: -1605755094606
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d052ccdd52c14bd08fe2c61257eef77d
+    parentId: fld_99500b4aa8474cf88fad65d17b529812
+    modified: 1609475063310
+    created: 1602533373143
+    url: http://localhost:4000/graphql
+    name: userCreateOne
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation {\n  userCreateOne(record: {\n    email:
+        \"branden@email.com\",\n    firstName: \"Branden\",\n    lastName:
+        \"Tyler\",\n    role: USER,\n    profile:{\n      bio: \"Hello,
+        World\",\n      gender: MAN,\n      contactNumber:
+        \"010-1234-1234\"\n    },\n  }) {\n    recordId,\n    record
+        {\n      _id\n      email\n      firstName\n    }\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        _id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+        id: pair_de3b35b3dc164f1b96f64b8ed0b1d23d
+    authentication: {}
+    metaSortKey: -1605352110833.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_99500b4aa8474cf88fad65d17b529812
+    parentId: fld_462b69154ebf466a90ab0732495ea576
+    modified: 1605754974014
+    created: 1605754974014
+    name: user
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1605754974014
+    _type: request_group
+  - _id: req_f25744524b63400fbb62e835cdbed9ad
+    parentId: fld_99500b4aa8474cf88fad65d17b529812
+    modified: 1609475422054
+    created: 1609475290309
+    url: http://localhost:4000/graphql
+    name: userMany
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"query {\n\tuserMany(\n    filter: {\n      firstName:
+        \"Nikita\"\n    }\n    limit: 100\n  )
+        {\n    _id\n    email\n    firstName\n    lastName\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        _id: pair_fcab9f07acce42edbdff5e8411a1f3a3
+        id: pair_ad8af4d60a7e4af38bae7aba37245922
+    authentication: {}
+    metaSortKey: -1605352110783.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_63cdee494bf0eac11e6f7b197ee6e94aec3128f2
+    parentId: wrk_1b3924364fa342cda857ec02365a5421
+    modified: 1600975295829
+    created: 1600975295829
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1600975295829
+    _type: environment
+  - _id: jar_63cdee494bf0eac11e6f7b197ee6e94aec3128f2
+    parentId: wrk_1b3924364fa342cda857ec02365a5421
+    modified: 1600975295831
+    created: 1600975295831
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_b3ba46805bbf4eca9e58970de8829d6d
+    parentId: wrk_1b3924364fa342cda857ec02365a5421
+    modified: 1600975294684
+    created: 1600975294684
+    fileName: GraphQL
+    contents: ""
+    contentType: yaml
+    _type: api_spec

@@ -1,0 +1,48 @@
+{
+  "name": "federation-demo",
+  "main": "gateway.js",
+  "scripts": {
+    "lint": "eslint --config .eslintrc.yml --fix './src/**/*.ts'",
+    "clean:service-accounts": "rimraf services/accounts/dist",
+    "clean:service-reviews": "rimraf services/reviews/dist",
+    "clean:service-products": "rimraf services/products/dist",
+    "clean:service-inventory": "rimraf services/inventory/dist",
+    "clean:services": "concurrently \"npm:clean:service-*\"",
+    "clean:gateway": "rimraf dist",
+    "build:service-accounts": "npm run clean:service-accounts && tsc -p services/accounts",
+    "build:service-reviews": "npm run clean:service-reviews && tsc -p services/reviews",
+    "build:service-products": "npm run clean:service-products && tsc -p services/products",
+    "build:service-inventory": "npm run clean:service-inventory && tsc -p services/inventory",
+    "build:services": "concurrently \"npm:build:service-*\"",
+    "build:gateway": "npm run clean:gateway && tsc -p .",
+    "start:service-accounts": "nodemon services/accounts/dist/index.js",
+    "start:service-reviews": "nodemon services/reviews/dist/index.js",
+    "start:service-products": "nodemon services/products/dist/index.js",
+    "start:service-inventory": "nodemon services/inventory/dist/index.js",
+    "start:services": "concurrently \"npm:start:service-*\"",
+    "start:gateway": "nodemon dist/gateway.js",
+    "postinstall": "lerna bootstrap"
+  },
+  "dependencies": {
+    "@apollo/gateway": "latest",
+    "apollo-server": "latest",
+    "graphql": "latest",
+    "typescript": "latest"
+  },
+  "devDependencies": {
+    "@types/graphql": "latest",
+    "@types/node": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "concurrently": "latest",
+    "eslint": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-plugin-prettier": "latest",
+    "eslint-plugin-simple-import-sort": "latest",
+    "lerna": "latest",
+    "nodemon": "latest",
+    "prettier": "latest",
+    "rimraf": "latest",
+    "ts-node": "latest"
+  }
+}
