@@ -12,24 +12,24 @@
     "docker:exec": "docker exec --interactive=true --tty=true mongo-db /bin/bash"
   },
   "dependencies": {
-    "apollo-server": "^2.24.0",
-    "dotenv": "^9.0.0",
+    "apollo-server": "^2.25.1",
+    "dotenv": "^10.0.0",
     "graphql": "^15.5.0",
-    "graphql-tools": "^7.0.4",
-    "mongodb": "^3.6.6",
+    "graphql-tools": "^7.0.5",
+    "mongodb": "^3.6.9",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.16",
-    "@babel/core": "^7.14.0",
-    "@babel/node": "^7.13.13",
-    "@babel/preset-env": "^7.14.1",
-    "eslint": "^7.25.0",
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.5",
+    "@babel/node": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "eslint": "^7.28.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "nodemon": "^2.0.7",
-    "prettier": "^2.2.1",
+    "prettier": "^2.3.1",
     "rimraf": "^3.0.2"
   }
 }
