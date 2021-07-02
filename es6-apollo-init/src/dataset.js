@@ -1,4 +1,3 @@
-// Some fake data
 export const books = [
   {
     title: "Harry Potter and the Sorcerer's stone",

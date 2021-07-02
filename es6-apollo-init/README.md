@@ -1,4 +1,4 @@
-# Back-End
+# es6-apollo-init
 
 ## How to use
 

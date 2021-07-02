@@ -9,9 +9,7 @@ const resolvers = {
   DateTime: GraphQLDateTime,
 
   Query: {
-    // selectAll
     books: () => books,
-    // selectOne
     book: (parent, args, context, info) =>
       filter(books, { author: args.author }),
     sayHi: (parent, args, context, info) => {
