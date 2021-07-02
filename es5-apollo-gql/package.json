@@ -12,16 +12,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^2.25.1",
-    "graphql": "^15.5.0",
-    "graphql-tools": "^7.0.5",
+    "apollo-server": "^2.25.2",
+    "graphql": "^15.5.1",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "eslint": "^7.28.0",
+    "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "nodemon": "^2.0.7",
-    "prettier": "^2.3.1"
+    "nodemon": "^2.0.9",
+    "prettier": "^2.3.2"
   }
 }

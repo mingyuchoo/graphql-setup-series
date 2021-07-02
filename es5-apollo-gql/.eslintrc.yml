@@ -12,4 +12,5 @@ extends:
   - eslint:recommended
   - plugin:prettier/recommended
 rules:
+  no-unused-vars: off
   prettier/prettier: error

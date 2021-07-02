@@ -4,7 +4,6 @@ const { filter } = require('lodash');
 const { books } = require('./dataset');
 
 const resolvers = {
-
   Query: {
     // selectAll
     books: () => books,

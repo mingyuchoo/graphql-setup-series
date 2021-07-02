@@ -1,14 +1,10 @@
 'use strict';
 
-// const { ApolloServer } = require('apollo-server');
-const { makeExecutableSchema } = require('@graphql-tools/schema');
-
+const { ApolloServer } = require('apollo-server');
 const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
-const { ApolloServer } = require('apollo-server');
 
-// const server = new ApolloServer({ typeDefs, resolvers });
-const server = new ApolloServer(makeExecutableSchema({ typeDefs, resolvers}));
+const server = new ApolloServer({ typeDefs, resolvers });
 
 server.listen().then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
