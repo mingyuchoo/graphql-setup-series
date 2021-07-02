@@ -1,7 +1,6 @@
 'use strict';
 
-// const books = [
-exports.books = [
+const books = [
   {
     title: "Harry Potter and the Sorcerer's stone",
     author: 'J.K. Rowling',
@@ -11,4 +10,5 @@ exports.books = [
     author: 'Michael Crichton',
   },
 ];
-// module.exports = books;
+
+module.exports = books;
