@@ -13,16 +13,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^2.19.0",
-    "graphql": "^15.4.0"
+    "apollo-server": "^2.25.2",
+    "graphql": "^15.5.1"
   },
   "devDependencies": {
-    "apollo": "^2.31.1",
-    "eslint": "^7.13.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-simple-import-sort": "^6.0.0",
-    "nodemon": "^2.0.6",
-    "prettier": "^2.1.2"
+    "apollo": "^2.33.4",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "nodemon": "^2.0.9",
+    "prettier": "^2.3.2"
   }
 }
