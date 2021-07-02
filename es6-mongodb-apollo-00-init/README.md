@@ -1,4 +1,4 @@
-# Apollo server using MongoDB
+# es6-mongodb-apollo-00-init
 
 ## How to connect local mongodb
 

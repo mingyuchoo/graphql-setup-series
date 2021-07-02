@@ -1,5 +1,5 @@
 {
-  "name": "demo",
+  "name": "es6-mongodb-apollo-00-init",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -12,24 +12,24 @@
     "docker:exec": "docker exec --interactive=true --tty=true mongo-db /bin/bash"
   },
   "dependencies": {
-    "apollo-server": "^2.25.1",
+    "apollo-server": "^2.25.2",
     "dotenv": "^10.0.0",
-    "graphql": "^15.5.0",
+    "graphql": "^15.5.1",
     "graphql-tools": "^7.0.5",
     "mongodb": "^3.6.9",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.5",
-    "@babel/core": "^7.14.5",
-    "@babel/node": "^7.14.5",
-    "@babel/preset-env": "^7.14.5",
-    "eslint": "^7.28.0",
+    "@babel/core": "^7.14.6",
+    "@babel/node": "^7.14.7",
+    "@babel/preset-env": "^7.14.7",
+    "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "nodemon": "^2.0.7",
-    "prettier": "^2.3.1",
+    "nodemon": "^2.0.9",
+    "prettier": "^2.3.2",
     "rimraf": "^3.0.2"
   }
 }
