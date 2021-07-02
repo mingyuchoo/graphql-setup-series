@@ -11,6 +11,6 @@ export const ProfileAggregateQuery = queryField('aggregateProfile', {
     take: 'Int',
   },
   resolve(_parent, args, { prisma, select }) {
-    return prisma.profile.aggregate({ ...args, ...select }) as any;
+    return prisma.profile.aggregate({ ...args, ...select });
   },
 });

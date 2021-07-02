@@ -1,4 +1,5 @@
 import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+
 import { Post } from './index';
 
 @Entity({ name: 'comment' })

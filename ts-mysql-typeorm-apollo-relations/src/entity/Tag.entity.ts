@@ -1,4 +1,5 @@
 import { BaseEntity, Entity, ManyToMany, PrimaryColumn } from 'typeorm';
+
 import { Post } from './index';
 
 @Entity({ name: 'tag' })

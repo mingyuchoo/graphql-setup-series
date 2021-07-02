@@ -1,5 +1,5 @@
 import { IResolvers } from 'graphql-tools';
-import { getRepository, getManager } from 'typeorm';
+import { getManager, getRepository } from 'typeorm';
 
 import { QueryTagArgs } from '../../@types/codegen';
 import { Post, Tag } from '../../entity';

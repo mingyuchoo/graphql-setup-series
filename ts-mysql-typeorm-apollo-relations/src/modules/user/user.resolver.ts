@@ -1,5 +1,5 @@
 import { IResolvers } from 'graphql-tools';
-import { DeepPartial, getRepository, getManager } from 'typeorm';
+import { DeepPartial, getManager, getRepository } from 'typeorm';
 
 import { QueryUserArgs } from '../../@types/codegen';
 import { Post, User } from '../../entity';

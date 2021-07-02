@@ -11,6 +11,6 @@ export const CommentAggregateQuery = queryField('aggregateComment', {
     take: 'Int',
   },
   resolve(_parent, args, { prisma, select }) {
-    return prisma.comment.aggregate({ ...args, ...select }) as any;
+    return prisma.comment.aggregate({ ...args, ...select });
   },
 });

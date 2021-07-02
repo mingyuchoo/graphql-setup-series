@@ -11,6 +11,6 @@ export const GroupAggregateQuery = queryField('aggregateGroup', {
     take: 'Int',
   },
   resolve(_parent, args, { prisma, select }) {
-    return prisma.group.aggregate({ ...args, ...select }) as any;
+    return prisma.group.aggregate({ ...args, ...select });
   },
 });

@@ -1,4 +1,5 @@
 import { BaseEntity, Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+
 import { Post } from './index';
 
 @Entity({ name: 'category' })

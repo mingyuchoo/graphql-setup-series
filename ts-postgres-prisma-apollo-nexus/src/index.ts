@@ -1,9 +1,10 @@
-import http from 'http';
 import { ApolloServer } from 'apollo-server-express';
-import express from 'express';
 import cors from 'cors';
-import { schema } from './schema';
+import express from 'express';
+import http from 'http';
+
 import { createContext } from './context';
+import { schema } from './schema';
 
 const port = process.env.PORT || 4000;
 

@@ -1,6 +1,6 @@
-import { ApolloServer, gql } from "apollo-server";
-import mapKeys from "lodash/mapKeys";
-import { MvrpAPI } from "./datasource";
+import { ApolloServer, gql } from 'apollo-server';
+import mapKeys from 'lodash/mapKeys';
+import { MvrpAPI } from './datasource';
 
 const typeDefs = gql`
   type Car {

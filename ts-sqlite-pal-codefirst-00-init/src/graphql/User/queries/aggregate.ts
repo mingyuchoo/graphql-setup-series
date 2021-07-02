@@ -11,6 +11,6 @@ export const UserAggregateQuery = queryField('aggregateUser', {
     take: 'Int',
   },
   resolve(_parent, args, { prisma, select }) {
-    return prisma.user.aggregate({ ...args, ...select }) as any;
+    return prisma.user.aggregate({ ...args, ...select });
   },
 });

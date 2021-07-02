@@ -11,6 +11,6 @@ export const PostAggregateQuery = queryField('aggregatePost', {
     take: 'Int',
   },
   resolve(_parent, args, { prisma, select }) {
-    return prisma.post.aggregate({ ...args, ...select }) as any;
+    return prisma.post.aggregate({ ...args, ...select });
   },
 });

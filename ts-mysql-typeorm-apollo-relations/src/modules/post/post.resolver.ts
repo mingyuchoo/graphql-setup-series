@@ -2,7 +2,7 @@ import { IResolvers } from 'graphql-tools';
 import { getRepository } from 'typeorm';
 
 import { MutationCreatePostArgs, QueryPostArgs, QueryPostsArgs } from '../../@types/codegen';
-import { Category, Comment, Post, User, Tag } from '../../entity';
+import { Category, Comment, Post, Tag, User } from '../../entity';
 
 export const resolvers: IResolvers = {
   Post: {

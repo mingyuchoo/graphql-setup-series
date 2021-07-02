@@ -1,4 +1,5 @@
 import { BaseEntity, Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+
 import { User } from './index';
 
 @Entity({ name: 'profile' })
