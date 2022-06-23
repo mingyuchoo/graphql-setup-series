@@ -39,7 +39,7 @@
     "graphql-tools": "latest",
     "jest": "latest",
     "nodemon": "latest",
-     "prettier": "latest",
+    "prettier": "latest",
     "rimraf": "latest",
     "ts-jest": "latest",
     "ts-node": "latest",

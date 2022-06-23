@@ -1,4 +1,4 @@
-import { GraphQLDate, GraphQLDateTime, GraphQLTime } from 'graphql-iso-date';
+import { GraphQLDate, GraphQLDateTime, GraphQLTime } from 'graphql-scalars';
 
 import { filter } from 'lodash';
 import { books } from './dataset';

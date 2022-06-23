@@ -18,7 +18,7 @@
     "apollo-server": "latest",
     "express": "latest",
     "graphql": "latest",
-    "graphql-iso-date": "latest",
+    "graphql-scalars": "latest",
     "graphql-tools": "latest",
     "lodash": "latest",
     "typescript": "latest"
@@ -40,7 +40,7 @@
     "eslint-plugin-simple-import-sort": "latest",
     "graphql-import-node": "latest",
     "nodemon": "latest",
-     "prettier": "latest",
+    "prettier": "latest",
     "rimraf": "latest",
     "ts-node": "latest"
   }

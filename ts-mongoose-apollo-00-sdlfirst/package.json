@@ -61,7 +61,7 @@
     "graphql-request": "latest",
     "husky": "latest",
     "jest": "latest",
-     "prettier": "latest",
+    "prettier": "latest",
     "rimraf": "latest",
     "ts-jest": "latest",
     "ts-node": "latest",

@@ -35,7 +35,7 @@
     "eslint-plugin-react": "latest",
     "eslint-plugin-react-hooks": "latest",
     "eslint-plugin-simple-import-sort": "latest",
-     "prettier": "latest",
+    "prettier": "latest",
     "styled-components": "latest"
   },
   "scripts": {

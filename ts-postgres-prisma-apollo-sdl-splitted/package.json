@@ -30,7 +30,7 @@
     "apollo-server-express": "latest",
     "express": "latest",
     "graphql": "latest",
-    "graphql-iso-date": "latest",
+    "graphql-scalars": "latest",
     "graphql-tools": "latest",
     "lodash": "latest",
     "typescript": "latest"
@@ -64,7 +64,7 @@
     "nanoid": "latest",
     "nodemon": "latest",
     "pg": "latest",
-     "prettier": "latest",
+    "prettier": "latest",
     "rimraf": "latest",
     "ts-jest": "latest",
     "ts-node": "latest",

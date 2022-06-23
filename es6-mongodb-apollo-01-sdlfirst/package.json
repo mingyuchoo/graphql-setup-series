@@ -33,7 +33,7 @@
     "eslint-plugin-prettier": "latest",
     "eslint-plugin-simple-import-sort": "latest",
     "nodemon": "latest",
-     "prettier": "latest",
+    "prettier": "latest",
     "rimraf": "latest"
   }
 }

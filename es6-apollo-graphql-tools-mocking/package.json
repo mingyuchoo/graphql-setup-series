@@ -17,7 +17,7 @@
     "@babel/preset-env": "latest",
     "apollo-server": "latest",
     "graphql": "latest",
-    "graphql-iso-date": "latest",
+    "graphql-scalars": "latest",
     "lodash": "latest"
   },
   "devDependencies": {
