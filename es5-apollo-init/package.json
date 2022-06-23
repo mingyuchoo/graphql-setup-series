@@ -12,17 +12,17 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "apollo-server": "latest",
-    "graphql": "latest",
-    "graphql-iso-date": "latest",
-    "lodash": "latest"
-  },
   "devDependencies": {
     "eslint": "latest",
     "eslint-config-prettier": "latest",
     "eslint-plugin-prettier": "latest",
     "nodemon": "latest",
-     "prettier": "latest"
+    "prettier": "latest"
+  },
+  "dependencies": {
+    "apollo-server": "latest",
+    "graphql": "latest",
+    "graphql-scalars": "latest",
+    "lodash": "latest"
   }
 }

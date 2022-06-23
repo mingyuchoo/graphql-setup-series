@@ -4,7 +4,7 @@ const {
   GraphQLDate,
   GraphQLDateTime,
   GraphQLTime,
-} = require('graphql-iso-date');
+} = require('graphql-scalars');
 
 const { filter } = require('lodash');
 const { books } = require('./dataset');
@@ -25,20 +25,12 @@ const resolvers = {
     sayHi: (parent, args, context, info) => {
       return `Hi, ${args.name}!`;
     },
-    // file uploads
-    uploads: (parent, args, context, info) => {},
   },
 
   Mutation: {
     // say Hello
     sayHello: (parent, args, context, info) => {
       return `Hello, ${args.name}!`;
-    },
-    // file single uploads
-    singleUpload: (parent, args, context, info) => {
-      return args.file.then((file) => {
-        return file;
-      });
     },
   },
 };
