@@ -60,8 +60,8 @@ server.listen({ port: 4002 }).then(({ url }: any) => {
 });
 
 const usernames = [
-  { id: "1", username: "@ada" },
-  { id: "2", username: "@complete" },
+  { id: "latest" },
+  { id: "latest" },
 ];
 const reviews = [
   {

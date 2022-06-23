@@ -1,4 +1,4 @@
-version: "3.7"
+version: "latest"
 services:
   mysql-db:
     image: "mysql:latest"

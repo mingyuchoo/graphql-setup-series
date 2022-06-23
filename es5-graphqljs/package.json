@@ -1,6 +1,6 @@
 {
   "name": "es5-graphqljs",
-  "version": "1.0.0",
+  "version": "latest",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -13,13 +13,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "graphql": "^15.5.1"
+    "graphql": "latest"
   },
   "devDependencies": {
-    "eslint": "^7.29.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "nodemon": "^2.0.9",
-    "prettier": "^2.3.2"
+    "eslint": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-plugin-prettier": "latest",
+    "nodemon": "latest",
+     "prettier": "latest"
   }
 }

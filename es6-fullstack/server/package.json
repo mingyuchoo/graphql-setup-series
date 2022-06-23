@@ -1,6 +1,6 @@
 {
-  "name": "21-apollo-server-example",
-  "version": "1.0.0",
+  "name": "latest",
+  "version": "latest",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -13,16 +13,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^2.25.2",
-    "graphql": "^15.5.1"
+    "apollo-server": "latest",
+    "graphql": "latest"
   },
   "devDependencies": {
-    "apollo": "^2.33.4",
-    "eslint": "^7.29.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
-    "nodemon": "^2.0.9",
-    "prettier": "^2.3.2"
+    "apollo": "latest",
+    "eslint": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-plugin-prettier": "latest",
+    "eslint-plugin-simple-import-sort": "latest",
+    "nodemon": "latest",
+     "prettier": "latest"
   }
 }

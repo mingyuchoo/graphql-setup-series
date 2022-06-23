@@ -43,13 +43,13 @@ const users = [
   {
     id: "1",
     name: "Ada Lovelace",
-    birthDate: "1815-12-10",
+    birthDate: "latest",
     username: "@ada",
   },
   {
     id: "2",
     name: "Alan Turing",
-    birthDate: "1912-06-23",
+    birthDate: "latest",
     username: "@complete",
   },
 ];

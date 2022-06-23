@@ -1,6 +1,6 @@
 {
   "name": "back-end",
-  "version": "1.0.0",
+  "version": "latest",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,22 +12,22 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/core": "^7.14.6",
-    "@babel/node": "^7.14.7",
-    "@babel/preset-env": "^7.14.7",
-    "apollo-server": "^2.25.2",
-    "graphql": "^15.5.1",
-    "graphql-iso-date": "^3.6.1",
-    "lodash": "^4.17.21"
+    "@babel/core": "latest",
+    "@babel/node": "latest",
+    "@babel/preset-env": "latest",
+    "apollo-server": "latest",
+    "graphql": "latest",
+    "graphql-iso-date": "latest",
+    "lodash": "latest"
   },
   "devDependencies": {
-    "@graphql-tools/mock": "^8.1.3",
-    "casual-browserify": "^1.5.19-2",
-    "eslint": "^7.29.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "json-beautify": "^1.1.1",
-    "nodemon": "^2.0.9",
-    "prettier": "^2.3.2"
+    "@graphql-tools/mock": "latest",
+    "casual-browserify": "latest",
+    "eslint": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-plugin-prettier": "latest",
+    "json-beautify": "latest",
+    "nodemon": "latest",
+     "prettier": "latest"
   }
 }

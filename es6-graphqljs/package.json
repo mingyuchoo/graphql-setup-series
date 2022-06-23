@@ -1,6 +1,6 @@
 {
   "name": "back-end",
-  "version": "1.0.0",
+  "version": "latest",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -14,17 +14,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/core": "^7.14.6",
-    "@babel/node": "^7.14.7",
-    "@babel/preset-env": "^7.14.7",
-    "graphql": "^15.5.1"
+    "@babel/core": "latest",
+    "@babel/node": "latest",
+    "@babel/preset-env": "latest",
+    "graphql": "latest"
   },
   "devDependencies": {
-    "@babel/cli": "^7.14.5",
-    "eslint": "^7.29.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "nodemon": "^2.0.9",
-    "prettier": "^2.3.2"
+    "@babel/cli": "latest",
+    "eslint": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-plugin-prettier": "latest",
+    "nodemon": "latest",
+     "prettier": "latest"
   }
 }
