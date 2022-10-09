@@ -20,13 +20,13 @@
     "prisma:db:push": "npx prisma db push"
   },
   "dependencies": {
-    "@nexus/schema": "latest",
-    "@paljs/nexus": "latest",
-    "@prisma/client": "latest",
+    "@nexus/schema": "0.20.1",
+    "@paljs/nexus": "4.1.0",
+    "@prisma/client": "4.4.0",
     "apollo-server": "^3.10.3",
     "graphql": "^16.6.0",
     "nexus": "^1.3.0",
-    "prisma": "latest"
+    "prisma": "4.4.0"
   },
   "devDependencies": {
     "@types/jest": "^29.1.2",
