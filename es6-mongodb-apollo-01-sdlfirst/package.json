@@ -12,28 +12,28 @@
     "docker:exec": "docker exec --interactive=true --tty=true mongo-db /bin/bash"
   },
   "dependencies": {
-    "apollo-server": "latest",
-    "apollo-server-express": "latest",
-    "cors": "latest",
-    "dotenv": "latest",
-    "express": "latest",
-    "graphql": "latest",
-    "graphql-middleware": "latest",
-    "graphql-tools": "latest",
-    "mongodb": "latest",
-    "uuid": "latest"
+    "apollo-server": "^3.10.3",
+    "apollo-server-express": "^3.10.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "graphql": "^16.6.0",
+    "graphql-middleware": "^6.1.33",
+    "graphql-tools": "^8.3.6",
+    "mongodb": "^4.10.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "latest",
-    "@babel/core": "latest",
-    "@babel/node": "latest",
-    "@babel/preset-env": "latest",
-    "eslint": "latest",
-    "eslint-config-prettier": "latest",
-    "eslint-plugin-prettier": "latest",
-    "eslint-plugin-simple-import-sort": "latest",
-    "nodemon": "latest",
-    "prettier": "latest",
-    "rimraf": "latest"
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.3",
+    "@babel/node": "^7.19.1",
+    "@babel/preset-env": "^7.19.3",
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2"
   }
 }

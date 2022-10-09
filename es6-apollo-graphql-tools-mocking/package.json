@@ -12,22 +12,23 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/core": "latest",
-    "@babel/node": "latest",
-    "@babel/preset-env": "latest",
-    "apollo-server": "latest",
-    "graphql": "latest",
-    "graphql-scalars": "latest",
-    "lodash": "latest"
+    "@babel/core": "^7.19.3",
+    "@babel/node": "^7.19.1",
+    "@babel/preset-env": "^7.19.3",
+    "apollo-server": "^3.10.3",
+    "graphql": "^16.6.0",
+    "graphql-scalars": "^1.18.0",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@graphql-tools/mock": "latest",
-    "casual-browserify": "latest",
-    "eslint": "latest",
-    "eslint-config-prettier": "latest",
-    "eslint-plugin-prettier": "latest",
-    "json-beautify": "latest",
-    "nodemon": "latest",
-     "prettier": "latest"
+    "@graphql-tools/mock": "^8.7.6",
+    "casual-browserify": "^1.5.19-2",
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "json-beautify": "^1.1.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2"
   }
 }

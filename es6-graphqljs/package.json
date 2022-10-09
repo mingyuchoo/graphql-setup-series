@@ -14,17 +14,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/core": "latest",
-    "@babel/node": "latest",
-    "@babel/preset-env": "latest",
-    "graphql": "latest"
+    "@babel/core": "^7.19.3",
+    "@babel/node": "^7.19.1",
+    "@babel/preset-env": "^7.19.3",
+    "graphql": "^16.6.0"
   },
   "devDependencies": {
-    "@babel/cli": "latest",
-    "eslint": "latest",
-    "eslint-config-prettier": "latest",
-    "eslint-plugin-prettier": "latest",
-    "nodemon": "latest",
-     "prettier": "latest"
+    "@babel/cli": "^7.19.3",
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.20",
+     "prettier": "^2.7.1"
   }
 }
