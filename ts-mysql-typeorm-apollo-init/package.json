@@ -5,7 +5,7 @@
   "main": "index.ts",
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint --config .eslintrc.yml --fix './src/**/*.ts'",

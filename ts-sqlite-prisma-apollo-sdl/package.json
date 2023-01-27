@@ -18,7 +18,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@graphql-codegen/cli": "^2.13.5",
     "@graphql-codegen/typescript": "^2.7.3",
