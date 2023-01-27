@@ -15,13 +15,13 @@ This repository is a demo of using Apollo Federation to build a single schema on
 
 To run this demo locally, pull down the repository then run the following commands:
 
-```sh
+```bash
 npm install
 ```
 
 This will install all of the dependencies for the gateway and each underlying service.
 
-```sh
+```bash
 npm run start:services
 ```
 
@@ -29,7 +29,7 @@ This command will run all of the microservices at once. They can be found at htt
 
 In another terminal window, run the gateway by running this command:
 
-```sh
+```bash
 npm run start:gateway
 ```
 
