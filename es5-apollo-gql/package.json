@@ -17,10 +17,10 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "eslint": "^8.25.0",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "nodemon": "^2.0.20",
-    "prettier": "^2.7.1"
+    "prettier": "^2.8.3"
   }
 }

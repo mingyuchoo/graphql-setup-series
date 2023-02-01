@@ -4,8 +4,9 @@ const schema = buildSchema(`type Query {
   hello: String
 }`);
 
-const root = { hello: () => 'Hello world!' };
+const rootValue = { hello: () => 'Hello world!' };
+const source = '{ hello }';
 
-graphql(schema, '{ hello }', root).then((response) => {
+graphql({ schema, source, rootValue }).then((response) => {
   console.log(response);
 });

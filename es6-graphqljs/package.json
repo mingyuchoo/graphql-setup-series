@@ -14,17 +14,17 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.19.3",
-    "@babel/node": "^7.19.1",
-    "@babel/preset-env": "^7.19.3",
+    "@babel/core": "^7.20.12",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
     "graphql": "^16.6.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.19.3",
-    "eslint": "^8.25.0",
-    "eslint-config-prettier": "^8.5.0",
+    "@babel/cli": "^7.20.7",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "nodemon": "^2.0.20",
-     "prettier": "^2.7.1"
+     "prettier": "^2.8.3"
   }
 }

@@ -12,23 +12,23 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.19.3",
-    "@babel/node": "^7.19.1",
-    "@babel/preset-env": "^7.19.3",
+    "@babel/core": "^7.20.12",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
     "apollo-server": "^3.10.3",
     "graphql": "^16.6.0",
-    "graphql-scalars": "^1.18.0",
+    "graphql-scalars": "^1.20.1",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@graphql-tools/mock": "^8.7.6",
+    "@graphql-tools/mock": "^8.7.16",
     "casual-browserify": "^1.5.19-2",
-    "eslint": "^8.25.0",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "json-beautify": "^1.1.1",
     "nodemon": "^2.0.20",
-    "prettier": "^2.7.1",
-    "rimraf": "^3.0.2"
+    "prettier": "^2.8.3",
+    "rimraf": "^4.1.2"
   }
 }
